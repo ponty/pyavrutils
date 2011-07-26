@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Examples &mdash; pyavrutils v0.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pyavrutils v0.0.0 documentation" href="index.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api.html" title="API"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Usage"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pyavrutils v0.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="simple-example">
+<h2>Simple example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
+<p>Example program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">test minimum program size with different optimizations</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">from</span> <span class="nn">pyavrutils</span> <span class="kn">import</span> <span class="n">AvrGcc</span>
+<span class="kn">from</span> <span class="nn">entrypoint2</span> <span class="kn">import</span> <span class="n">entrypoint</span>
+
+<span class="n">cc</span> <span class="o">=</span> <span class="n">AvrGcc</span><span class="p">()</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s">&#39;int main(){}&#39;</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s">&#39;    compiler option:&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cc</span><span class="o">.</span><span class="n">options_generated</span><span class="p">())</span>
+    <span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&#39;    program size =&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
+
+<span class="nd">@entrypoint</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s">&#39;compiler version:&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">&#39;code:&#39;</span><span class="p">,</span> <span class="n">code</span>
+    <span class="k">print</span> 
+    <span class="k">print</span> <span class="s">&#39;no optimizations::&#39;</span>    
+    <span class="k">print</span>
+    <span class="n">cc</span><span class="o">.</span><span class="n">optimize_no</span><span class="p">()</span>
+    <span class="n">test</span><span class="p">()</span>
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="s">&#39;optimize for size::&#39;</span>
+    <span class="k">print</span>
+    <span class="n">cc</span><span class="o">.</span><span class="n">optimize_for_size</span><span class="p">()</span>
+    <span class="n">test</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.examples.simple
+compiler version: 4.3.5
+code: int main(){}
+
+no optimizations::
+
+    compiler option: avr-gcc -Df_cpu=4000000 -mmcu=atmega8 --std=gnu99
+    program size = 78
+
+optimize for size::
+
+    compiler option: avr-gcc -Df_cpu=4000000 -mmcu=atmega8 --std=gnu99 -Wl,--relax -Wl,--gc-sections -ffunction-sections -fdata-sections -fno-inline-small-functions -Os
+    program size = 66
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-size-with-unused-code">
+<h2>Test size with unused code<a class="headerlink" href="#test-size-with-unused-code" title="Permalink to this headline">¶</a></h2>
+<p>Example program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyavrutils.avrgcc</span> <span class="kn">import</span> <span class="n">AvrGcc</span>
+<span class="kn">from</span> <span class="nn">entrypoint2</span> <span class="kn">import</span> <span class="n">entrypoint</span>
+
+<span class="n">cc</span> <span class="o">=</span> <span class="n">AvrGcc</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">optimization</span><span class="p">,</span> <span class="n">gc_sections</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ffunction_sections</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;optimization =&#39;</span><span class="p">,</span> <span class="n">optimization</span><span class="p">,</span>
+    <span class="k">print</span> <span class="s">&#39;gc_sections =&#39;</span><span class="p">,</span> <span class="n">gc_sections</span><span class="p">,</span>
+    <span class="k">print</span> <span class="s">&#39;ffunction_sections =&#39;</span><span class="p">,</span> <span class="n">ffunction_sections</span><span class="p">,</span>
+    <span class="k">print</span>
+    
+    <span class="n">cc</span><span class="o">.</span><span class="n">optimization</span> <span class="o">=</span> <span class="n">optimization</span>
+    <span class="n">cc</span><span class="o">.</span><span class="n">gc_sections</span> <span class="o">=</span> <span class="n">gc_sections</span>
+    <span class="n">cc</span><span class="o">.</span><span class="n">ffunction_sections</span> <span class="o">=</span> <span class="n">ffunction_sections</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s">&#39;program, data =&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">program_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">data_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span>  <span class="s">&#39;compile error&#39;</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">sources</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;sources:&#39;</span><span class="p">,</span> <span class="n">sources</span>
+    <span class="n">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nd">@entrypoint</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">cc</span><span class="o">.</span><span class="n">optimize_no</span><span class="p">()</span>
+    <span class="k">print</span>  <span class="s">&#39;compiler version:&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
+    <span class="k">print</span>  <span class="s">&#39;compiler options:&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cc</span><span class="o">.</span><span class="n">options_generated</span><span class="p">())</span>
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="s">&#39;minimum size&#39;</span>
+    <span class="k">print</span> <span class="mi">20</span> <span class="o">*</span> <span class="s">&#39;=&#39;</span>
+    <span class="n">test</span><span class="p">([</span><span class="s">&#39;int main(){}&#39;</span><span class="p">])</span>
+
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="s">&#39;unused function in separate file&#39;</span>
+    <span class="k">print</span> <span class="mi">40</span> <span class="o">*</span> <span class="s">&#39;=&#39;</span>
+    <span class="n">test</span><span class="p">([</span><span class="s">&#39;int main(){}&#39;</span><span class="p">,</span> <span class="s">&#39;int f(){return 2;}&#39;</span><span class="p">])</span>
+
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="s">&#39;unused function in the same file&#39;</span>
+    <span class="k">print</span> <span class="mi">40</span> <span class="o">*</span> <span class="s">&#39;=&#39;</span>
+    <span class="n">test</span><span class="p">([</span><span class="s">&#39;int main(){}; int f(){return 2;}&#39;</span><span class="p">])</span>
+    
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.examples.deadcode
+compiler version: 4.3.5
+compiler options: avr-gcc -Df_cpu=4000000 -mmcu=atmega8 --std=gnu99
+
+minimum size
+====================
+sources: [&#39;int main(){}&#39;]
+optimization = 0 gc_sections = 0 ffunction_sections = 0
+program, data =       78 ,        0
+optimization = s gc_sections = 0 ffunction_sections = 0
+program, data =       66 ,        0
+optimization = s gc_sections = 1 ffunction_sections = 0
+program, data =       66 ,        0
+optimization = s gc_sections = 1 ffunction_sections = 1
+program, data =       66 ,        0
+
+unused function in separate file
+========================================
+sources: [&#39;int main(){}&#39;, &#39;int f(){return 2;}&#39;]
+optimization = 0 gc_sections = 0 ffunction_sections = 0
+program, data =       96 ,        0
+optimization = s gc_sections = 0 ffunction_sections = 0
+program, data =       72 ,        0
+optimization = s gc_sections = 1 ffunction_sections = 0
+program, data =       66 ,        0
+optimization = s gc_sections = 1 ffunction_sections = 1
+program, data =       66 ,        0
+
+unused function in the same file
+========================================
+sources: [&#39;int main(){}; int f(){return 2;}&#39;]
+optimization = 0 gc_sections = 0 ffunction_sections = 0
+program, data =       96 ,        0
+optimization = s gc_sections = 0 ffunction_sections = 0
+program, data =       72 ,        0
+optimization = s gc_sections = 1 ffunction_sections = 0
+program, data =       72 ,        0
+optimization = s gc_sections = 1 ffunction_sections = 1
+program, data =       66 ,        0
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Conclusions:</dt>
+<dd><ul class="first last simple">
+<li>both <tt class="docutils literal"><span class="pre">gc_sections</span></tt> and <tt class="docutils literal"><span class="pre">ffunction_sections</span></tt> should be used</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="test-size-with-delay-h">
+<h2>Test size with delay.h<a class="headerlink" href="#test-size-with-delay-h" title="Permalink to this headline">¶</a></h2>
+<p>Example program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyavrutils.avrgcc</span> <span class="kn">import</span> <span class="n">AvrGcc</span>
+<span class="kn">from</span> <span class="nn">entrypoint2</span> <span class="kn">import</span> <span class="n">entrypoint</span>
+
+<span class="n">templ</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">#include &lt;avr/io.h&gt;</span>
+<span class="s">#include &lt;util/delay.h&gt;</span>
+<span class="s">int main()</span>
+<span class="s">{</span>
+<span class="s">    </span><span class="si">%s</span><span class="s">;</span>
+<span class="s">    return 0;</span>
+<span class="s">}</span>
+<span class="s">&#39;&#39;&#39;</span>
+
+<span class="n">cc</span> <span class="o">=</span> <span class="n">AvrGcc</span><span class="p">()</span>
+<span class="n">cc</span><span class="o">.</span><span class="n">optimize_no</span><span class="p">()</span>
+<span class="k">print</span>  <span class="s">&#39;compiler version:&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
+<span class="k">print</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">code_snippet</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+    <span class="k">print</span>  <span class="n">code_snippet</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">33</span><span class="p">)</span> <span class="p">,</span> 
+    <span class="n">cc</span><span class="o">.</span><span class="n">options_extra</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">print</span>  <span class="s">&#39;compiler option:&#39;</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="s">&#39;</span><span class="se">\t</span><span class="s">&#39;</span><span class="p">,</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">([</span><span class="n">templ</span> <span class="o">%</span> <span class="n">code_snippet</span><span class="p">])</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s">&#39;program, data =&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">program_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">data_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span>  <span class="s">&#39;compile error&#39;</span>
+
+<span class="nd">@entrypoint</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">cc</span><span class="o">.</span><span class="n">optimization</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">test</span><span class="p">(</span><span class="s">&#39;_delay_ms(4)&#39;</span><span class="p">,</span> <span class="s">&#39;-O0&#39;</span><span class="p">)</span>
+    <span class="n">test</span><span class="p">(</span><span class="s">&#39;_delay_ms(4)&#39;</span><span class="p">,</span> <span class="s">&#39;-O1&#39;</span><span class="p">)</span>
+    <span class="n">test</span><span class="p">(</span><span class="s">&#39;_delay_ms(4)&#39;</span><span class="p">,</span> <span class="s">&#39;-O2&#39;</span><span class="p">)</span>
+    <span class="n">test</span><span class="p">(</span><span class="s">&#39;_delay_ms(4)&#39;</span><span class="p">,</span> <span class="s">&#39;-O3&#39;</span><span class="p">)</span>
+    <span class="n">test</span><span class="p">(</span><span class="s">&#39;_delay_ms(4)&#39;</span><span class="p">,</span> <span class="s">&#39;-Os&#39;</span><span class="p">)</span>
+
+    <span class="n">test</span><span class="p">(</span><span class="s">&#39;volatile double x=3;_delay_ms(x)&#39;</span><span class="p">,</span> <span class="s">&#39;-Os&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.examples.delaysize
+compiler version: 4.3.5
+
+_delay_ms(4)                      compiler option: -O0 	program, data =     3116 ,        8
+_delay_ms(4)                      compiler option: -O1 	program, data =       74 ,        0
+_delay_ms(4)                      compiler option: -O2 	program, data =       74 ,        0
+_delay_ms(4)                      compiler option: -O3 	program, data =       74 ,        0
+_delay_ms(4)                      compiler option: -Os 	program, data =       74 ,        0
+volatile double x=3;_delay_ms(x)  compiler option: -Os 	program, data =     3052 ,        8
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Conclusions:</dt>
+<dd><ul class="first last simple">
+<li>parameter should be constant</li>
+<li>optimization should be 1, 2, 3 or s</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="test-size-with-program-space">
+<h2>Test size with program space<a class="headerlink" href="#test-size-with-program-space" title="Permalink to this headline">¶</a></h2>
+<p>Example program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyavrutils.avrgcc</span> <span class="kn">import</span> <span class="n">AvrGcc</span>
+<span class="kn">from</span> <span class="nn">entrypoint2</span> <span class="kn">import</span> <span class="n">entrypoint</span>
+
+<span class="n">templ</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">#include &lt;avr/io.h&gt;</span>
+<span class="s">#include &lt;avr/pgmspace.h&gt;</span>
+<span class="s">int main()</span>
+<span class="s">{</span>
+<span class="s">    </span><span class="si">%s</span><span class="s">;</span>
+<span class="s">    return 0;</span>
+<span class="s">}</span>
+<span class="s">&#39;&#39;&#39;</span>
+
+<span class="n">cc</span> <span class="o">=</span> <span class="n">AvrGcc</span><span class="p">()</span>
+<span class="n">cc</span><span class="o">.</span><span class="n">optimization</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">print</span>  <span class="s">&#39;compiler version:&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
+<span class="k">print</span>  <span class="s">&#39;compiler options:&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cc</span><span class="o">.</span><span class="n">options_generated</span><span class="p">())</span>
+<span class="k">print</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">code_snippet</span><span class="p">):</span>
+    <span class="k">print</span>  <span class="n">code_snippet</span> <span class="p">,</span><span class="s">&#39;</span><span class="se">\t\t</span><span class="s">&#39;</span><span class="p">,</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">([</span><span class="n">templ</span> <span class="o">%</span> <span class="n">code_snippet</span><span class="p">])</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s">&#39;program, data =&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">program_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">data_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span>  <span class="s">&#39;compile error&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">test_comb</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">words</span><span class="o">=</span><span class="s">&#39;static const PROGMEM&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">choice</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s">&#39; &#39;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span>
+    
+    <span class="k">for</span> <span class="n">s0</span> <span class="ow">in</span> <span class="n">choice</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">s1</span> <span class="ow">in</span> <span class="n">choice</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">s2</span> <span class="ow">in</span> <span class="n">choice</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<span class="c">#                    for s3 in choice(3):</span>
+                        <span class="n">test</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> char s[] </span><span class="si">%s</span><span class="s"> = &quot;</span><span class="si">%s</span><span class="s">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s0</span><span class="p">,</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,</span><span class="n">s</span><span class="p">))</span>
+<span class="nd">@entrypoint</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">test_comb</span><span class="p">(</span><span class="s">&quot;12345&quot;</span><span class="p">)</span>
+    <span class="n">test_comb</span><span class="p">(</span><span class="s">&quot;1234512345&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.examples.pgmspace
+compiler version: 4.3.5
+compiler options: avr-gcc -Df_cpu=4000000 -mmcu=atmega8 --std=gnu99 -Wl,--relax -Wl,--gc-sections -ffunction-sections -fdata-sections -fno-inline-small-functions
+
+static const char s[] PROGMEM = &quot;12345&quot; 		program, data =       78 ,        0
+static const char s[]         = &quot;12345&quot; 		program, data =      100 ,        0
+static       char s[] PROGMEM = &quot;12345&quot; 		program, data =       78 ,        0
+static       char s[]         = &quot;12345&quot; 		program, data =      100 ,        0
+       const char s[] PROGMEM = &quot;12345&quot; 		program, data =      194 ,        6
+       const char s[]         = &quot;12345&quot; 		program, data =      194 ,        6
+             char s[] PROGMEM = &quot;12345&quot; 		program, data =      194 ,        6
+             char s[]         = &quot;12345&quot; 		program, data =      194 ,        6
+static const char s[] PROGMEM = &quot;1234512345&quot; 		program, data =       78 ,        0
+static const char s[]         = &quot;1234512345&quot; 		program, data =      100 ,        0
+static       char s[] PROGMEM = &quot;1234512345&quot; 		program, data =       78 ,        0
+static       char s[]         = &quot;1234512345&quot; 		program, data =      100 ,        0
+       const char s[] PROGMEM = &quot;1234512345&quot; 		program, data =      200 ,       12
+       const char s[]         = &quot;1234512345&quot; 		program, data =      200 ,       12
+             char s[] PROGMEM = &quot;1234512345&quot; 		program, data =      200 ,       12
+             char s[]         = &quot;1234512345&quot; 		program, data =      200 ,       12
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Conclusions:</dt>
+<dd><ul class="first last simple">
+<li>constant string should be static or global</li>
+<li><tt class="docutils literal"><span class="pre">const</span></tt> has no effect on size</li>
+<li>PROGMEM should be used</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="test-minimum-size">
+<h2>Test minimum size<a class="headerlink" href="#test-minimum-size" title="Permalink to this headline">¶</a></h2>
+<p>Example program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">test minimum program size with all MCUs</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">from</span> <span class="nn">entrypoint2</span> <span class="kn">import</span> <span class="n">entrypoint</span>
+<span class="kn">from</span> <span class="nn">pyavrutils.avrgcc</span> <span class="kn">import</span> <span class="n">AvrGcc</span><span class="p">,</span> <span class="n">AvrGccCompileError</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">cc</span><span class="p">,</span> <span class="n">mcu</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;MCU =&#39;</span><span class="p">,</span> <span class="n">mcu</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+    <span class="n">cc</span><span class="o">.</span><span class="n">mcu</span> <span class="o">=</span> <span class="n">mcu</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">cc</span><span class="o">.</span><span class="n">minprog</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;    program/data size =&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span><span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">data_bytes</span>
+    <span class="k">except</span> <span class="n">AvrGccCompileError</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;    compile error:&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">error_text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nd">@entrypoint</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">cc</span> <span class="o">=</span> <span class="n">AvrGcc</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">&#39;--------------&#39;</span>
+    <span class="k">print</span> <span class="s">&#39;avr-gcc&#39;</span>
+    <span class="k">print</span> <span class="s">&#39;--------------&#39;</span>
+    
+    <span class="k">print</span> <span class="s">&#39;compiler version:&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
+    <span class="n">cc</span><span class="o">.</span><span class="n">optimize_for_size</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">&#39;compiler options:&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cc</span><span class="o">.</span><span class="n">options_generated</span><span class="p">())</span>
+    <span class="k">print</span> <span class="s">&#39;code:&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">minprog</span>
+    <span class="k">print</span>
+    <span class="k">for</span> <span class="n">mcu</span> <span class="ow">in</span> <span class="n">cc</span><span class="o">.</span><span class="n">targets</span><span class="p">:</span>
+        <span class="n">test</span><span class="p">(</span><span class="n">cc</span><span class="p">,</span> <span class="n">mcu</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.examples.minsize
+--------------
+avr-gcc
+--------------
+compiler version: 4.3.5
+compiler options: avr-gcc -Df_cpu=4000000 -mmcu=atmega8 --std=gnu99 -Wl,--relax -Wl,--gc-sections -ffunction-sections -fdata-sections -fno-inline-small-functions -Os
+code: int main(){};
+
+MCU = at43usb320               program/data size = 80 , 0
+MCU = at43usb355               program/data size = 80 , 0
+MCU = at76c711                 program/data size = 88 , 0
+MCU = at86rf401                program/data size = 40 , 0
+MCU = at90c8534                program/data size = 42 , 0
+MCU = at90can128               program/data size = 202 , 0
+MCU = at90can32                program/data size = 176 , 0
+MCU = at90can64                program/data size = 176 , 0
+MCU = at90pwm1                 program/data size = 92 , 0
+MCU = at90pwm2                 program/data size = 92 , 0
+MCU = at90pwm216               program/data size = 156 , 0
+MCU = at90pwm2b                program/data size = 92 , 0
+MCU = at90pwm3                 program/data size = 92 , 0
+MCU = at90pwm316               program/data size = 156 , 0
+MCU = at90pwm3b                program/data size = 92 , 0
+MCU = at90pwm81                program/data size = 68 , 0
+MCU = at90s1200                compile error: /tmp/pyavrutils_qJFdQZ/pyavrutils_UkXKSJ.c:1: error: MCU ‘at90s1200’ supported for assembler only
+MCU = at90s2313                program/data size = 46 , 0
+MCU = at90s2323                program/data size = 30 , 0
+MCU = at90s2333                program/data size = 52 , 0
+MCU = at90s2343                program/data size = 30 , 0
+MCU = at90s4414                program/data size = 54 , 0
+MCU = at90s4433                program/data size = 52 , 0
+MCU = at90s4434                program/data size = 62 , 0
+MCU = at90s8515                program/data size = 54 , 0
+MCU = at90s8535                program/data size = 62 , 0
+MCU = at90scr100               program/data size = 180 , 0
+MCU = at90usb1286              program/data size = 206 , 0
+MCU = at90usb1287              program/data size = 206 , 0
+MCU = at90usb162               program/data size = 144 , 0
+MCU = at90usb646               program/data size = 180 , 0
+MCU = at90usb647               program/data size = 180 , 0
+MCU = at90usb82                program/data size = 144 , 0
+MCU = at94k                    program/data size = 172 , 0
+MCU = ata6289                  program/data size = 82 , 0
+MCU = atmega103                program/data size = 156 , 0
+MCU = atmega128                program/data size = 194 , 0
+MCU = atmega1280               program/data size = 282 , 0
+MCU = atmega1281               program/data size = 258 , 0
+MCU = atmega1284p              program/data size = 194 , 0
+MCU = atmega128rfa1            program/data size = 342 , 0
+MCU = atmega16                 program/data size = 112 , 0
+MCU = atmega161                program/data size = 112 , 0
+MCU = atmega162                program/data size = 140 , 0
+MCU = atmega163                program/data size = 100 , 0
+MCU = atmega164a               program/data size = 152 , 0
+MCU = atmega164p               program/data size = 152 , 0
+MCU = atmega165                program/data size = 116 , 0
+MCU = atmega165a               compile error: Known MCU names:
+MCU = atmega165p               program/data size = 116 , 0
+MCU = atmega168                program/data size = 132 , 0
+MCU = atmega168a               program/data size = 80 , 0
+MCU = atmega168p               program/data size = 132 , 0
+MCU = atmega169                program/data size = 120 , 0
+MCU = atmega169a               program/data size = 120 , 0
+MCU = atmega169p               program/data size = 120 , 0
+MCU = atmega169pa              program/data size = 120 , 0
+MCU = atmega16a                program/data size = 112 , 0
+MCU = atmega16c1               compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: crtm16c1.o: No such file: No such file or directory
+MCU = atmega16hva              program/data size = 112 , 0
+MCU = atmega16hva2             program/data size = 116 , 0
+MCU = atmega16hvb              program/data size = 144 , 0
+MCU = atmega16m1               program/data size = 152 , 0
+MCU = atmega16u2               program/data size = 180 , 0
+MCU = atmega16u4               program/data size = 200 , 0
+MCU = atmega2560               program/data size = 286 , 0
+MCU = atmega2561               program/data size = 262 , 0
+MCU = atmega32                 program/data size = 112 , 0
+MCU = atmega323                program/data size = 108 , 0
+MCU = atmega324a               program/data size = 152 , 0
+MCU = atmega324p               program/data size = 152 , 0
+MCU = atmega324pa              program/data size = 152 , 0
+MCU = atmega325                program/data size = 120 , 0
+MCU = atmega3250               program/data size = 128 , 0
+MCU = atmega3250p              program/data size = 128 , 0
+MCU = atmega325p               program/data size = 120 , 0
+MCU = atmega328                program/data size = 132 , 0
+MCU = atmega328p               program/data size = 132 , 0
+MCU = atmega329                program/data size = 120 , 0
+MCU = atmega3290               program/data size = 128 , 0
+MCU = atmega3290p              program/data size = 128 , 0
+MCU = atmega329p               program/data size = 120 , 0
+MCU = atmega329pa              program/data size = 120 , 0
+MCU = atmega32c1               program/data size = 152 , 0
+MCU = atmega32hvb              program/data size = 144 , 0
+MCU = atmega32m1               program/data size = 152 , 0
+MCU = atmega32u2               program/data size = 180 , 0
+MCU = atmega32u4               program/data size = 200 , 0
+MCU = atmega32u6               program/data size = 180 , 0
+MCU = atmega406                program/data size = 120 , 0
+MCU = atmega48                 program/data size = 80 , 0
+MCU = atmega48a                program/data size = 80 , 0
+MCU = atmega48p                program/data size = 80 , 0
+MCU = atmega4hvd               compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: crtm4hvd.o: No such file: No such file or directory
+MCU = atmega64                 program/data size = 168 , 0
+MCU = atmega640                program/data size = 256 , 0
+MCU = atmega644                program/data size = 140 , 0
+MCU = atmega644a               program/data size = 152 , 0
+MCU = atmega644p               program/data size = 152 , 0
+MCU = atmega644pa              program/data size = 152 , 0
+MCU = atmega645                program/data size = 120 , 0
+MCU = atmega6450               program/data size = 128 , 0
+MCU = atmega6450a              program/data size = 128 , 0
+MCU = atmega6450p              program/data size = 128 , 0
+MCU = atmega645a               program/data size = 120 , 0
+MCU = atmega645p               program/data size = 120 , 0
+MCU = atmega649                program/data size = 120 , 0
+MCU = atmega6490               program/data size = 128 , 0
+MCU = atmega6490a              program/data size = 128 , 0
+MCU = atmega6490p              program/data size = 128 , 0
+MCU = atmega649a               program/data size = 120 , 0
+MCU = atmega649p               program/data size = 120 , 0
+MCU = atmega64c1               program/data size = 152 , 0
+MCU = atmega64hve              program/data size = 128 , 0
+MCU = atmega64m1               program/data size = 152 , 0
+MCU = atmega8                  program/data size = 66 , 0
+MCU = atmega8515               program/data size = 62 , 0
+MCU = atmega8535               program/data size = 70 , 0
+MCU = atmega88                 program/data size = 80 , 0
+MCU = atmega88a                program/data size = 80 , 0
+MCU = atmega88p                program/data size = 80 , 0
+MCU = atmega88pa               program/data size = 80 , 0
+MCU = atmega8hva               program/data size = 70 , 0
+MCU = atmega8hvd               compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: crtm8hvd.o: No such file: No such file or directory
+MCU = atmega8u2                program/data size = 180 , 0
+MCU = attiny11                 compile error: /tmp/pyavrutils_N89waQ/pyavrutils_oSJ7Qm.c:1: error: MCU ‘attiny11’ supported for assembler only
+MCU = attiny12                 compile error: /tmp/pyavrutils_O6icBj/pyavrutils_it73xT.c:1: error: MCU ‘attiny12’ supported for assembler only
+MCU = attiny13                 program/data size = 44 , 0
+MCU = attiny13a                program/data size = 44 , 0
+MCU = attiny15                 compile error: /tmp/pyavrutils_ZiaTfy/pyavrutils_fcnVFu.c:1: error: MCU ‘attiny15’ supported for assembler only
+MCU = attiny167                program/data size = 108 , 0
+MCU = attiny22                 program/data size = 30 , 0
+MCU = attiny2313               program/data size = 62 , 0
+MCU = attiny2313a              program/data size = 66 , 0
+MCU = attiny24                 program/data size = 58 , 0
+MCU = attiny24a                program/data size = 58 , 0
+MCU = attiny25                 program/data size = 54 , 0
+MCU = attiny26                 program/data size = 48 , 0
+MCU = attiny261                program/data size = 62 , 0
+MCU = attiny261a               program/data size = 62 , 0
+MCU = attiny28                 compile error: /tmp/pyavrutils_UGJhxe/pyavrutils_1zEcsx.c:1: error: MCU ‘attiny28’ supported for assembler only
+MCU = attiny4313               program/data size = 70 , 0
+MCU = attiny43u                program/data size = 60 , 0
+MCU = attiny44                 program/data size = 62 , 0
+MCU = attiny44a                program/data size = 62 , 0
+MCU = attiny45                 program/data size = 58 , 0
+MCU = attiny461                program/data size = 66 , 0
+MCU = attiny461a               compile error: Known MCU names:
+MCU = attiny48                 program/data size = 68 , 0
+MCU = attiny84                 program/data size = 62 , 0
+MCU = attiny85                 program/data size = 58 , 0
+MCU = attiny861                program/data size = 66 , 0
+MCU = attiny861a               program/data size = 66 , 0
+MCU = attiny87                 program/data size = 68 , 0
+MCU = attiny88                 program/data size = 68 , 0
+MCU = atxmega128a1             program/data size = 568 , 0
+MCU = atxmega128a3             program/data size = 546 , 0
+MCU = atxmega128d3             program/data size = 514 , 0
+MCU = atxmega16a4              program/data size = 404 , 0
+MCU = atxmega16d4              program/data size = 392 , 0
+MCU = atxmega192a3             program/data size = 546 , 0
+MCU = atxmega192d3             program/data size = 514 , 0
+MCU = atxmega256a3             program/data size = 546 , 0
+MCU = atxmega256a3b            program/data size = 546 , 0
+MCU = atxmega256d3             program/data size = 514 , 0
+MCU = atxmega32a4              program/data size = 412 , 0
+MCU = atxmega32d4              program/data size = 392 , 0
+MCU = atxmega64a1              program/data size = 564 , 0
+MCU = atxmega64a3              program/data size = 542 , 0
+MCU = atxmega64d3              program/data size = 510 , 0
+MCU = avr1                     compile error: /tmp/pyavrutils_gkVcF9/pyavrutils_l6lHSf.c:1: error: MCU ‘avr1’ supported for assembler only
+MCU = avr2                     program/data size = 0 , 0
+MCU = avr25                    program/data size = 0 , 0
+MCU = avr3                     compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: avr:31 architecture of input file `/usr/lib/gcc/avr/4.3.5/../../../avr/lib/avr3/crt43320.o&#39; is incompatible with avr output
+MCU = avr31                    compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: avr:31 architecture of input file `/usr/lib/gcc/avr/4.3.5/../../../avr/lib/avr31/crtm103.o&#39; is incompatible with avr output
+MCU = avr35                    compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: avr:35 architecture of input file `/usr/lib/gcc/avr/4.3.5/../../../avr/lib/avr35/crtusb162.o&#39; is incompatible with avr output
+MCU = avr4                     program/data size = 0 , 0
+MCU = avr5                     program/data size = 0 , 0
+MCU = avr51                    compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: avr:51 architecture of input file `/usr/lib/gcc/avr/4.3.5/../../../avr/lib/avr51/crtm128.o&#39; is incompatible with avr output
+MCU = avr6                     compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avr6/libgcc.a when searching for -lgcc
+MCU = avrxmega2                compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avrxmega2/libgcc.a when searching for -lgcc
+MCU = avrxmega3                compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avrxmega3/libgcc.a when searching for -lgcc
+MCU = avrxmega4                compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avrxmega4/libgcc.a when searching for -lgcc
+MCU = avrxmega5                compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avrxmega5/libgcc.a when searching for -lgcc
+MCU = avrxmega6                compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avrxmega6/libgcc.a when searching for -lgcc
+MCU = avrxmega7                compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avrxmega7/libgcc.a when searching for -lgcc
+MCU = m3000f                   compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: crtm3000f.o: No such file: No such file or directory
+MCU = m3000s                   compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: crtm3000s.o: No such file: No such file or directory
+MCU = m3001b                   compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: crtm3001b.o: No such file: No such file or directory
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Examples</a><ul>
+<li><a class="reference internal" href="#simple-example">Simple example</a></li>
+<li><a class="reference internal" href="#test-size-with-unused-code">Test size with unused code</a></li>
+<li><a class="reference internal" href="#test-size-with-delay-h">Test size with delay.h</a></li>
+<li><a class="reference internal" href="#test-size-with-program-space">Test size with program space</a></li>
+<li><a class="reference internal" href="#test-minimum-size">Test minimum size</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="previous chapter">Usage</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="next chapter">API</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/examples.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api.html" title="API"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Usage"
+             >previous</a> |</li>
+        <li><a href="index.html">pyavrutils v0.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, ponty.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

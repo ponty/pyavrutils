@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API &mdash; pyavrutils v0.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pyavrutils v0.0.0 documentation" href="index.html" />
+    <link rel="next" title="Development" href="dev.html" />
+    <link rel="prev" title="Examples" href="examples.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dev.html" title="Development"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="examples.html" title="Examples"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pyavrutils v0.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="api">
+<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pyavrutils.AvrGcc">
+<em class="property">class </em><tt class="descclassname">pyavrutils.</tt><tt class="descname">AvrGcc</tt><big>(</big><em>mcu='atmega8'</em><big>)</big><a class="headerlink" href="#pyavrutils.AvrGcc" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="pyavrutils.AvrGcc.build">
+<tt class="descname">build</tt><big>(</big><em>sources=None</em>, <em>headers=None</em><big>)</big><a class="headerlink" href="#pyavrutils.AvrGcc.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>sources can be file name or code:
+sources=[&#8216;x.c&#8217;,&#8217;int main(){}&#8217;]
+or
+sources=&#8217;int main(){}&#8217;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.AvrGcc.command_list">
+<tt class="descname">command_list</tt><big>(</big><em>sources</em>, <em>_opt=False</em><big>)</big><a class="headerlink" href="#pyavrutils.AvrGcc.command_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>command line as list</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyavrutils.AvrGcc.error_text">
+<tt class="descname">error_text</tt><a class="headerlink" href="#pyavrutils.AvrGcc.error_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyavrutils.AvrGcc.ok">
+<tt class="descname">ok</tt><a class="headerlink" href="#pyavrutils.AvrGcc.ok" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.AvrGcc.optimize_for_size">
+<tt class="descname">optimize_for_size</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.AvrGcc.optimize_for_size" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="http://www.avrfreaks.net/index.php?name=PNphpBB2&amp;file=viewtopic&amp;t=90752">http://www.avrfreaks.net/index.php?name=PNphpBB2&amp;file=viewtopic&amp;t=90752</a></p>
+<p><a class="reference external" href="http://www.avrfreaks.net/index.php?name=PNphpBB2&amp;file=viewtopic&amp;t=69813">http://www.avrfreaks.net/index.php?name=PNphpBB2&amp;file=viewtopic&amp;t=69813</a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.AvrGcc.optimize_no">
+<tt class="descname">optimize_no</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.AvrGcc.optimize_no" title="Permalink to this definition">¶</a></dt>
+<dd><p>all options set to default</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.AvrGcc.options_generated">
+<tt class="descname">options_generated</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.AvrGcc.options_generated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.AvrGcc.size">
+<tt class="descname">size</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.AvrGcc.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyavrutils.AvrGcc.targets">
+<tt class="descname">targets</tt><a class="headerlink" href="#pyavrutils.AvrGcc.targets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.AvrGcc.version">
+<tt class="descname">version</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.AvrGcc.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>avr-gcc version</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyavrutils.AvrSize">
+<em class="property">class </em><tt class="descclassname">pyavrutils.</tt><tt class="descname">AvrSize</tt><a class="headerlink" href="#pyavrutils.AvrSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>wrapper for avr-size</p>
+<dl class="attribute">
+<dt id="pyavrutils.AvrSize.ok">
+<tt class="descname">ok</tt><a class="headerlink" href="#pyavrutils.AvrSize.ok" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.AvrSize.parse_output">
+<tt class="descname">parse_output</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#pyavrutils.AvrSize.parse_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example output:</p>
+<p>Device: atmega2561</p>
+<p>Program:    4168 bytes (1.6% Full)
+(.text + .data + .bootloader)</p>
+<p>Data:         72 bytes (0.9% Full)
+(.data + .bss + .noinit)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.AvrSize.run">
+<tt class="descname">run</tt><big>(</big><em>objfile</em>, <em>mcu</em><big>)</big><a class="headerlink" href="#pyavrutils.AvrSize.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyavrutils.Arduino">
+<em class="property">class </em><tt class="descclassname">pyavrutils.</tt><tt class="descname">Arduino</tt><big>(</big><em>board='pro'</em>, <em>mcu=None</em>, <em>f_cpu=None</em>, <em>extra_lib=None</em>, <em>ver=None</em>, <em>home='auto'</em><big>)</big><a class="headerlink" href="#pyavrutils.Arduino" title="Permalink to this definition">¶</a></dt>
+<dd><p>wrapper for <a class="reference external" href="http://code.google.com/p/arscons/">arscons</a></p>
+<dl class="method">
+<dt id="pyavrutils.Arduino.build">
+<tt class="descname">build</tt><big>(</big><em>sources=None</em><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.Arduino.command_list">
+<tt class="descname">command_list</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.command_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>command line as list</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyavrutils.Arduino.error_text">
+<tt class="descname">error_text</tt><a class="headerlink" href="#pyavrutils.Arduino.error_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyavrutils.Arduino.ok">
+<tt class="descname">ok</tt><a class="headerlink" href="#pyavrutils.Arduino.ok" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.Arduino.size">
+<tt class="descname">size</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyavrutils.Arduino.targets">
+<tt class="descname">targets</tt><a class="headerlink" href="#pyavrutils.Arduino.targets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="examples.html"
+                        title="previous chapter">Examples</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dev.html"
+                        title="next chapter">Development</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/api.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dev.html" title="Development"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="examples.html" title="Examples"
+             >previous</a> |</li>
+        <li><a href="index.html">pyavrutils v0.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, ponty.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,164 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Usage &mdash; pyavrutils v0.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pyavrutils v0.0.0 documentation" href="index.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="About" href="readme.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="examples.html" title="Examples"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="readme.html" title="About"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pyavrutils v0.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="avr">
+<h2>AVR<a class="headerlink" href="#avr" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyavrutils</span> <span class="kn">import</span> <span class="n">AvrGcc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">AvrGcc</span><span class="p">(</span><span class="n">mcu</span><span class="o">=</span><span class="s">&#39;atmega48&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">targets</span>
+<span class="go">[&#39;at43usb320&#39;, &#39;at43usb355&#39;, &#39;at76c711&#39;, &#39;at86rf401&#39;, &#39;at90c8534&#39;, &#39;at90can128&#39;, &#39;at90can32&#39;, &#39;at90can64&#39;, &#39;at90pwm1&#39;, &#39;at90pwm2&#39;, &#39;at90pwm216&#39;, &#39;at90pwm2b&#39;, &#39;at90pwm3&#39;, &#39;at90pwm316&#39;, &#39;at90pwm3b&#39;, &#39;at90pwm81&#39;, &#39;at90s1200&#39;, &#39;at90s2313&#39;, &#39;at90s2323&#39;, &#39;at90s2333&#39;, &#39;at90s2343&#39;, &#39;at90s4414&#39;, &#39;at90s4433&#39;, &#39;at90s4434&#39;, &#39;at90s8515&#39;, &#39;at90s8535&#39;, &#39;at90scr100&#39;, &#39;at90usb1286&#39;, &#39;at90usb1287&#39;, &#39;at90usb162&#39;, &#39;at90usb646&#39;, &#39;at90usb647&#39;, &#39;at90usb82&#39;, &#39;at94k&#39;, &#39;ata6289&#39;, &#39;atmega103&#39;, &#39;atmega128&#39;, &#39;atmega1280&#39;, &#39;atmega1281&#39;, &#39;atmega1284p&#39;, &#39;atmega128rfa1&#39;, &#39;atmega16&#39;, &#39;atmega161&#39;, &#39;atmega162&#39;, &#39;atmega163&#39;, &#39;atmega164a&#39;, &#39;atmega164p&#39;, &#39;atmega165&#39;, &#39;atmega165a&#39;, &#39;atmega165p&#39;, &#39;atmega168&#39;, &#39;atmega168a&#39;, &#39;atmega168p&#39;, &#39;atmega169&#39;, &#39;atmega169a&#39;, &#39;atmega169p&#39;, &#39;atmega169pa&#39;, &#39;atmega16a&#39;, &#39;atmega16c1&#39;, &#39;atmega16hva&#39;, &#39;atmega16hva2&#39;, &#39;atmega16hvb&#39;, &#39;atmega16m1&#39;, &#39;atmega16u2&#39;, &#39;atmega16u4&#39;, &#39;atmega2560&#39;, &#39;atmega2561&#39;, &#39;atmega32&#39;, &#39;atmega323&#39;, &#39;atmega324a&#39;, &#39;atmega324p&#39;, &#39;atmega324pa&#39;, &#39;atmega325&#39;, &#39;atmega3250&#39;, &#39;atmega3250p&#39;, &#39;atmega325p&#39;, &#39;atmega328&#39;, &#39;atmega328p&#39;, &#39;atmega329&#39;, &#39;atmega3290&#39;, &#39;atmega3290p&#39;, &#39;atmega329p&#39;, &#39;atmega329pa&#39;, &#39;atmega32c1&#39;, &#39;atmega32hvb&#39;, &#39;atmega32m1&#39;, &#39;atmega32u2&#39;, &#39;atmega32u4&#39;, &#39;atmega32u6&#39;, &#39;atmega406&#39;, &#39;atmega48&#39;, &#39;atmega48a&#39;, &#39;atmega48p&#39;, &#39;atmega4hvd&#39;, &#39;atmega64&#39;, &#39;atmega640&#39;, &#39;atmega644&#39;, &#39;atmega644a&#39;, &#39;atmega644p&#39;, &#39;atmega644pa&#39;, &#39;atmega645&#39;, &#39;atmega6450&#39;, &#39;atmega6450a&#39;, &#39;atmega6450p&#39;, &#39;atmega645a&#39;, &#39;atmega645p&#39;, &#39;atmega649&#39;, &#39;atmega6490&#39;, &#39;atmega6490a&#39;, &#39;atmega6490p&#39;, &#39;atmega649a&#39;, &#39;atmega649p&#39;, &#39;atmega64c1&#39;, &#39;atmega64hve&#39;, &#39;atmega64m1&#39;, &#39;atmega8&#39;, &#39;atmega8515&#39;, &#39;atmega8535&#39;, &#39;atmega88&#39;, &#39;atmega88a&#39;, &#39;atmega88p&#39;, &#39;atmega88pa&#39;, &#39;atmega8hva&#39;, &#39;atmega8hvd&#39;, &#39;atmega8u2&#39;, &#39;attiny11&#39;, &#39;attiny12&#39;, &#39;attiny13&#39;, &#39;attiny13a&#39;, &#39;attiny15&#39;, &#39;attiny167&#39;, &#39;attiny22&#39;, &#39;attiny2313&#39;, &#39;attiny2313a&#39;, &#39;attiny24&#39;, &#39;attiny24a&#39;, &#39;attiny25&#39;, &#39;attiny26&#39;, &#39;attiny261&#39;, &#39;attiny261a&#39;, &#39;attiny28&#39;, &#39;attiny4313&#39;, &#39;attiny43u&#39;, &#39;attiny44&#39;, &#39;attiny44a&#39;, &#39;attiny45&#39;, &#39;attiny461&#39;, &#39;attiny461a&#39;, &#39;attiny48&#39;, &#39;attiny84&#39;, &#39;attiny85&#39;, &#39;attiny861&#39;, &#39;attiny861a&#39;, &#39;attiny87&#39;, &#39;attiny88&#39;, &#39;atxmega128a1&#39;, &#39;atxmega128a3&#39;, &#39;atxmega128d3&#39;, &#39;atxmega16a4&#39;, &#39;atxmega16d4&#39;, &#39;atxmega192a3&#39;, &#39;atxmega192d3&#39;, &#39;atxmega256a3&#39;, &#39;atxmega256a3b&#39;, &#39;atxmega256d3&#39;, &#39;atxmega32a4&#39;, &#39;atxmega32d4&#39;, &#39;atxmega64a1&#39;, &#39;atxmega64a3&#39;, &#39;atxmega64d3&#39;, &#39;avr1&#39;, &#39;avr2&#39;, &#39;avr25&#39;, &#39;avr3&#39;, &#39;avr31&#39;, &#39;avr35&#39;, &#39;avr4&#39;, &#39;avr5&#39;, &#39;avr51&#39;, &#39;avr6&#39;, &#39;avrxmega2&#39;, &#39;avrxmega3&#39;, &#39;avrxmega4&#39;, &#39;avrxmega5&#39;, &#39;avrxmega6&#39;, &#39;avrxmega7&#39;, &#39;m3000f&#39;, &#39;m3000s&#39;, &#39;m3001b&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">options_generated</span><span class="p">()</span>
+<span class="go">[&#39;avr-gcc&#39;, &#39;-Df_cpu=4000000&#39;, &#39;-mmcu=atmega48&#39;, &#39;--std=gnu99&#39;, &#39;-Wl,--relax&#39;, &#39;-Wl,--gc-sections&#39;, &#39;-ffunction-sections&#39;, &#39;-fdata-sections&#39;, &#39;-fno-inline-small-functions&#39;, &#39;-Os&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;int main(){}&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
+<span class="go">&#39;/tmp/pyavrutils_21ebmY.elf&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">AvrSize &lt;prog:80 bytes 2.0% mem:0 bytes 0.0% &gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
+<span class="go">80</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">mcu</span><span class="o">=</span><span class="s">&#39;atmega168&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">options_generated</span><span class="p">()</span>
+<span class="go">[&#39;avr-gcc&#39;, &#39;-Df_cpu=4000000&#39;, &#39;-mmcu=atmega168&#39;, &#39;--std=gnu99&#39;, &#39;-Wl,--relax&#39;, &#39;-Wl,--gc-sections&#39;, &#39;-ffunction-sections&#39;, &#39;-fdata-sections&#39;, &#39;-fno-inline-small-functions&#39;, &#39;-Os&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;int main(){}&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
+<span class="go">&#39;/tmp/pyavrutils_21ebmY.elf&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
+<span class="go">132</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arduino">
+<h2>arduino<a class="headerlink" href="#arduino" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyavrutils</span> <span class="kn">import</span> <span class="n">Arduino</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">Arduino</span><span class="p">(</span><span class="n">board</span><span class="o">=</span><span class="s">&#39;mini&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;void setup(){};void loop(){}&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
+<span class="go">path(&#39;/tmp/pyavrutils_kH7dkD/pyavrutils_iY4hoh/pyavrutils_iY4hoh.elf&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">AvrSize &lt;prog:1802 bytes 11.0% mem:191 bytes 18.7% &gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
+<span class="go">1802</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">board</span><span class="o">=</span><span class="s">&#39;pro&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;void setup(){};void loop(){}&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
+<span class="go">path(&#39;/tmp/pyavrutils_5K4jyx/pyavrutils_1jgCXa/pyavrutils_1jgCXa.elf&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
+<span class="go">1826</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Usage</a><ul>
+<li><a class="reference internal" href="#avr">AVR</a></li>
+<li><a class="reference internal" href="#arduino">arduino</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="readme.html"
+                        title="previous chapter">About</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="examples.html"
+                        title="next chapter">Examples</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/usage.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="examples.html" title="Examples"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="readme.html" title="About"
+             >previous</a> |</li>
+        <li><a href="index.html">pyavrutils v0.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, ponty.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
