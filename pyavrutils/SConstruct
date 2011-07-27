@@ -67,7 +67,7 @@ else:
     ARDUINO_PORT_DEFAULT = getUsbTty('/dev/ttyUSB*')
     AVR_BIN_PREFIX = 'avr-'
 
-ARDUINO_BOARD_DEFAULT = os.environ.get('ARDUINO_BOARD', 'diecimila')
+ARDUINO_BOARD_DEFAULT = os.environ.get('ARDUINO_BOARD', 'atmega328')
 
 ARDUINO_HOME    = ARGUMENTS.get('ARDUINO_HOME', ARDUINO_HOME_DEFAULT)
 ARDUINO_PORT    = ARGUMENTS.get('ARDUINO_PORT', ARDUINO_PORT_DEFAULT)
@@ -85,7 +85,7 @@ ARDUINO_SKEL = pathJoin(ARDUINO_CORE, 'main.cpp')
 ARDUINO_CONF = pathJoin(ARDUINO_HOME, 'hardware/arduino/boards.txt')
 
 # Some OSs need bundle with IDE tool-chain
-if platform == 'darwin' or platform == 'win32':
+if platform == 'darwin' or platform == 'win32': 
     AVR_BIN_PREFIX = pathJoin(ARDUINO_HOME, 'hardware/tools/avr/bin', 'avr-')
     AVRDUDE_CONF = pathJoin(ARDUINO_HOME, 'hardware/tools/avr/etc/avrdude.conf')
 
@@ -118,9 +118,7 @@ def getBoardConf(strPtn):
     assert(False)
 
 MCU = getBoardConf(r'^%s\.build\.mcu=(.*)'%ARDUINO_BOARD)
-MCU    = ARGUMENTS.get('MCU', MCU)
 F_CPU = getBoardConf(r'^%s\.build\.f_cpu=(.*)'%ARDUINO_BOARD)
-F_CPU    = ARGUMENTS.get('F_CPU', F_CPU)
 
 # There should be a file with the same name as the folder and with the extension .pde
 TARGET = os.path.basename(os.path.realpath(os.curdir))
@@ -136,41 +134,6 @@ envArduino = Environment(CC = AVR_BIN_PREFIX+'gcc', CXX = AVR_BIN_PREFIX+'g++',
 def fnProcessing(target, source, env):
     wp = open ('%s'%target[0], 'wb')
     wp.write(open(ARDUINO_SKEL).read())
-    
-    # patch was added and extended (http://code.google.com/p/arscons/issues/detail?id=5)
-    # TODO: work only for basic types
-    types='''void 
-    int char word long 
-    float double byte long
-    boolean 
-    uint8_t uint16_t uint32_t 
-    int8_t int16_t int32_t
-    '''
-    types=' | '.join(types.split())
-    re_signature=re.compile(r"""^\s* (
-        (?: (%s) \s+ )?
-        \w+ \s*
-        \( \s* ((%s) \s+ \w+ (?:\s*,\s*)? )* \)
-        ) \s* {? \s* $""" % (types,types), re.MULTILINE|re.VERBOSE)
-
-    prototypes = {}
-
-    for file in glob(os.path.realpath(os.curdir) + "/*.pde"):
-        for line in open(file):
-            result = re_signature.findall(line)
-            if result:
-                prototypes[result[0][0]] = result[0][1]
-
-    for name in prototypes.keys():
-        print ("%s;"%(name))
-        wp.write("%s;\n"%name)
-
-    for file in glob(os.path.realpath(os.curdir) + "/*.pde"):
-        print file, TARGET
-        if not os.path.samefile(file, TARGET+".pde"):
-                wp.write('#line 1 "%s"\r\n' % file)
-                wp.write(open(file).read())
-                
     # Add this preprocessor directive to localize the errors.
     sourcePath = str(source[0]).replace('\\', '\\\\');
     wp.write('#line 1 "%s"\r\n' % sourcePath)
@@ -217,10 +180,6 @@ for orig_lib_dir in ARDUINO_LIBS:
         libName = os.path.basename(libPath)
         if not libName in libCandidates:
             continue
-        
-        # EXTRA_LIB overwrites original lib
-        libCandidates.remove(libName)
-        
         envArduino.Append(CPPPATH = libPath.replace(orig_lib_dir, lib_dir))
         lib_sources = gatherSources(libPath)
         utilDir = pathJoin(libPath, 'utility')
