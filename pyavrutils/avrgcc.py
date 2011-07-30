@@ -1,16 +1,16 @@
 from easyprocess import Proc, extract_version
 from entrypoint2 import entrypoint
 from pyavrutils.avrsize import AvrSize
-from pyavrutils.util import tmpdir, tmpfile, separate_sources
+from pyavrutils.util import tmpdir, tmpfile, separate_sources, CompileError
 from unipath.path import Path
 import tempfile
 
-class AvrGccCompileError(Exception):
+class AvrGccCompileError(CompileError):
     pass
 
 class AvrGcc(object):
-    minprog='int main(){};'
-    def __init__(self, mcu = 'atmega8'):
+    minprog = 'int main(){};'
+    def __init__(self, mcu='atmega168'):
         self.cc = 'avr-gcc'
         self.proc = None
         self.options_extra = []
@@ -196,10 +196,7 @@ class AvrGcc(object):
 #            os.remove(x)
 
         if not self.ok:
-            raise AvrGccCompileError('compile error! ' + 
-                              '\n  cmd =' + str(cmd) + 
-                              '\n sources= ' + str(sources) + 
-                              '\n error_text=' + str(self.error_text))
+            raise AvrGccCompileError(cmd, sources, self.error_text)
 
     def size(self):
         s = AvrSize()

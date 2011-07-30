@@ -17,10 +17,10 @@ print  'compiler version:', cc.version()
 print  'compiler options:', ' '.join(cc.options_generated())
 print
 
-def test(code_snippet):
-    print  code_snippet ,'\t\t',
+def test(snippet):
+    print  snippet ,'\t\t',
     try:
-        cc.build([templ % code_snippet])
+        cc.build([templ % snippet])
         size = cc.size()
         print 'program, data =', str(size.program_bytes).rjust(8) , ',', str(size.data_bytes).rjust(8)
     except:

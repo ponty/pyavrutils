@@ -2,10 +2,11 @@ from confduino import boardlist
 from easyprocess import Proc
 from path import path
 from pyavrutils.avrsize import AvrSize
-from pyavrutils.util import tmpdir, separate_sources, tmpfile, rename
+from pyavrutils.util import tmpdir, separate_sources, tmpfile, rename, \
+    CompileError
 import os
 
-class ArduinoCompileError(Exception):
+class ArduinoCompileError(CompileError):
     pass
 
 class Arduino(object):
@@ -69,9 +70,16 @@ class Arduino(object):
         for x in strings:
             f = tmpfile(x, tempdir, '.pde')
             allfiles += [f]
+            
         for x in files:
             f = tempdir / x.name
-            x.copy(f)
+            if x.parent.name==x.namebase:
+                # copy all files from pde directory
+                for y in x.parent.files():
+                    y.copy(tempdir / y.name)
+            else:
+                # copy only pde
+                x.copy(f)
             allfiles += [f]
             
         for x in allfiles:
@@ -87,10 +95,7 @@ class Arduino(object):
         
         self.proc = Proc(cmd, cwd=tempdir).call()
         if not self.ok:
-            raise ArduinoCompileError('compile error! ' + 
-                              '\n  cmd =' + str(cmd) + 
-                              '\n sources= ' + str(sources) + 
-                              '\n error_text=' + str(self.error_text))
+            raise ArduinoCompileError(cmd, sources, self.error_text)
         self.output = tempdir.files('*.elf')[0]
         
     def size(self):

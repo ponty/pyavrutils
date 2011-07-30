@@ -16,12 +16,12 @@ cc.optimize_no()
 print  'compiler version:', cc.version()
 print
 
-def test(code_snippet, option=''):
-    print  code_snippet.ljust(33) , 
+def test(snippet, option=''):
+    print  snippet.ljust(33) , 
     cc.options_extra = option.split()
     print  'compiler option:', option, '\t',
     try:
-        cc.build([templ % code_snippet])
+        cc.build([templ % snippet])
         size = cc.size()
         print 'program, data =', str(size.program_bytes).rjust(8) , ',', str(size.data_bytes).rjust(8)
     except:

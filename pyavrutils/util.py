@@ -12,7 +12,7 @@ def tmpfile(text, dir, ext):
     f.close()
     return path(f.name)
 
-def rename(old,new):
+def rename(old, new):
     old.rename(new)
     return new 
     
@@ -44,3 +44,13 @@ def separate_sources(sources):
     strings = [x for x in  sources if is_code(x)]
     files = [path(x) for x in  sources if not is_code(x)]
     return strings, files
+
+class CompileError(Exception):
+    def __init__(self, cmd, sources, error_text):
+        msg = 'compile error! ' 
+        msg += '\n cmd =' + str(cmd) 
+        msg += '\n sources= ' + str(sources) 
+        msg += '\n error_text=' 
+        msg += '\n   ' + '\n   '.join( ([x for x in error_text.splitlines() if 'error:' in x or 'undefined reference' in x ]))
+#        msg += '\n error_text=' + str(error_text)
+        Exception.__init__(self, msg)
