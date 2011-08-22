@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Usage &mdash; pyavrutils v0.0.0 documentation</title>
+    <title>Usage &mdash; pyavrutils v0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.0',
+        VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pyavrutils v0.0.0 documentation" href="index.html" />
+    <link rel="top" title="pyavrutils v0.0.1 documentation" href="index.html" />
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="About" href="readme.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="readme.html" title="About"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pyavrutils v0.0.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils v0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -60,7 +60,7 @@
 <span class="go">[&#39;avr-gcc&#39;, &#39;-Df_cpu=4000000&#39;, &#39;-mmcu=atmega48&#39;, &#39;--std=gnu99&#39;, &#39;-Wl,--relax&#39;, &#39;-Wl,--gc-sections&#39;, &#39;-ffunction-sections&#39;, &#39;-fdata-sections&#39;, &#39;-fno-inline-small-functions&#39;, &#39;-Os&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;int main(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">&#39;/tmp/pyavrutils_21ebmY.elf&#39;</span>
+<span class="go">&#39;/tmp/pyavrutils_Hxi5MA.elf&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">AvrSize &lt;prog:80 bytes 2.0% mem:0 bytes 0.0% &gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
@@ -70,7 +70,7 @@
 <span class="go">[&#39;avr-gcc&#39;, &#39;-Df_cpu=4000000&#39;, &#39;-mmcu=atmega168&#39;, &#39;--std=gnu99&#39;, &#39;-Wl,--relax&#39;, &#39;-Wl,--gc-sections&#39;, &#39;-ffunction-sections&#39;, &#39;-fdata-sections&#39;, &#39;-fno-inline-small-functions&#39;, &#39;-Os&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;int main(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">&#39;/tmp/pyavrutils_21ebmY.elf&#39;</span>
+<span class="go">&#39;/tmp/pyavrutils_Hxi5MA.elf&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
 <span class="go">132</span>
 </pre></div>
@@ -82,7 +82,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">Arduino</span><span class="p">(</span><span class="n">board</span><span class="o">=</span><span class="s">&#39;mini&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;void setup(){};void loop(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">path(&#39;/tmp/pyavrutils_kH7dkD/pyavrutils_iY4hoh/pyavrutils_iY4hoh.elf&#39;)</span>
+<span class="go">path(&#39;/tmp/pyavrutils_8xLXlE/pyavrutils_H6igFd/pyavrutils_H6igFd.elf&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">AvrSize &lt;prog:1802 bytes 11.0% mem:191 bytes 18.7% &gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
@@ -90,7 +90,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">board</span><span class="o">=</span><span class="s">&#39;pro&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;void setup(){};void loop(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">path(&#39;/tmp/pyavrutils_5K4jyx/pyavrutils_1jgCXa/pyavrutils_1jgCXa.elf&#39;)</span>
+<span class="go">path(&#39;/tmp/pyavrutils_dP1T5S/pyavrutils_SOu4nV/pyavrutils_SOu4nV.elf&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
 <span class="go">1826</span>
 </pre></div>
@@ -153,7 +153,7 @@
         <li class="right" >
           <a href="readme.html" title="About"
              >previous</a> |</li>
-        <li><a href="index.html">pyavrutils v0.0.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils v0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

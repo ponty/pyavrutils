@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>API &mdash; pyavrutils v0.0.0 documentation</title>
+    <title>API &mdash; pyavrutils v0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.0',
+        VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,9 +22,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pyavrutils v0.0.0 documentation" href="index.html" />
+    <link rel="top" title="pyavrutils v0.0.1 documentation" href="index.html" />
     <link rel="next" title="Development" href="dev.html" />
-    <link rel="prev" title="Examples" href="examples.html" /> 
+    <link rel="prev" title="Build tests" href="build.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,9 +37,9 @@
           <a href="dev.html" title="Development"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="examples.html" title="Examples"
+          <a href="build.html" title="Build tests"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pyavrutils v0.0.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils v0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,7 +52,7 @@
 <h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="pyavrutils.AvrGcc">
-<em class="property">class </em><tt class="descclassname">pyavrutils.</tt><tt class="descname">AvrGcc</tt><big>(</big><em>mcu='atmega8'</em><big>)</big><a class="headerlink" href="#pyavrutils.AvrGcc" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">pyavrutils.</tt><tt class="descname">AvrGcc</tt><big>(</big><em>mcu='atmega168'</em><big>)</big><a class="headerlink" href="#pyavrutils.AvrGcc" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="pyavrutils.AvrGcc.build">
 <tt class="descname">build</tt><big>(</big><em>sources=None</em>, <em>headers=None</em><big>)</big><a class="headerlink" href="#pyavrutils.AvrGcc.build" title="Permalink to this definition">¶</a></dt>
@@ -143,7 +143,7 @@ sources=&#8217;int main(){}&#8217;</p>
 
 <dl class="class">
 <dt id="pyavrutils.Arduino">
-<em class="property">class </em><tt class="descclassname">pyavrutils.</tt><tt class="descname">Arduino</tt><big>(</big><em>board='pro'</em>, <em>mcu=None</em>, <em>f_cpu=None</em>, <em>extra_lib=None</em>, <em>ver=None</em>, <em>home='auto'</em><big>)</big><a class="headerlink" href="#pyavrutils.Arduino" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">pyavrutils.</tt><tt class="descname">Arduino</tt><big>(</big><em>board='pro'</em>, <em>hwpack='arduino'</em>, <em>mcu=None</em>, <em>f_cpu=None</em>, <em>extra_lib=None</em>, <em>ver=None</em>, <em>home='auto'</em><big>)</big><a class="headerlink" href="#pyavrutils.Arduino" title="Permalink to this definition">¶</a></dt>
 <dd><p>wrapper for <a class="reference external" href="http://code.google.com/p/arscons/">arscons</a></p>
 <dl class="method">
 <dt id="pyavrutils.Arduino.build">
@@ -161,6 +161,11 @@ sources=&#8217;int main(){}&#8217;</p>
 <tt class="descname">error_text</tt><a class="headerlink" href="#pyavrutils.Arduino.error_text" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="pyavrutils.Arduino.mcu_compiler">
+<tt class="descname">mcu_compiler</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.mcu_compiler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="pyavrutils.Arduino.ok">
 <tt class="descname">ok</tt><a class="headerlink" href="#pyavrutils.Arduino.ok" title="Permalink to this definition">¶</a></dt>
@@ -169,11 +174,6 @@ sources=&#8217;int main(){}&#8217;</p>
 <dl class="method">
 <dt id="pyavrutils.Arduino.size">
 <tt class="descname">size</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.size" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pyavrutils.Arduino.targets">
-<tt class="descname">targets</tt><a class="headerlink" href="#pyavrutils.Arduino.targets" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -187,8 +187,8 @@ sources=&#8217;int main(){}&#8217;</p>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="examples.html"
-                        title="previous chapter">Examples</a></p>
+  <p class="topless"><a href="build.html"
+                        title="previous chapter">Build tests</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="dev.html"
                         title="next chapter">Development</a></p>
@@ -224,9 +224,9 @@ sources=&#8217;int main(){}&#8217;</p>
           <a href="dev.html" title="Development"
              >next</a> |</li>
         <li class="right" >
-          <a href="examples.html" title="Examples"
+          <a href="build.html" title="Build tests"
              >previous</a> |</li>
-        <li><a href="index.html">pyavrutils v0.0.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils v0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

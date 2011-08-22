@@ -11,6 +11,7 @@ Contents:
     readme
     usage
     examples
+    build
     api
     dev
 
