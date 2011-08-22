@@ -23,7 +23,7 @@ avr-gcc -o build/core/wiring_shift.o -c -ffunction-sections -fdata-sections -fno
 fnProcessing(["build/min.cpp"], ["build/min.pde"])
 void setup();
 void loop();
-/tmp/pyavrutils_dgWeND/min/min.pde min
+/tmp/pyavrutils_zxcssE/min/min.pde min
 avr-g++ -o build/min.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/min.cpp
 avr-gcc -mmcu=at90can32 -Os -Wl,--gc-sections -o min.elf build/min.o build/core/wiring_pulse.o build/core/pins_arduino.o build/core/wiring_analog.o build/core/wiring.o build/core/usb.o build/core/WInterrupts.o build/core/wiring_digital.o build/core/wiring_shift.o build/core/HardwareSerial.o build/core/WMath.o build/core/WString.o build/core/Print.o build/core/usb_api.o build/core/Tone.o -lm
 avr-objcopy -O ihex -R .eeprom min.elf min.hex
