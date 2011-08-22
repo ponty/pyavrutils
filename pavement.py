@@ -97,7 +97,7 @@ if ALL_TASKS_LOADED:
                                      'sloccount.sc',
                                      '*.pdf', '*.tex',
                                      '*.png',
-                                     '*.csv',
+                                     'generated*',
                                      ]
     
     options.paved.dist.manifest.include.remove('distribute_setup.py')
@@ -105,7 +105,7 @@ if ALL_TASKS_LOADED:
     
     
     @task
-    @needs('sloccount', 'html', 'pdf', 'pdf', 'sdist', 'nose')
+    @needs('sloccount', 'boards', 'build_test', 'html', 'pdf', 'pdf', 'sdist', 'nose')
     def alltest():
         'all tasks to check'
         pass
