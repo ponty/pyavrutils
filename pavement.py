@@ -1,6 +1,8 @@
 #from nose.commands import nosetests
 from paver.easy import *
 from paver.setuputils import setup
+from pyavrutils import support
+from pyavrutils.arduino import Arduino
 from setuptools import find_packages
 
 
@@ -88,16 +90,17 @@ options(
 
 if ALL_TASKS_LOADED:
     
-    options.paved.clean.patterns += ['*.pickle', 
-                                     '*.doctree', 
-                                     '*.gz' , 
-                                     'nosetests.xml', 
-                                     'sloccount.sc', 
-                                     '*.pdf','*.tex', 
+    options.paved.clean.patterns += ['*.pickle',
+                                     '*.doctree',
+                                     '*.gz' ,
+                                     'nosetests.xml',
+                                     'sloccount.sc',
+                                     '*.pdf', '*.tex',
                                      '*.png',
                                      ]
     
     options.paved.dist.manifest.include.remove('distribute_setup.py')
+    docroot = path(options.sphinx.docroot)
     
     
     @task
@@ -115,6 +118,18 @@ if ALL_TASKS_LOADED:
     @needs('sphinxcontrib.paverutils.pdf')
     def pdf():
         fpdf = list(path('docs/_build/latex').walkfiles('*.pdf'))[0]
-        d=path('docs/_build/html')
+        d = path('docs/_build/html')
         d.makedirs()
         fpdf.copy(d)
+
+    @task
+    def build_test():
+        csv = docroot / 'generated_build_test.csv'
+        support.build2csv([path('tests/min.pde')], csv, logdir=docroot / '_build' / 'html', logger=info, filter=False)
+    
+    @task
+    def boards():
+        csv = docroot / 'generated_boards.csv'
+        support.boards2csv(csv, logger=info, filter=False)
+    
+    

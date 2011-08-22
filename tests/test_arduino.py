@@ -1,5 +1,5 @@
 from nose.tools import eq_
-from pyavrutils.arduino import Arduino, ArduinoCompileError
+from pyavrutils.arduino import Arduino, ArduinoCompileError, targets
 from pyavrutils.util import tmpdir
 from unittest import TestCase
 
@@ -16,15 +16,16 @@ class Test(TestCase):
 
 
     def test_targets(self):
-        cc = Arduino()
-        for mcu in cc.targets:
-            cc.mcu = mcu
+#        cc = Arduino()
+        for cc in targets():
+#            cc.mcu = mcu
+
             try:
                 cc.build(cc.minprog)
                 print '    program size =', cc.size().program_bytes
-            except ArduinoCompileError:
+            except ArduinoCompileError,e:
                 print '    compile error:', cc.error_text.splitlines()
-                raise ArduinoCompileError
+                raise e
     
     def test_bad_dir(self):
         d = tmpdir() / 'Bad'

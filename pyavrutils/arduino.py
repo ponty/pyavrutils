@@ -1,4 +1,4 @@
-from confduino import boardlist
+from confduino import boardlist,hwpacklist,mculist
 from easyprocess import Proc
 from path import path
 from pyavrutils.avrsize import AvrSize
@@ -17,7 +17,7 @@ class Arduino(object):
     .. _arscons: http://code.google.com/p/arscons/
     '''
     minprog = 'void setup(){};void loop(){};'
-    def __init__(self, board='pro', mcu=None, f_cpu=None, extra_lib=None, ver=None , home='auto'):
+    def __init__(self, board='pro', hwpack='arduino', mcu=None, f_cpu=None, extra_lib=None, ver=None , home='auto'):
         '''
         :param home:  'auto' -> ARDUINO_HOME env var
         '''
@@ -27,6 +27,7 @@ class Arduino(object):
             home = os.environ.get('ARDUINO_HOME', None)
         self.home = home        
         self.board = board        
+        self.hwpack = hwpack        
         self.mcu = mcu        
         self.f_cpu = f_cpu        
         self.ver = ver        
@@ -44,6 +45,9 @@ class Arduino(object):
 
         if self.board:
             cmd += ['ARDUINO_BOARD=' + self.board]
+            
+        if self.hwpack:
+            cmd += ['ARDUINO_HARDWARE_PACKAGE=' + self.hwpack]
             
         if self.mcu:
             cmd += ['MCU=' + self.mcu]
@@ -73,7 +77,7 @@ class Arduino(object):
             
         for x in files:
             f = tempdir / x.name
-            if x.parent.name==x.namebase:
+            if x.parent.name == x.namebase:
                 # copy all files from pde directory
                 for y in x.parent.files():
                     y.copy(tempdir / y.name)
@@ -98,12 +102,17 @@ class Arduino(object):
             raise ArduinoCompileError(cmd, sources, self.error_text)
         self.output = tempdir.files('*.elf')[0]
         
-    def size(self):
-        s = AvrSize()
+    def mcu_compiler(self):
         mcu = self.mcu
         if not mcu:
             assert self.board
-            mcu = boardlist.mcu(self.board)
+            mcu = mculist.mcu(self.board, self.hwpack)
+        assert mcu
+        return mcu
+        
+    def size(self):
+        s = AvrSize()
+        mcu = self.mcu_compiler()
         assert mcu
         s.run(self.output, mcu)
         return s
@@ -118,6 +127,19 @@ class Arduino(object):
         if self.proc:
             return self.proc.return_code == 0
 
-    @property
-    def targets(self):
-        return boardlist.targets()
+def targets(filter=True):
+    uniq_mcu=0
+    ls = []
+    oldmcus = []
+    for h in hwpacklist.hwpack_names():
+        for b in boardlist.board_names(h):
+            mcu = mculist.mcu(b,h)
+            # TODO: not working
+            if b in 'atmega8u2 attiny861 sanguino'.split():
+                continue
+            if not uniq_mcu or mcu not in oldmcus:
+                cc = Arduino(board=b, hwpack=h)
+                cc.board_options=boardlist.boards(h)[b]
+                ls += [cc]
+                oldmcus += [mcu]
+    return ls
