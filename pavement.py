@@ -64,7 +64,7 @@ setup(
     description=DESCRIPTION,
     long_description=open('README.rst', 'r').read(),
     classifiers=classifiers,
-    keywords='subprocess interface',
+    keywords='avr',
     author='ponty',
     #author_email='',
     url=URL,
