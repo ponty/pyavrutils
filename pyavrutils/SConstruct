@@ -129,7 +129,9 @@ assert(os.path.exists(TARGET + '.pde'))
 
 cFlags = ['-ffunction-sections', '-fdata-sections', '-fno-exceptions',
     '-funsigned-char', '-funsigned-bitfields', '-fpack-struct', '-fshort-enums',
-    '-Os', '-mmcu=%s' % MCU]
+    '-Os', '-mmcu=%s' % MCU
+    ,'-Wall',
+    ]
 envArduino = Environment(CC=AVR_BIN_PREFIX + 'gcc', CXX=AVR_BIN_PREFIX + 'g++',
     CPPPATH=['build/core'], CPPDEFINES={'F_CPU':F_CPU, 'ARDUINO':ARDUINO_VER},
     CFLAGS=cFlags + ['-std=gnu99'], CCFLAGS=cFlags, TOOLS=['gcc', 'g++'])
