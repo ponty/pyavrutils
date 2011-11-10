@@ -121,6 +121,16 @@ class Arduino(object):
     def error_text(self):
         if self.proc:
             return self.proc.stderr
+        
+    @property
+    def stderr(self):
+        if self.proc:
+            return self.proc.stderr
+        
+    @property
+    def warnings(self):
+        if self.proc:
+            return [line for line in self.stderr.splitlines() if 'warning:' in line]
     
     @property
     def ok(self):
