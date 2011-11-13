@@ -116,7 +116,7 @@ def getBoardConf(strPtn):
         result = ptn.findall(line)
         if result:
             return result[0]
-    assert(False)
+#    assert(False)
 
 MCU = getBoardConf(r'^%s\.build\.mcu=(.*)' % ARDUINO_BOARD)
 MCU = ARGUMENTS.get('MCU', MCU)
