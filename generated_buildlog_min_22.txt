@@ -2,34 +2,34 @@
 stdout
 ----------
 scons: Reading SConscript files ...
-maximum size for hex file: 24000 bytes
+maximum size for hex file: 126976 bytes
 scons: done reading SConscript files.
 scons: Building targets ...
 scons: building associated VariantDir targets: build
-avr-g++ -o build/core/HardwareSerial.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/HardwareSerial.cpp
-avr-g++ -o build/core/Print.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/Print.cpp
-avr-g++ -o build/core/Tone.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/Tone.cpp
-avr-gcc -o build/core/WInterrupts.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/WInterrupts.c
-avr-g++ -o build/core/WMath.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/WMath.cpp
-avr-g++ -o build/core/WString.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/WString.cpp
-avr-gcc -o build/core/pins_arduino.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/pins_arduino.c
-avr-gcc -o build/core/usb.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/usb.c
-avr-g++ -o build/core/usb_api.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/usb_api.cpp
-avr-gcc -o build/core/wiring.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring.c
-avr-gcc -o build/core/wiring_analog.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_analog.c
-avr-gcc -o build/core/wiring_digital.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_digital.c
-avr-gcc -o build/core/wiring_pulse.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_pulse.c
-avr-gcc -o build/core/wiring_shift.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_shift.c
+avr-g++ -o build/core/HardwareSerial.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/HardwareSerial.cpp
+avr-g++ -o build/core/Print.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/Print.cpp
+avr-g++ -o build/core/Tone.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/Tone.cpp
+avr-gcc -o build/core/WInterrupts.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/WInterrupts.c
+avr-g++ -o build/core/WMath.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/WMath.cpp
+avr-g++ -o build/core/WString.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/WString.cpp
+avr-gcc -o build/core/pins_arduino.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/pins_arduino.c
+avr-gcc -o build/core/usb.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/usb.c
+avr-g++ -o build/core/usb_api.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/usb_api.cpp
+avr-gcc -o build/core/wiring.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring.c
+avr-gcc -o build/core/wiring_analog.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_analog.c
+avr-gcc -o build/core/wiring_digital.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_digital.c
+avr-gcc -o build/core/wiring_pulse.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_pulse.c
+avr-gcc -o build/core/wiring_shift.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_shift.c
 fnProcessing(["build/min.cpp"], ["build/min.pde"])
 void setup();
 void loop();
-/tmp/pyavrutils_zxcssE/min/min.pde min
-avr-g++ -o build/min.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can32 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/min.cpp
-avr-gcc -mmcu=at90can32 -Os -Wl,--gc-sections -o min.elf build/min.o build/core/wiring_pulse.o build/core/pins_arduino.o build/core/wiring_analog.o build/core/wiring.o build/core/usb.o build/core/WInterrupts.o build/core/wiring_digital.o build/core/wiring_shift.o build/core/HardwareSerial.o build/core/WMath.o build/core/WString.o build/core/Print.o build/core/usb_api.o build/core/Tone.o -lm
+/tmp/pyavrutils_Yzzshm/min/min.pde min
+avr-g++ -o build/min.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=at90can128 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/min.cpp
+avr-gcc -mmcu=at90can128 -Os -Wl,--gc-sections -o min.elf build/min.o build/core/wiring_pulse.o build/core/pins_arduino.o build/core/wiring_analog.o build/core/wiring.o build/core/usb.o build/core/WInterrupts.o build/core/wiring_digital.o build/core/wiring_shift.o build/core/HardwareSerial.o build/core/WMath.o build/core/WString.o build/core/Print.o build/core/usb_api.o build/core/Tone.o -lm
 avr-objcopy -O ihex -R .eeprom min.elf min.hex
 avr-size --target=ihex min.hex
    text	   data	    bss	    dec	    hex	filename
-      0	   2146	      0	   2146	    862	min.hex
+      0	   2230	      0	   2230	    8b6	min.hex
 scons: done building targets.
 
 ----------
@@ -38,6 +38,10 @@ stderr
 In file included from build/core/wiring_private.h:30,
                  from build/core/HardwareSerial.cpp:38:
 /usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+build/core/Print.cpp: In member function 'void Print::print(const String&)':
+build/core/Print.cpp:51: warning: comparison between signed and unsigned integer expressions
+build/core/Print.cpp: In member function 'void Print::print_P(prog_char*)':
+build/core/Print.cpp:234: warning: suggest parentheses around assignment used as truth value
 build/core/Tone.cpp:122: warning: only initialized variables can be placed into program memory area
 build/core/Tone.cpp:557: warning: 'TIMER2_COMPA_vect' appears to be a misspelled signal handler
 In file included from build/core/wiring_private.h:30,

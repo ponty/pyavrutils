@@ -3,17 +3,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>API &mdash; pyavrutils v0.0.2 documentation</title>
+    <title>API &mdash; pyavrutils 0.0.3 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.2',
+        VERSION:     '0.0.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pyavrutils v0.0.2 documentation" href="index.html" />
+    <link rel="top" title="pyavrutils 0.0.3 documentation" href="index.html" />
     <link rel="next" title="Development" href="dev.html" />
     <link rel="prev" title="Build tests" href="build.html" /> 
   </head>
@@ -39,7 +42,7 @@
         <li class="right" >
           <a href="build.html" title="Build tests"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pyavrutils v0.0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.0.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -71,6 +74,11 @@ sources=&#8217;int main(){}&#8217;</p>
 <dl class="attribute">
 <dt id="pyavrutils.AvrGcc.error_text">
 <tt class="descname">error_text</tt><a class="headerlink" href="#pyavrutils.AvrGcc.error_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyavrutils.AvrGcc.minprog">
+<tt class="descname">minprog</tt><em class="property"> = 'int main(){};'</em><a class="headerlink" href="#pyavrutils.AvrGcc.minprog" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -167,6 +175,11 @@ sources=&#8217;int main(){}&#8217;</p>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="pyavrutils.Arduino.minprog">
+<tt class="descname">minprog</tt><em class="property"> = 'void setup(){};void loop(){};'</em><a class="headerlink" href="#pyavrutils.Arduino.minprog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="pyavrutils.Arduino.ok">
 <tt class="descname">ok</tt><a class="headerlink" href="#pyavrutils.Arduino.ok" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -174,6 +187,16 @@ sources=&#8217;int main(){}&#8217;</p>
 <dl class="method">
 <dt id="pyavrutils.Arduino.size">
 <tt class="descname">size</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyavrutils.Arduino.stderr">
+<tt class="descname">stderr</tt><a class="headerlink" href="#pyavrutils.Arduino.stderr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyavrutils.Arduino.warnings">
+<tt class="descname">warnings</tt><a class="headerlink" href="#pyavrutils.Arduino.warnings" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -200,7 +223,7 @@ sources=&#8217;int main(){}&#8217;</p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -226,12 +249,12 @@ sources=&#8217;int main(){}&#8217;</p>
         <li class="right" >
           <a href="build.html" title="Build tests"
              >previous</a> |</li>
-        <li><a href="index.html">pyavrutils v0.0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.0.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011, ponty.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.
     </div>
   </body>
 </html>

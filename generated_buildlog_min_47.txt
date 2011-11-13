@@ -2,34 +2,34 @@
 stdout
 ----------
 scons: Reading SConscript files ...
-maximum size for hex file: 32256 bytes
+maximum size for hex file: 28672 bytes
 scons: done reading SConscript files.
 scons: Building targets ...
 scons: building associated VariantDir targets: build
-avr-g++ -o build/core/HardwareSerial.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/HardwareSerial.cpp
-avr-g++ -o build/core/Print.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/Print.cpp
-avr-g++ -o build/core/Tone.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/Tone.cpp
-avr-gcc -o build/core/WInterrupts.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/WInterrupts.c
-avr-g++ -o build/core/WMath.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/WMath.cpp
-avr-g++ -o build/core/WString.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/WString.cpp
-avr-gcc -o build/core/pins_arduino.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/pins_arduino.c
-avr-gcc -o build/core/usb.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/usb.c
-avr-g++ -o build/core/usb_api.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/usb_api.cpp
-avr-gcc -o build/core/wiring.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring.c
-avr-gcc -o build/core/wiring_analog.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_analog.c
-avr-gcc -o build/core/wiring_digital.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_digital.c
-avr-gcc -o build/core/wiring_pulse.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_pulse.c
-avr-gcc -o build/core/wiring_shift.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_shift.c
+avr-g++ -o build/core/HardwareSerial.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/HardwareSerial.cpp
+avr-g++ -o build/core/Print.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/Print.cpp
+avr-g++ -o build/core/Tone.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/Tone.cpp
+avr-gcc -o build/core/WInterrupts.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/WInterrupts.c
+avr-g++ -o build/core/WMath.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/WMath.cpp
+avr-g++ -o build/core/WString.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/WString.cpp
+avr-gcc -o build/core/pins_arduino.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/pins_arduino.c
+avr-gcc -o build/core/usb.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/usb.c
+avr-g++ -o build/core/usb_api.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/usb_api.cpp
+avr-gcc -o build/core/wiring.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring.c
+avr-gcc -o build/core/wiring_analog.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_analog.c
+avr-gcc -o build/core/wiring_digital.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_digital.c
+avr-gcc -o build/core/wiring_pulse.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_pulse.c
+avr-gcc -o build/core/wiring_shift.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -std=gnu99 -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/core/wiring_shift.c
 fnProcessing(["build/min.cpp"], ["build/min.pde"])
 void setup();
 void loop();
-/tmp/pyavrutils_tz3ojI/min/min.pde min
-avr-g++ -o build/min.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/min.cpp
-avr-gcc -mmcu=atmega32u4 -Os -Wl,--gc-sections -o min.elf build/min.o build/core/wiring_pulse.o build/core/pins_arduino.o build/core/wiring_analog.o build/core/wiring.o build/core/usb.o build/core/WInterrupts.o build/core/wiring_digital.o build/core/wiring_shift.o build/core/HardwareSerial.o build/core/WMath.o build/core/WString.o build/core/Print.o build/core/usb_api.o build/core/Tone.o -lm
+/tmp/pyavrutils_sUmg9C/min/min.pde min
+avr-g++ -o build/min.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/min.cpp
+avr-gcc -mmcu=atmega32 -Os -Wl,--gc-sections -o min.elf build/min.o build/core/wiring_pulse.o build/core/pins_arduino.o build/core/wiring_analog.o build/core/wiring.o build/core/usb.o build/core/WInterrupts.o build/core/wiring_digital.o build/core/wiring_shift.o build/core/HardwareSerial.o build/core/WMath.o build/core/WString.o build/core/Print.o build/core/usb_api.o build/core/Tone.o -lm
 avr-objcopy -O ihex -R .eeprom min.elf min.hex
 avr-size --target=ihex min.hex
    text	   data	    bss	    dec	    hex	filename
-      0	   3446	      0	   3446	    d76	min.hex
+      0	   1254	      0	   1254	    4e6	min.hex
 scons: done building targets.
 
 ----------
@@ -38,40 +38,31 @@ stderr
 In file included from build/core/wiring_private.h:30,
                  from build/core/HardwareSerial.cpp:38:
 /usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-build/core/HardwareSerial.cpp:152:3: warning: #warning No interrupt handler for usart 0
-build/core/HardwareSerial.cpp:153:3: warning: #warning Serial(0) is on USB interface
-build/core/HardwareSerial.cpp:328:3: warning: #warning no serial port defined (port 0)
-build/core/Tone.cpp:222:6: warning: #warning this may not be correct
+build/core/Print.cpp: In member function 'void Print::print(const String&)':
+build/core/Print.cpp:51: warning: comparison between signed and unsigned integer expressions
+build/core/Print.cpp: In member function 'void Print::print_P(prog_char*)':
+build/core/Print.cpp:236: warning: suggest parentheses around assignment used as truth value
 build/core/Tone.cpp:122: warning: only initialized variables can be placed into program memory area
 build/core/Tone.cpp:557: warning: 'TIMER2_COMPA_vect' appears to be a misspelled signal handler
 In file included from build/core/wiring_private.h:30,
                  from build/core/WInterrupts.c:40:
 /usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-build/core/WInterrupts.c:247: warning: 'INT4_vect' appears to be a misspelled signal handler
-build/core/WInterrupts.c:252: warning: 'INT5_vect' appears to be a misspelled signal handler
-build/core/WInterrupts.c:262: warning: 'INT7_vect' appears to be a misspelled signal handler
 In file included from build/core/wiring_private.h:30,
                  from build/core/pins_arduino.c:26:
 /usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/pins_arduino.c:133:
-build/core/pins_teensy2.cxx:53: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:54: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:55: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:56: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:57: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:63: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:64: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:65: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:66: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:67: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:73: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:74: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:75: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:76: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:77: warning: initialization makes integer from pointer without a cast
-build/core/usb.c: In function '__vector_11':
-build/core/usb.c:520: warning: assignment discards qualifiers from pointer target type
-build/core/usb.c:531: warning: assignment discards qualifiers from pointer target type
+In file included from build/core/pins_arduino.c:102:
+build/core/pins_penguino_avr.cxx:47: warning: initialization makes integer from pointer without a cast
+build/core/pins_penguino_avr.cxx:48: warning: initialization makes integer from pointer without a cast
+build/core/pins_penguino_avr.cxx:49: warning: initialization makes integer from pointer without a cast
+build/core/pins_penguino_avr.cxx:50: warning: initialization makes integer from pointer without a cast
+build/core/pins_penguino_avr.cxx:55: warning: initialization makes integer from pointer without a cast
+build/core/pins_penguino_avr.cxx:56: warning: initialization makes integer from pointer without a cast
+build/core/pins_penguino_avr.cxx:57: warning: initialization makes integer from pointer without a cast
+build/core/pins_penguino_avr.cxx:58: warning: initialization makes integer from pointer without a cast
+build/core/pins_penguino_avr.cxx:63: warning: initialization makes integer from pointer without a cast
+build/core/pins_penguino_avr.cxx:64: warning: initialization makes integer from pointer without a cast
+build/core/pins_penguino_avr.cxx:65: warning: initialization makes integer from pointer without a cast
+build/core/pins_penguino_avr.cxx:66: warning: initialization makes integer from pointer without a cast
 In file included from build/core/wiring_private.h:30,
                  from build/core/wiring.c:32:
 /usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."

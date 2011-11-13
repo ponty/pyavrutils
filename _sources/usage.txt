@@ -36,4 +36,10 @@ arduino
     >>> cc.build('void setup(){};void loop(){}')
     >>> cc.output
     >>> cc.size().program_bytes
-    
+    >>> cc.warnings
+
+display warnings on console:
+
+.. program-output:: python -m pyavrutils.cli.arduino_warnings /usr/share/arduino/examples/Communication/Dimmer/Dimmer.pde
+    :prompt:
+        
