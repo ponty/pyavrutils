@@ -1,8 +1,5 @@
-#from nose.commands import nosetests
 from paver.easy import *
 from paver.setuputils import setup
-from pyavrutils import support
-from pyavrutils.arduino import Arduino
 from setuptools import find_packages
 
 
@@ -16,6 +13,8 @@ try:
     from paved.docs import *
     from paved.pycheck import *
     from sphinxcontrib import paverutils
+    from pyavrutils import support
+    from pyavrutils.arduino import Arduino
     ALL_TASKS_LOADED = True
 except ImportError, e:
     info("some tasks could not not be imported.")
