@@ -100,6 +100,8 @@ if ALL_TASKS_LOADED:
                                      ]
     
     options.paved.dist.manifest.include.remove('distribute_setup.py')
+    options.paved.dist.manifest.recursive_include.add('pyavrutils SConstruct*')
+
     docroot = path(options.sphinx.docroot)
     
     

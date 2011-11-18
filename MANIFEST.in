@@ -6,4 +6,5 @@ include TODO*
 include CHANGES*
 include README*
 include setup.py
+recursive-include pyavrutils SConstruct*
 prune docs/_build
