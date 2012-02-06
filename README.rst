@@ -47,7 +47,7 @@ General
 --------
 
  * arscons_ is already included in the library  
- * install setuptools_
+ * install pip_
  * install gcc-avr
  * install scons_ (only for arscons_)
  * install arduino_ (only for arscons_)
@@ -56,18 +56,18 @@ General
 if you have setuptools_ installed::
 
     # as root
-    easy_install pyavrutils
+    pip install pyavrutils
 
 Ubuntu
 ----------
 ::
 
-    sudo apt-get install python-setuptools
+    sudo apt-get install python-pip
     sudo apt-get install binutils-avr
     sudo apt-get install gcc-avr
     sudo apt-get install scons
     sudo apt-get install arduino
-    sudo easy_install pyavrutils
+    sudo pip install pyavrutils
 
 Uninstall
 ----------
