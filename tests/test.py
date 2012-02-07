@@ -24,6 +24,7 @@ class Test(TestCase):
 
     def test_targets(self):
         cc = AvrGcc()
+        assert len(cc.targets)
         for mcu in cc.targets:
             cc.mcu = mcu
             try:

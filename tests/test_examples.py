@@ -1,5 +1,5 @@
 from pyavrutils.examples import deadcode, delaysize, minsize_arduino, minsize, \
-    pgmspace, simple
+    pgmspace, simple,targets
 
 def test_deadcode():
     deadcode.main()
@@ -19,6 +19,8 @@ def test_pgmspace():
 def test_simple():
     simple.main()    
     
+def test_targets():
+    targets.main()    
     
     
     
