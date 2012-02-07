@@ -23,71 +23,78 @@ avr-gcc -o build/core/wiring_shift.o -c -ffunction-sections -fdata-sections -fno
 fnProcessing(["build/min.cpp"], ["build/min.pde"])
 void setup();
 void loop();
-/tmp/pyavrutils_GLAGDk/min/min.pde min
+/tmp/pyavrutils__z18lI/min/min.pde min
 avr-g++ -o build/min.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega32u4 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/min.cpp
-avr-gcc -mmcu=atmega32u4 -Os -Wl,--gc-sections -o min.elf build/min.o build/core/wiring_pulse.o build/core/pins_arduino.o build/core/wiring_analog.o build/core/wiring.o build/core/usb.o build/core/WInterrupts.o build/core/wiring_digital.o build/core/wiring_shift.o build/core/HardwareSerial.o build/core/WMath.o build/core/WString.o build/core/Print.o build/core/usb_api.o build/core/Tone.o -lm
+avr-gcc -mmcu=atmega32u4 -Os -Wl,--gc-sections -o min.elf build/min.o build/core/WInterrupts.o build/core/wiring_digital.o build/core/usb.o build/core/wiring_shift.o build/core/wiring_pulse.o build/core/pins_arduino.o build/core/wiring_analog.o build/core/wiring.o build/core/usb_api.o build/core/WString.o build/core/WMath.o build/core/HardwareSerial.o build/core/Tone.o build/core/Print.o -lm
 avr-objcopy -O ihex -R .eeprom min.elf min.hex
 avr-size --target=ihex min.hex
    text	   data	    bss	    dec	    hex	filename
-      0	   3446	      0	   3446	    d76	min.hex
+      0	   3496	      0	   3496	    da8	min.hex
 scons: done building targets.
 
 ----------
 stderr
 ----------
-In file included from build/core/wiring_private.h:30,
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/HardwareSerial.cpp:38:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
 build/core/HardwareSerial.cpp:152:3: warning: #warning No interrupt handler for usart 0
 build/core/HardwareSerial.cpp:153:3: warning: #warning Serial(0) is on USB interface
 build/core/HardwareSerial.cpp:328:3: warning: #warning no serial port defined (port 0)
 build/core/Print.cpp: In member function 'void Print::print(const String&)':
-build/core/Print.cpp:51: warning: comparison between signed and unsigned integer expressions
+build/core/Print.cpp:51:32: warning: comparison between signed and unsigned integer expressions
 build/core/Print.cpp: In member function 'void Print::print_P(prog_char*)':
-build/core/Print.cpp:236: warning: suggest parentheses around assignment used as truth value
+build/core/Print.cpp:236:19: warning: suggest parentheses around assignment used as truth value
 build/core/Tone.cpp:222:6: warning: #warning this may not be correct
-build/core/Tone.cpp:122: warning: only initialized variables can be placed into program memory area
-build/core/Tone.cpp:557: warning: 'TIMER2_COMPA_vect' appears to be a misspelled signal handler
-In file included from build/core/wiring_private.h:30,
+build/core/Tone.cpp:122:46: warning: only initialized variables can be placed into program memory area
+build/core/Tone.cpp: In function 'void TIMER2_COMPA_vect()':
+build/core/Tone.cpp:557:1: warning: 'TIMER2_COMPA_vect' appears to be a misspelled signal handler
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/WInterrupts.c:40:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-build/core/WInterrupts.c:247: warning: 'INT4_vect' appears to be a misspelled signal handler
-build/core/WInterrupts.c:252: warning: 'INT5_vect' appears to be a misspelled signal handler
-build/core/WInterrupts.c:262: warning: 'INT7_vect' appears to be a misspelled signal handler
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+build/core/WInterrupts.c: In function 'INT4_vect':
+build/core/WInterrupts.c:247:1: warning: 'INT4_vect' appears to be a misspelled signal handler
+build/core/WInterrupts.c: In function 'INT5_vect':
+build/core/WInterrupts.c:252:1: warning: 'INT5_vect' appears to be a misspelled signal handler
+build/core/WInterrupts.c: In function 'INT7_vect':
+build/core/WInterrupts.c:262:1: warning: 'INT7_vect' appears to be a misspelled signal handler
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/pins_arduino.c:26:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/pins_arduino.c:133:
-build/core/pins_teensy2.cxx:53: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:54: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:55: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:56: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:57: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:63: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:64: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:65: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:66: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:67: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:73: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:74: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:75: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:76: warning: initialization makes integer from pointer without a cast
-build/core/pins_teensy2.cxx:77: warning: initialization makes integer from pointer without a cast
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/pins_arduino.c:133:0:
+build/core/pins_teensy2.cxx:53:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:54:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:55:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:56:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:57:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:63:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:64:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:65:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:66:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:67:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:73:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:74:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:75:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:76:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_teensy2.cxx:77:2: warning: initialization makes integer from pointer without a cast
 build/core/usb.c: In function '__vector_11':
-build/core/usb.c:520: warning: assignment discards qualifiers from pointer target type
-build/core/usb.c:531: warning: assignment discards qualifiers from pointer target type
-In file included from build/core/wiring_private.h:30,
+build/core/usb.c:520:6: warning: assignment discards qualifiers from pointer target type
+build/core/usb.c:531:6: warning: assignment discards qualifiers from pointer target type
+build/core/usb.c:538:4: warning: dereferencing type-punned pointer will break strict-aliasing rules
+build/core/usb_api.cpp: In member function 'uint32_t usb_serial_class::baud()':
+build/core/usb_api.cpp:463:22: warning: dereferencing type-punned pointer will break strict-aliasing rules
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring.c:32:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring_analog.c:34:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring_digital.c:34:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring_pulse.c:25:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring_shift.c:25:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."

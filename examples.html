@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Examples &mdash; pyavrutils 0.0.3 documentation</title>
+    <title>Examples &mdash; pyavrutils 0.0.7 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.3',
+        VERSION:     '0.0.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pyavrutils 0.0.3 documentation" href="index.html" />
-    <link rel="next" title="Build tests" href="build.html" />
+    <link rel="top" title="pyavrutils 0.0.7 documentation" href="index.html" />
+    <link rel="next" title="Arduino build tests" href="build.html" />
     <link rel="prev" title="Usage" href="usage.html" /> 
   </head>
   <body>
@@ -37,12 +37,12 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="build.html" title="Build tests"
+          <a href="build.html" title="Arduino build tests"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="usage.html" title="Usage"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pyavrutils 0.0.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.0.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -89,7 +89,7 @@
 </div>
 <p>Output:</p>
 <div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.examples.simple
-compiler version: 4.3.5
+compiler version: 4.5.3
 code: int main(){}
 
 no optimizations::
@@ -159,7 +159,7 @@ optimize for size::
 </div>
 <p>Output:</p>
 <div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.examples.deadcode
-compiler version: 4.3.5
+compiler version: 4.5.3
 compiler options: avr-gcc -Df_cpu=4000000 -mmcu=atmega168 --std=gnu99
 
 minimum size
@@ -210,8 +210,8 @@ program, data =      138 ,        0
 <div class="section" id="test-size-with-delay-h">
 <h2>Test size with delay.h<a class="headerlink" href="#test-size-with-delay-h" title="Permalink to this headline">¶</a></h2>
 <p>Example program:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyavrutils.avrgcc</span> <span class="kn">import</span> <span class="n">AvrGcc</span>
-<span class="kn">from</span> <span class="nn">entrypoint2</span> <span class="kn">import</span> <span class="n">entrypoint</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">entrypoint2</span> <span class="kn">import</span> <span class="n">entrypoint</span>
+<span class="kn">from</span> <span class="nn">pyavrutils.avrgcc</span> <span class="kn">import</span> <span class="n">AvrGcc</span><span class="p">,</span> <span class="n">AvrGccCompileError</span>
 
 <span class="n">templ</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;</span>
 <span class="s">#include &lt;avr/io.h&gt;</span>
@@ -229,14 +229,14 @@ program, data =      138 ,        0
 <span class="k">print</span>
 
 <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">snippet</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
-    <span class="k">print</span>  <span class="n">snippet</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">33</span><span class="p">)</span> <span class="p">,</span> 
+    <span class="k">print</span>  <span class="n">snippet</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">33</span><span class="p">)</span> <span class="p">,</span>
     <span class="n">cc</span><span class="o">.</span><span class="n">options_extra</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
     <span class="k">print</span>  <span class="s">&#39;compiler option:&#39;</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="s">&#39;</span><span class="se">\t</span><span class="s">&#39;</span><span class="p">,</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">([</span><span class="n">templ</span> <span class="o">%</span> <span class="n">snippet</span><span class="p">])</span>
         <span class="n">size</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="k">print</span> <span class="s">&#39;program, data =&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">program_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">data_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
+    <span class="k">except</span> <span class="n">AvrGccCompileError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">print</span>  <span class="s">&#39;compile error&#39;</span>
 
 <span class="nd">@entrypoint</span>
@@ -249,19 +249,19 @@ program, data =      138 ,        0
     <span class="n">test</span><span class="p">(</span><span class="s">&#39;_delay_ms(4)&#39;</span><span class="p">,</span> <span class="s">&#39;-O3&#39;</span><span class="p">)</span>
     <span class="n">test</span><span class="p">(</span><span class="s">&#39;_delay_ms(4)&#39;</span><span class="p">,</span> <span class="s">&#39;-Os&#39;</span><span class="p">)</span>
 
-    <span class="n">test</span><span class="p">(</span><span class="s">&#39;volatile double x=3;_delay_ms(x)&#39;</span><span class="p">,</span> <span class="s">&#39;-Os&#39;</span><span class="p">)</span>
+    <span class="n">test</span><span class="p">(</span><span class="s">&#39;volatile int x=3;_delay_ms(x)&#39;</span><span class="p">,</span> <span class="s">&#39;-Os&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Output:</p>
 <div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.examples.delaysize
-compiler version: 4.3.5
+compiler version: 4.5.3
 
-_delay_ms(4)                      compiler option: -O0 	program, data =     3282 ,        8
-_delay_ms(4)                      compiler option: -O1 	program, data =      146 ,        0
-_delay_ms(4)                      compiler option: -O2 	program, data =      146 ,        0
-_delay_ms(4)                      compiler option: -O3 	program, data =      146 ,        0
-_delay_ms(4)                      compiler option: -Os 	program, data =      146 ,        0
-volatile double x=3;_delay_ms(x)  compiler option: -Os 	program, data =     3218 ,        8
+_delay_ms(4)                      compiler option: -O0 	program, data =     3266 ,        8
+_delay_ms(4)                      compiler option: -O1 	program, data =      150 ,        0
+_delay_ms(4)                      compiler option: -O2 	program, data =      150 ,        0
+_delay_ms(4)                      compiler option: -O3 	program, data =      150 ,        0
+_delay_ms(4)                      compiler option: -Os 	program, data =      150 ,        0
+volatile int x=3;_delay_ms(x)     compiler option: -Os 	compile error
 </pre></div>
 </div>
 <dl class="docutils">
@@ -323,25 +323,25 @@ volatile double x=3;_delay_ms(x)  compiler option: -Os 	program, data =     3218
 </div>
 <p>Output:</p>
 <div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.examples.pgmspace
-compiler version: 4.3.5
+compiler version: 4.5.3
 compiler options: avr-gcc -Df_cpu=4000000 -mmcu=atmega168 --std=gnu99 -Wl,--relax -Wl,--gc-sections -ffunction-sections -fdata-sections -fno-inline-small-functions
 
 static const char s[] PROGMEM = &quot;12345&quot; 		program, data =      144 ,        0
 static const char s[]         = &quot;12345&quot; 		program, data =      166 ,        0
 static       char s[] PROGMEM = &quot;12345&quot; 		program, data =      144 ,        0
 static       char s[]         = &quot;12345&quot; 		program, data =      166 ,        0
-       const char s[] PROGMEM = &quot;12345&quot; 		program, data =      260 ,        6
-       const char s[]         = &quot;12345&quot; 		program, data =      260 ,        6
-             char s[] PROGMEM = &quot;12345&quot; 		program, data =      260 ,        6
-             char s[]         = &quot;12345&quot; 		program, data =      260 ,        6
+       const char s[] PROGMEM = &quot;12345&quot; 		program, data =      220 ,        6
+       const char s[]         = &quot;12345&quot; 		program, data =      220 ,        6
+             char s[] PROGMEM = &quot;12345&quot; 		program, data =      220 ,        6
+             char s[]         = &quot;12345&quot; 		program, data =      220 ,        6
 static const char s[] PROGMEM = &quot;1234512345&quot; 		program, data =      144 ,        0
 static const char s[]         = &quot;1234512345&quot; 		program, data =      166 ,        0
 static       char s[] PROGMEM = &quot;1234512345&quot; 		program, data =      144 ,        0
 static       char s[]         = &quot;1234512345&quot; 		program, data =      166 ,        0
-       const char s[] PROGMEM = &quot;1234512345&quot; 		program, data =      266 ,       12
-       const char s[]         = &quot;1234512345&quot; 		program, data =      266 ,       12
-             char s[] PROGMEM = &quot;1234512345&quot; 		program, data =      266 ,       12
-             char s[]         = &quot;1234512345&quot; 		program, data =      266 ,       12
+       const char s[] PROGMEM = &quot;1234512345&quot; 		program, data =      232 ,       12
+       const char s[]         = &quot;1234512345&quot; 		program, data =      232 ,       12
+             char s[] PROGMEM = &quot;1234512345&quot; 		program, data =      232 ,       12
+             char s[]         = &quot;1234512345&quot; 		program, data =      232 ,       12
 </pre></div>
 </div>
 <dl class="docutils">
@@ -371,7 +371,7 @@ static       char s[]         = &quot;1234512345&quot; 		program, data =      16
         <span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">cc</span><span class="o">.</span><span class="n">minprog</span><span class="p">)</span>
         <span class="k">print</span> <span class="s">&#39;    program/data size =&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span><span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">data_bytes</span>
     <span class="k">except</span> <span class="n">AvrGccCompileError</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;    compile error:&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">error_text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">print</span> <span class="s">&#39;    compile error&#39;</span>
 
 <span class="nd">@entrypoint</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
@@ -394,104 +394,142 @@ static       char s[]         = &quot;1234512345&quot; 		program, data =      16
 --------------
 avr-gcc
 --------------
-compiler version: 4.3.5
+compiler version: 4.5.3
 compiler options: avr-gcc -Df_cpu=4000000 -mmcu=atmega168 --std=gnu99 -Wl,--relax -Wl,--gc-sections -ffunction-sections -fdata-sections -fno-inline-small-functions -Os
 code: int main(){};
 
-MCU = at43usb320               program/data size = 80 , 0
-MCU = at43usb355               program/data size = 80 , 0
-MCU = at76c711                 program/data size = 88 , 0
-MCU = at86rf401                program/data size = 40 , 0
-MCU = at90c8534                program/data size = 42 , 0
-MCU = at90can128               program/data size = 202 , 0
-MCU = at90can32                program/data size = 176 , 0
-MCU = at90can64                program/data size = 176 , 0
-MCU = at90pwm1                 program/data size = 92 , 0
-MCU = at90pwm2                 program/data size = 92 , 0
-MCU = at90pwm216               program/data size = 156 , 0
-MCU = at90pwm2b                program/data size = 92 , 0
-MCU = at90pwm3                 program/data size = 92 , 0
-MCU = at90pwm316               program/data size = 156 , 0
-MCU = at90pwm3b                program/data size = 92 , 0
-MCU = at90pwm81                program/data size = 68 , 0
-MCU = at90s1200                compile error: /tmp/pyavrutils_CK3vgH/pyavrutils_8mk3dj.c:1: error: MCU ‘at90s1200’ supported for assembler only
+MCU = avr1                     compile error
+MCU = avr2                     program/data size = 0 , 0
+MCU = avr25                    program/data size = 0 , 0
+MCU = avr3                     program/data size = 0 , 0
+MCU = avr31                    program/data size = 0 , 0
+MCU = avr35                    program/data size = 0 , 0
+MCU = avr4                     program/data size = 0 , 0
+MCU = avr5                     program/data size = 0 , 0
+MCU = avr51                    program/data size = 0 , 0
+MCU = avr6                     program/data size = 0 , 0
+MCU = avrxmega1                compile error
+MCU = avrxmega2                program/data size = 0 , 0
+MCU = avrxmega3                compile error
+MCU = avrxmega4                program/data size = 0 , 0
+MCU = avrxmega5                program/data size = 0 , 0
+MCU = avrxmega6                program/data size = 0 , 0
+MCU = avrxmega7                program/data size = 0 , 0
+MCU = avrtiny10                program/data size = 0 , 0
+MCU = at90s1200                compile error
+MCU = attiny11                 compile error
+MCU = attiny12                 compile error
+MCU = attiny15                 compile error
+MCU = attiny28                 compile error
 MCU = at90s2313                program/data size = 46 , 0
 MCU = at90s2323                program/data size = 30 , 0
 MCU = at90s2333                program/data size = 52 , 0
 MCU = at90s2343                program/data size = 30 , 0
+MCU = attiny22                 program/data size = 30 , 0
+MCU = attiny26                 program/data size = 48 , 0
 MCU = at90s4414                program/data size = 54 , 0
 MCU = at90s4433                program/data size = 52 , 0
 MCU = at90s4434                program/data size = 62 , 0
 MCU = at90s8515                program/data size = 54 , 0
+MCU = at90c8534                program/data size = 42 , 0
 MCU = at90s8535                program/data size = 62 , 0
-MCU = at90scr100               program/data size = 180 , 0
-MCU = at90usb1286              program/data size = 206 , 0
-MCU = at90usb1287              program/data size = 206 , 0
-MCU = at90usb162               program/data size = 144 , 0
-MCU = at90usb646               program/data size = 180 , 0
-MCU = at90usb647               program/data size = 180 , 0
-MCU = at90usb82                program/data size = 144 , 0
-MCU = at94k                    program/data size = 172 , 0
+MCU = attiny13                 program/data size = 44 , 0
+MCU = attiny13a                program/data size = 44 , 0
+MCU = attiny2313               program/data size = 62 , 0
+MCU = attiny2313a              program/data size = 66 , 0
+MCU = attiny24                 program/data size = 58 , 0
+MCU = attiny24a                program/data size = 58 , 0
+MCU = attiny4313               program/data size = 70 , 0
+MCU = attiny44                 program/data size = 62 , 0
+MCU = attiny44a                program/data size = 62 , 0
+MCU = attiny84                 program/data size = 62 , 0
+MCU = attiny84a                program/data size = 62 , 0
+MCU = attiny25                 program/data size = 54 , 0
+MCU = attiny45                 program/data size = 58 , 0
+MCU = attiny85                 program/data size = 58 , 0
+MCU = attiny261                program/data size = 62 , 0
+MCU = attiny261a               program/data size = 62 , 0
+MCU = attiny461                program/data size = 66 , 0
+MCU = attiny461a               program/data size = 66 , 0
+MCU = attiny861                program/data size = 66 , 0
+MCU = attiny861a               program/data size = 66 , 0
+MCU = attiny87                 program/data size = 68 , 0
+MCU = attiny43u                program/data size = 60 , 0
+MCU = attiny48                 program/data size = 68 , 0
+MCU = attiny88                 program/data size = 68 , 0
+MCU = at86rf401                program/data size = 40 , 0
 MCU = ata6289                  program/data size = 82 , 0
-MCU = atmega103                program/data size = 156 , 0
-MCU = atmega128                program/data size = 194 , 0
-MCU = atmega1280               program/data size = 282 , 0
-MCU = atmega1281               program/data size = 258 , 0
-MCU = atmega1284p              program/data size = 194 , 0
-MCU = atmega128rfa1            program/data size = 342 , 0
+MCU = at43usb355               program/data size = 80 , 0
+MCU = at76c711                 program/data size = 88 , 0
+MCU = atmega103                program/data size = 124 , 0
+MCU = at43usb320               program/data size = 80 , 0
+MCU = attiny167                program/data size = 108 , 0
+MCU = at90usb82                program/data size = 144 , 0
+MCU = at90usb162               program/data size = 144 , 0
+MCU = atmega8u2                program/data size = 180 , 0
+MCU = atmega16u2               program/data size = 180 , 0
+MCU = atmega32u2               program/data size = 180 , 0
+MCU = attiny1634               compile error
+MCU = atmega8                  program/data size = 66 , 0
+MCU = atmega48                 program/data size = 80 , 0
+MCU = atmega48a                program/data size = 80 , 0
+MCU = atmega48pa               compile error
+MCU = atmega48p                program/data size = 80 , 0
+MCU = atmega88                 program/data size = 80 , 0
+MCU = atmega88a                program/data size = 80 , 0
+MCU = atmega88p                program/data size = 80 , 0
+MCU = atmega88pa               program/data size = 80 , 0
+MCU = atmega8515               program/data size = 62 , 0
+MCU = atmega8535               program/data size = 70 , 0
+MCU = atmega8hva               program/data size = 70 , 0
+MCU = at90pwm1                 program/data size = 92 , 0
+MCU = at90pwm2                 program/data size = 92 , 0
+MCU = at90pwm2b                program/data size = 92 , 0
+MCU = at90pwm3                 program/data size = 92 , 0
+MCU = at90pwm3b                program/data size = 92 , 0
+MCU = at90pwm81                program/data size = 68 , 0
+MCU = at90pwm161               compile error
 MCU = atmega16                 program/data size = 112 , 0
+MCU = atmega16a                program/data size = 112 , 0
 MCU = atmega161                program/data size = 112 , 0
 MCU = atmega162                program/data size = 140 , 0
 MCU = atmega163                program/data size = 100 , 0
 MCU = atmega164a               program/data size = 152 , 0
 MCU = atmega164p               program/data size = 152 , 0
 MCU = atmega165                program/data size = 116 , 0
-MCU = atmega165a               compile error: Known MCU names:
+MCU = atmega165a               program/data size = 116 , 0
 MCU = atmega165p               program/data size = 116 , 0
 MCU = atmega168                program/data size = 132 , 0
-MCU = atmega168a               program/data size = 80 , 0
+MCU = atmega168a               program/data size = 132 , 0
 MCU = atmega168p               program/data size = 132 , 0
 MCU = atmega169                program/data size = 120 , 0
 MCU = atmega169a               program/data size = 120 , 0
 MCU = atmega169p               program/data size = 120 , 0
 MCU = atmega169pa              program/data size = 120 , 0
-MCU = atmega16a                program/data size = 112 , 0
-MCU = atmega16c1               compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: crtm16c1.o: No such file: No such file or directory
-MCU = atmega16hva              program/data size = 112 , 0
-MCU = atmega16hva2             program/data size = 116 , 0
-MCU = atmega16hvb              program/data size = 144 , 0
-MCU = atmega16m1               program/data size = 152 , 0
-MCU = atmega16u2               program/data size = 180 , 0
-MCU = atmega16u4               program/data size = 200 , 0
-MCU = atmega2560               program/data size = 286 , 0
-MCU = atmega2561               program/data size = 262 , 0
 MCU = atmega32                 program/data size = 112 , 0
 MCU = atmega323                program/data size = 108 , 0
 MCU = atmega324a               program/data size = 152 , 0
 MCU = atmega324p               program/data size = 152 , 0
 MCU = atmega324pa              program/data size = 152 , 0
 MCU = atmega325                program/data size = 120 , 0
-MCU = atmega3250               program/data size = 128 , 0
-MCU = atmega3250p              program/data size = 128 , 0
+MCU = atmega325a               program/data size = 120 , 0
 MCU = atmega325p               program/data size = 120 , 0
+MCU = atmega325pa              compile error
+MCU = atmega3250               program/data size = 128 , 0
+MCU = atmega3250a              program/data size = 128 , 0
+MCU = atmega3250p              program/data size = 128 , 0
+MCU = atmega3250pa             compile error
 MCU = atmega328                program/data size = 132 , 0
 MCU = atmega328p               program/data size = 132 , 0
 MCU = atmega329                program/data size = 120 , 0
-MCU = atmega3290               program/data size = 128 , 0
-MCU = atmega3290p              program/data size = 128 , 0
+MCU = atmega329a               program/data size = 120 , 0
 MCU = atmega329p               program/data size = 120 , 0
 MCU = atmega329pa              program/data size = 120 , 0
-MCU = atmega32c1               program/data size = 152 , 0
-MCU = atmega32hvb              program/data size = 144 , 0
-MCU = atmega32m1               program/data size = 152 , 0
-MCU = atmega32u2               program/data size = 180 , 0
-MCU = atmega32u4               program/data size = 200 , 0
-MCU = atmega32u6               program/data size = 180 , 0
+MCU = atmega3290               program/data size = 128 , 0
+MCU = atmega3290a              program/data size = 128 , 0
+MCU = atmega3290p              program/data size = 128 , 0
+MCU = atmega3290pa             compile error
 MCU = atmega406                program/data size = 120 , 0
-MCU = atmega48                 program/data size = 80 , 0
-MCU = atmega48a                program/data size = 80 , 0
-MCU = atmega48p                program/data size = 80 , 0
-MCU = atmega4hvd               compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: crtm4hvd.o: No such file: No such file or directory
 MCU = atmega64                 program/data size = 168 , 0
 MCU = atmega640                program/data size = 256 , 0
 MCU = atmega644                program/data size = 140 , 0
@@ -499,94 +537,78 @@ MCU = atmega644a               program/data size = 152 , 0
 MCU = atmega644p               program/data size = 152 , 0
 MCU = atmega644pa              program/data size = 152 , 0
 MCU = atmega645                program/data size = 120 , 0
-MCU = atmega6450               program/data size = 128 , 0
-MCU = atmega6450a              program/data size = 128 , 0
-MCU = atmega6450p              program/data size = 128 , 0
 MCU = atmega645a               program/data size = 120 , 0
 MCU = atmega645p               program/data size = 120 , 0
 MCU = atmega649                program/data size = 120 , 0
+MCU = atmega649p               program/data size = 120 , 0
+MCU = atmega649a               program/data size = 120 , 0
+MCU = atmega6450               program/data size = 128 , 0
+MCU = atmega6450a              program/data size = 128 , 0
+MCU = atmega6450p              program/data size = 128 , 0
 MCU = atmega6490               program/data size = 128 , 0
 MCU = atmega6490a              program/data size = 128 , 0
 MCU = atmega6490p              program/data size = 128 , 0
-MCU = atmega649a               program/data size = 120 , 0
-MCU = atmega649p               program/data size = 120 , 0
-MCU = atmega64c1               program/data size = 152 , 0
 MCU = atmega64hve              program/data size = 128 , 0
+MCU = atmega16hva              program/data size = 112 , 0
+MCU = atmega16hva2             program/data size = 116 , 0
+MCU = atmega16hvb              program/data size = 144 , 0
+MCU = atmega16hvbrevb          program/data size = 144 , 0
+MCU = atmega32hvb              program/data size = 144 , 0
+MCU = atmega32hvbrevb          program/data size = 144 , 0
+MCU = at90can32                program/data size = 176 , 0
+MCU = at90can64                program/data size = 176 , 0
+MCU = at90pwm216               program/data size = 156 , 0
+MCU = at90pwm316               program/data size = 156 , 0
+MCU = atmega32c1               program/data size = 152 , 0
+MCU = atmega64c1               program/data size = 152 , 0
+MCU = atmega16m1               program/data size = 152 , 0
+MCU = atmega32m1               program/data size = 152 , 0
 MCU = atmega64m1               program/data size = 152 , 0
-MCU = atmega8                  program/data size = 66 , 0
-MCU = atmega8515               program/data size = 62 , 0
-MCU = atmega8535               program/data size = 70 , 0
-MCU = atmega88                 program/data size = 80 , 0
-MCU = atmega88a                program/data size = 80 , 0
-MCU = atmega88p                program/data size = 80 , 0
-MCU = atmega88pa               program/data size = 80 , 0
-MCU = atmega8hva               program/data size = 70 , 0
-MCU = atmega8hvd               compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: crtm8hvd.o: No such file: No such file or directory
-MCU = atmega8u2                program/data size = 180 , 0
-MCU = attiny11                 compile error: /tmp/pyavrutils_N_fGEO/pyavrutils_eyTHYR.c:1: error: MCU ‘attiny11’ supported for assembler only
-MCU = attiny12                 compile error: /tmp/pyavrutils_XDRydn/pyavrutils_nh2S0A.c:1: error: MCU ‘attiny12’ supported for assembler only
-MCU = attiny13                 program/data size = 44 , 0
-MCU = attiny13a                program/data size = 44 , 0
-MCU = attiny15                 compile error: /tmp/pyavrutils_7d1gOJ/pyavrutils_JprvVQ.c:1: error: MCU ‘attiny15’ supported for assembler only
-MCU = attiny167                program/data size = 108 , 0
-MCU = attiny22                 program/data size = 30 , 0
-MCU = attiny2313               program/data size = 62 , 0
-MCU = attiny2313a              program/data size = 66 , 0
-MCU = attiny24                 program/data size = 58 , 0
-MCU = attiny24a                program/data size = 58 , 0
-MCU = attiny25                 program/data size = 54 , 0
-MCU = attiny26                 program/data size = 48 , 0
-MCU = attiny261                program/data size = 62 , 0
-MCU = attiny261a               program/data size = 62 , 0
-MCU = attiny28                 compile error: /tmp/pyavrutils_aFkNt5/pyavrutils_cGdgp5.c:1: error: MCU ‘attiny28’ supported for assembler only
-MCU = attiny4313               program/data size = 70 , 0
-MCU = attiny43u                program/data size = 60 , 0
-MCU = attiny44                 program/data size = 62 , 0
-MCU = attiny44a                program/data size = 62 , 0
-MCU = attiny45                 program/data size = 58 , 0
-MCU = attiny461                program/data size = 66 , 0
-MCU = attiny461a               compile error: Known MCU names:
-MCU = attiny48                 program/data size = 68 , 0
-MCU = attiny84                 program/data size = 62 , 0
-MCU = attiny85                 program/data size = 58 , 0
-MCU = attiny861                program/data size = 66 , 0
-MCU = attiny861a               program/data size = 66 , 0
-MCU = attiny87                 program/data size = 68 , 0
-MCU = attiny88                 program/data size = 68 , 0
-MCU = atxmega128a1             program/data size = 568 , 0
-MCU = atxmega128a3             program/data size = 546 , 0
-MCU = atxmega128d3             program/data size = 514 , 0
+MCU = atmega16u4               program/data size = 200 , 0
+MCU = atmega32u4               program/data size = 200 , 0
+MCU = atmega32u6               program/data size = 180 , 0
+MCU = at90usb646               program/data size = 180 , 0
+MCU = at90usb647               program/data size = 180 , 0
+MCU = at90scr100               program/data size = 180 , 0
+MCU = at94k                    program/data size = 172 , 0
+MCU = m3000                    compile error
+MCU = atmega128                program/data size = 168 , 0
+MCU = atmega1280               program/data size = 256 , 0
+MCU = atmega1281               program/data size = 232 , 0
+MCU = atmega1284p              program/data size = 168 , 0
+MCU = atmega128rfa1            program/data size = 316 , 0
+MCU = at90can128               program/data size = 176 , 0
+MCU = at90usb1286              program/data size = 180 , 0
+MCU = at90usb1287              program/data size = 180 , 0
+MCU = atmega2560               program/data size = 260 , 0
+MCU = atmega2561               program/data size = 236 , 0
 MCU = atxmega16a4              program/data size = 404 , 0
 MCU = atxmega16d4              program/data size = 392 , 0
-MCU = atxmega192a3             program/data size = 546 , 0
-MCU = atxmega192d3             program/data size = 514 , 0
-MCU = atxmega256a3             program/data size = 546 , 0
-MCU = atxmega256a3b            program/data size = 546 , 0
-MCU = atxmega256d3             program/data size = 514 , 0
-MCU = atxmega32a4              program/data size = 412 , 0
+MCU = atxmega16x1              compile error
+MCU = atxmega32a4              program/data size = 404 , 0
 MCU = atxmega32d4              program/data size = 392 , 0
-MCU = atxmega64a1              program/data size = 564 , 0
-MCU = atxmega64a3              program/data size = 542 , 0
-MCU = atxmega64d3              program/data size = 510 , 0
-MCU = avr1                     compile error: /tmp/pyavrutils_BoVDBm/pyavrutils_6rkHeH.c:1: error: MCU ‘avr1’ supported for assembler only
-MCU = avr2                     program/data size = 0 , 0
-MCU = avr25                    program/data size = 0 , 0
-MCU = avr3                     compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: avr:31 architecture of input file `/usr/lib/gcc/avr/4.3.5/../../../avr/lib/avr3/crt43320.o&#39; is incompatible with avr output
-MCU = avr31                    compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: avr:31 architecture of input file `/usr/lib/gcc/avr/4.3.5/../../../avr/lib/avr31/crtm103.o&#39; is incompatible with avr output
-MCU = avr35                    compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: avr:35 architecture of input file `/usr/lib/gcc/avr/4.3.5/../../../avr/lib/avr35/crtusb162.o&#39; is incompatible with avr output
-MCU = avr4                     program/data size = 0 , 0
-MCU = avr5                     program/data size = 0 , 0
-MCU = avr51                    compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: avr:51 architecture of input file `/usr/lib/gcc/avr/4.3.5/../../../avr/lib/avr51/crtm128.o&#39; is incompatible with avr output
-MCU = avr6                     compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avr6/libgcc.a when searching for -lgcc
-MCU = avrxmega2                compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avrxmega2/libgcc.a when searching for -lgcc
-MCU = avrxmega3                compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avrxmega3/libgcc.a when searching for -lgcc
-MCU = avrxmega4                compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avrxmega4/libgcc.a when searching for -lgcc
-MCU = avrxmega5                compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avrxmega5/libgcc.a when searching for -lgcc
-MCU = avrxmega6                compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avrxmega6/libgcc.a when searching for -lgcc
-MCU = avrxmega7                compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: skipping incompatible /usr/lib/gcc/avr/4.3.5/avrxmega7/libgcc.a when searching for -lgcc
-MCU = m3000f                   compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: crtm3000f.o: No such file: No such file or directory
-MCU = m3000s                   compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: crtm3000s.o: No such file: No such file or directory
-MCU = m3001b                   compile error: /usr/lib/gcc/avr/4.3.5/../../../avr/bin/ld: crtm3001b.o: No such file: No such file or directory
+MCU = atxmega32x1              compile error
+MCU = atxmega64a3              program/data size = 516 , 0
+MCU = atxmega64d3              program/data size = 484 , 0
+MCU = atxmega64a1              program/data size = 536 , 0
+MCU = atxmega64a1u             program/data size = 548 , 0
+MCU = atxmega128a3             program/data size = 520 , 0
+MCU = atxmega128b1             compile error
+MCU = atxmega128d3             program/data size = 488 , 0
+MCU = atxmega192a3             program/data size = 520 , 0
+MCU = atxmega192d3             program/data size = 488 , 0
+MCU = atxmega256a3             program/data size = 520 , 0
+MCU = atxmega256a3b            program/data size = 520 , 0
+MCU = atxmega256a3bu           compile error
+MCU = atxmega256d3             program/data size = 488 , 0
+MCU = atxmega128a1             program/data size = 540 , 0
+MCU = atxmega128a1u            program/data size = 552 , 0
+MCU = attiny4                  program/data size = 48 , 0
+MCU = attiny5                  program/data size = 50 , 0
+MCU = attiny9                  program/data size = 48 , 0
+MCU = attiny10                 program/data size = 50 , 0
+MCU = attiny20                 program/data size = 62 , 0
+MCU = attiny40                 program/data size = 62 , 0
 </pre></div>
 </div>
 </div>
@@ -615,7 +637,7 @@ MCU = m3001b                   compile error: /usr/lib/gcc/avr/4.3.5/../../../av
                         title="previous chapter">Usage</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="build.html"
-                        title="next chapter">Build tests</a></p>
+                        title="next chapter">Arduino build tests</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/examples.txt"
@@ -645,17 +667,17 @@ MCU = m3001b                   compile error: /usr/lib/gcc/avr/4.3.5/../../../av
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="build.html" title="Build tests"
+          <a href="build.html" title="Arduino build tests"
              >next</a> |</li>
         <li class="right" >
           <a href="usage.html" title="Usage"
              >previous</a> |</li>
-        <li><a href="index.html">pyavrutils 0.0.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.0.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011, ponty.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

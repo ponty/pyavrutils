@@ -23,78 +23,78 @@ avr-gcc -o build/core/wiring_shift.o -c -ffunction-sections -fdata-sections -fno
 fnProcessing(["build/min.cpp"], ["build/min.pde"])
 void setup();
 void loop();
-/tmp/pyavrutils_cPNOY6/min/min.pde min
+/tmp/pyavrutils_wlBMFz/min/min.pde min
 avr-g++ -o build/min.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega1280 -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/min.cpp
-avr-gcc -mmcu=atmega1280 -Os -Wl,--gc-sections -o min.elf build/min.o build/core/wiring_pulse.o build/core/pins_arduino.o build/core/wiring_analog.o build/core/wiring.o build/core/usb.o build/core/WInterrupts.o build/core/wiring_digital.o build/core/wiring_shift.o build/core/HardwareSerial.o build/core/WMath.o build/core/WString.o build/core/Print.o build/core/usb_api.o build/core/Tone.o -lm
+avr-gcc -mmcu=atmega1280 -Os -Wl,--gc-sections -o min.elf build/min.o build/core/WInterrupts.o build/core/wiring_digital.o build/core/usb.o build/core/wiring_shift.o build/core/wiring_pulse.o build/core/pins_arduino.o build/core/wiring_analog.o build/core/wiring.o build/core/usb_api.o build/core/WString.o build/core/WMath.o build/core/HardwareSerial.o build/core/Tone.o build/core/Print.o -lm
 avr-objcopy -O ihex -R .eeprom min.elf min.hex
 avr-size --target=ihex min.hex
    text	   data	    bss	    dec	    hex	filename
-      0	   3060	      0	   3060	    bf4	min.hex
+      0	   3066	      0	   3066	    bfa	min.hex
 scons: done building targets.
 
 ----------
 stderr
 ----------
-In file included from build/core/wiring_private.h:30,
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/HardwareSerial.cpp:38:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
 build/core/Print.cpp: In member function 'void Print::print(const String&)':
-build/core/Print.cpp:51: warning: comparison between signed and unsigned integer expressions
+build/core/Print.cpp:51:32: warning: comparison between signed and unsigned integer expressions
 build/core/Print.cpp: In member function 'void Print::print_P(prog_char*)':
-build/core/Print.cpp:234: warning: suggest parentheses around assignment used as truth value
-build/core/Tone.cpp:107: warning: only initialized variables can be placed into program memory area
-In file included from build/core/wiring_private.h:30,
+build/core/Print.cpp:234:19: warning: suggest parentheses around assignment used as truth value
+build/core/Tone.cpp:107:46: warning: only initialized variables can be placed into program memory area
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/WInterrupts.c:40:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/pins_arduino.c:26:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/pins_arduino.c:130:
-build/core/pins_mega.cxx:68: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:69: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:70: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:71: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:72: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:73: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:74: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:75: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:77: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:78: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:79: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:84: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:85: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:86: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:87: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:88: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:89: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:90: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:91: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:93: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:94: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:95: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:100: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:101: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:102: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:103: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:104: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:105: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:106: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:107: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:109: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:110: warning: initialization makes integer from pointer without a cast
-build/core/pins_mega.cxx:111: warning: initialization makes integer from pointer without a cast
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/pins_arduino.c:130:0:
+build/core/pins_mega.cxx:68:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:69:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:70:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:71:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:72:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:73:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:74:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:75:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:77:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:78:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:79:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:84:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:85:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:86:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:87:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:88:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:89:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:90:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:91:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:93:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:94:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:95:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:100:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:101:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:102:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:103:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:104:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:105:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:106:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:107:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:109:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:110:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_mega.cxx:111:2: warning: initialization makes integer from pointer without a cast
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring.c:32:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring_analog.c:34:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring_digital.c:34:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring_pulse.c:25:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring_shift.c:25:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."

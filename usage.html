@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Usage &mdash; pyavrutils 0.0.3 documentation</title>
+    <title>Usage &mdash; pyavrutils 0.0.7 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.3',
+        VERSION:     '0.0.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pyavrutils 0.0.3 documentation" href="index.html" />
+    <link rel="top" title="pyavrutils 0.0.7 documentation" href="index.html" />
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="About" href="readme.html" /> 
   </head>
@@ -42,7 +42,7 @@
         <li class="right" >
           <a href="readme.html" title="About"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pyavrutils 0.0.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.0.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -58,12 +58,12 @@
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyavrutils</span> <span class="kn">import</span> <span class="n">AvrGcc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">AvrGcc</span><span class="p">(</span><span class="n">mcu</span><span class="o">=</span><span class="s">&#39;atmega48&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">targets</span>
-<span class="go">[&#39;at43usb320&#39;, &#39;at43usb355&#39;, &#39;at76c711&#39;, &#39;at86rf401&#39;, &#39;at90c8534&#39;, &#39;at90can128&#39;, &#39;at90can32&#39;, &#39;at90can64&#39;, &#39;at90pwm1&#39;, &#39;at90pwm2&#39;, &#39;at90pwm216&#39;, &#39;at90pwm2b&#39;, &#39;at90pwm3&#39;, &#39;at90pwm316&#39;, &#39;at90pwm3b&#39;, &#39;at90pwm81&#39;, &#39;at90s1200&#39;, &#39;at90s2313&#39;, &#39;at90s2323&#39;, &#39;at90s2333&#39;, &#39;at90s2343&#39;, &#39;at90s4414&#39;, &#39;at90s4433&#39;, &#39;at90s4434&#39;, &#39;at90s8515&#39;, &#39;at90s8535&#39;, &#39;at90scr100&#39;, &#39;at90usb1286&#39;, &#39;at90usb1287&#39;, &#39;at90usb162&#39;, &#39;at90usb646&#39;, &#39;at90usb647&#39;, &#39;at90usb82&#39;, &#39;at94k&#39;, &#39;ata6289&#39;, &#39;atmega103&#39;, &#39;atmega128&#39;, &#39;atmega1280&#39;, &#39;atmega1281&#39;, &#39;atmega1284p&#39;, &#39;atmega128rfa1&#39;, &#39;atmega16&#39;, &#39;atmega161&#39;, &#39;atmega162&#39;, &#39;atmega163&#39;, &#39;atmega164a&#39;, &#39;atmega164p&#39;, &#39;atmega165&#39;, &#39;atmega165a&#39;, &#39;atmega165p&#39;, &#39;atmega168&#39;, &#39;atmega168a&#39;, &#39;atmega168p&#39;, &#39;atmega169&#39;, &#39;atmega169a&#39;, &#39;atmega169p&#39;, &#39;atmega169pa&#39;, &#39;atmega16a&#39;, &#39;atmega16c1&#39;, &#39;atmega16hva&#39;, &#39;atmega16hva2&#39;, &#39;atmega16hvb&#39;, &#39;atmega16m1&#39;, &#39;atmega16u2&#39;, &#39;atmega16u4&#39;, &#39;atmega2560&#39;, &#39;atmega2561&#39;, &#39;atmega32&#39;, &#39;atmega323&#39;, &#39;atmega324a&#39;, &#39;atmega324p&#39;, &#39;atmega324pa&#39;, &#39;atmega325&#39;, &#39;atmega3250&#39;, &#39;atmega3250p&#39;, &#39;atmega325p&#39;, &#39;atmega328&#39;, &#39;atmega328p&#39;, &#39;atmega329&#39;, &#39;atmega3290&#39;, &#39;atmega3290p&#39;, &#39;atmega329p&#39;, &#39;atmega329pa&#39;, &#39;atmega32c1&#39;, &#39;atmega32hvb&#39;, &#39;atmega32m1&#39;, &#39;atmega32u2&#39;, &#39;atmega32u4&#39;, &#39;atmega32u6&#39;, &#39;atmega406&#39;, &#39;atmega48&#39;, &#39;atmega48a&#39;, &#39;atmega48p&#39;, &#39;atmega4hvd&#39;, &#39;atmega64&#39;, &#39;atmega640&#39;, &#39;atmega644&#39;, &#39;atmega644a&#39;, &#39;atmega644p&#39;, &#39;atmega644pa&#39;, &#39;atmega645&#39;, &#39;atmega6450&#39;, &#39;atmega6450a&#39;, &#39;atmega6450p&#39;, &#39;atmega645a&#39;, &#39;atmega645p&#39;, &#39;atmega649&#39;, &#39;atmega6490&#39;, &#39;atmega6490a&#39;, &#39;atmega6490p&#39;, &#39;atmega649a&#39;, &#39;atmega649p&#39;, &#39;atmega64c1&#39;, &#39;atmega64hve&#39;, &#39;atmega64m1&#39;, &#39;atmega8&#39;, &#39;atmega8515&#39;, &#39;atmega8535&#39;, &#39;atmega88&#39;, &#39;atmega88a&#39;, &#39;atmega88p&#39;, &#39;atmega88pa&#39;, &#39;atmega8hva&#39;, &#39;atmega8hvd&#39;, &#39;atmega8u2&#39;, &#39;attiny11&#39;, &#39;attiny12&#39;, &#39;attiny13&#39;, &#39;attiny13a&#39;, &#39;attiny15&#39;, &#39;attiny167&#39;, &#39;attiny22&#39;, &#39;attiny2313&#39;, &#39;attiny2313a&#39;, &#39;attiny24&#39;, &#39;attiny24a&#39;, &#39;attiny25&#39;, &#39;attiny26&#39;, &#39;attiny261&#39;, &#39;attiny261a&#39;, &#39;attiny28&#39;, &#39;attiny4313&#39;, &#39;attiny43u&#39;, &#39;attiny44&#39;, &#39;attiny44a&#39;, &#39;attiny45&#39;, &#39;attiny461&#39;, &#39;attiny461a&#39;, &#39;attiny48&#39;, &#39;attiny84&#39;, &#39;attiny85&#39;, &#39;attiny861&#39;, &#39;attiny861a&#39;, &#39;attiny87&#39;, &#39;attiny88&#39;, &#39;atxmega128a1&#39;, &#39;atxmega128a3&#39;, &#39;atxmega128d3&#39;, &#39;atxmega16a4&#39;, &#39;atxmega16d4&#39;, &#39;atxmega192a3&#39;, &#39;atxmega192d3&#39;, &#39;atxmega256a3&#39;, &#39;atxmega256a3b&#39;, &#39;atxmega256d3&#39;, &#39;atxmega32a4&#39;, &#39;atxmega32d4&#39;, &#39;atxmega64a1&#39;, &#39;atxmega64a3&#39;, &#39;atxmega64d3&#39;, &#39;avr1&#39;, &#39;avr2&#39;, &#39;avr25&#39;, &#39;avr3&#39;, &#39;avr31&#39;, &#39;avr35&#39;, &#39;avr4&#39;, &#39;avr5&#39;, &#39;avr51&#39;, &#39;avr6&#39;, &#39;avrxmega2&#39;, &#39;avrxmega3&#39;, &#39;avrxmega4&#39;, &#39;avrxmega5&#39;, &#39;avrxmega6&#39;, &#39;avrxmega7&#39;, &#39;m3000f&#39;, &#39;m3000s&#39;, &#39;m3001b&#39;]</span>
+<span class="go">[u&#39;avr1&#39;, u&#39;avr2&#39;, u&#39;avr25&#39;, u&#39;avr3&#39;, u&#39;avr31&#39;, u&#39;avr35&#39;, u&#39;avr4&#39;, u&#39;avr5&#39;, u&#39;avr51&#39;, u&#39;avr6&#39;, u&#39;avrxmega1&#39;, u&#39;avrxmega2&#39;, u&#39;avrxmega3&#39;, u&#39;avrxmega4&#39;, u&#39;avrxmega5&#39;, u&#39;avrxmega6&#39;, u&#39;avrxmega7&#39;, u&#39;avrtiny10&#39;, u&#39;at90s1200&#39;, u&#39;attiny11&#39;, u&#39;attiny12&#39;, u&#39;attiny15&#39;, u&#39;attiny28&#39;, u&#39;at90s2313&#39;, u&#39;at90s2323&#39;, u&#39;at90s2333&#39;, u&#39;at90s2343&#39;, u&#39;attiny22&#39;, u&#39;attiny26&#39;, u&#39;at90s4414&#39;, u&#39;at90s4433&#39;, u&#39;at90s4434&#39;, u&#39;at90s8515&#39;, u&#39;at90c8534&#39;, u&#39;at90s8535&#39;, u&#39;attiny13&#39;, u&#39;attiny13a&#39;, u&#39;attiny2313&#39;, u&#39;attiny2313a&#39;, u&#39;attiny24&#39;, u&#39;attiny24a&#39;, u&#39;attiny4313&#39;, u&#39;attiny44&#39;, u&#39;attiny44a&#39;, u&#39;attiny84&#39;, u&#39;attiny84a&#39;, u&#39;attiny25&#39;, u&#39;attiny45&#39;, u&#39;attiny85&#39;, u&#39;attiny261&#39;, u&#39;attiny261a&#39;, u&#39;attiny461&#39;, u&#39;attiny461a&#39;, u&#39;attiny861&#39;, u&#39;attiny861a&#39;, u&#39;attiny87&#39;, u&#39;attiny43u&#39;, u&#39;attiny48&#39;, u&#39;attiny88&#39;, u&#39;at86rf401&#39;, u&#39;ata6289&#39;, u&#39;at43usb355&#39;, u&#39;at76c711&#39;, u&#39;atmega103&#39;, u&#39;at43usb320&#39;, u&#39;attiny167&#39;, u&#39;at90usb82&#39;, u&#39;at90usb162&#39;, u&#39;atmega8u2&#39;, u&#39;atmega16u2&#39;, u&#39;atmega32u2&#39;, u&#39;attiny1634&#39;, u&#39;atmega8&#39;, u&#39;atmega48&#39;, u&#39;atmega48a&#39;, u&#39;atmega48pa&#39;, u&#39;atmega48p&#39;, u&#39;atmega88&#39;, u&#39;atmega88a&#39;, u&#39;atmega88p&#39;, u&#39;atmega88pa&#39;, u&#39;atmega8515&#39;, u&#39;atmega8535&#39;, u&#39;atmega8hva&#39;, u&#39;at90pwm1&#39;, u&#39;at90pwm2&#39;, u&#39;at90pwm2b&#39;, u&#39;at90pwm3&#39;, u&#39;at90pwm3b&#39;, u&#39;at90pwm81&#39;, u&#39;at90pwm161&#39;, u&#39;atmega16&#39;, u&#39;atmega16a&#39;, u&#39;atmega161&#39;, u&#39;atmega162&#39;, u&#39;atmega163&#39;, u&#39;atmega164a&#39;, u&#39;atmega164p&#39;, u&#39;atmega165&#39;, u&#39;atmega165a&#39;, u&#39;atmega165p&#39;, u&#39;atmega168&#39;, u&#39;atmega168a&#39;, u&#39;atmega168p&#39;, u&#39;atmega169&#39;, u&#39;atmega169a&#39;, u&#39;atmega169p&#39;, u&#39;atmega169pa&#39;, u&#39;atmega32&#39;, u&#39;atmega323&#39;, u&#39;atmega324a&#39;, u&#39;atmega324p&#39;, u&#39;atmega324pa&#39;, u&#39;atmega325&#39;, u&#39;atmega325a&#39;, u&#39;atmega325p&#39;, u&#39;atmega325pa&#39;, u&#39;atmega3250&#39;, u&#39;atmega3250a&#39;, u&#39;atmega3250p&#39;, u&#39;atmega3250pa&#39;, u&#39;atmega328&#39;, u&#39;atmega328p&#39;, u&#39;atmega329&#39;, u&#39;atmega329a&#39;, u&#39;atmega329p&#39;, u&#39;atmega329pa&#39;, u&#39;atmega3290&#39;, u&#39;atmega3290a&#39;, u&#39;atmega3290p&#39;, u&#39;atmega3290pa&#39;, u&#39;atmega406&#39;, u&#39;atmega64&#39;, u&#39;atmega640&#39;, u&#39;atmega644&#39;, u&#39;atmega644a&#39;, u&#39;atmega644p&#39;, u&#39;atmega644pa&#39;, u&#39;atmega645&#39;, u&#39;atmega645a&#39;, u&#39;atmega645p&#39;, u&#39;atmega649&#39;, u&#39;atmega649p&#39;, u&#39;atmega649a&#39;, u&#39;atmega6450&#39;, u&#39;atmega6450a&#39;, u&#39;atmega6450p&#39;, u&#39;atmega6490&#39;, u&#39;atmega6490a&#39;, u&#39;atmega6490p&#39;, u&#39;atmega64hve&#39;, u&#39;atmega16hva&#39;, u&#39;atmega16hva2&#39;, u&#39;atmega16hvb&#39;, u&#39;atmega16hvbrevb&#39;, u&#39;atmega32hvb&#39;, u&#39;atmega32hvbrevb&#39;, u&#39;at90can32&#39;, u&#39;at90can64&#39;, u&#39;at90pwm216&#39;, u&#39;at90pwm316&#39;, u&#39;atmega32c1&#39;, u&#39;atmega64c1&#39;, u&#39;atmega16m1&#39;, u&#39;atmega32m1&#39;, u&#39;atmega64m1&#39;, u&#39;atmega16u4&#39;, u&#39;atmega32u4&#39;, u&#39;atmega32u6&#39;, u&#39;at90usb646&#39;, u&#39;at90usb647&#39;, u&#39;at90scr100&#39;, u&#39;at94k&#39;, u&#39;m3000&#39;, u&#39;atmega128&#39;, u&#39;atmega1280&#39;, u&#39;atmega1281&#39;, u&#39;atmega1284p&#39;, u&#39;atmega128rfa1&#39;, u&#39;at90can128&#39;, u&#39;at90usb1286&#39;, u&#39;at90usb1287&#39;, u&#39;atmega2560&#39;, u&#39;atmega2561&#39;, u&#39;atxmega16a4&#39;, u&#39;atxmega16d4&#39;, u&#39;atxmega16x1&#39;, u&#39;atxmega32a4&#39;, u&#39;atxmega32d4&#39;, u&#39;atxmega32x1&#39;, u&#39;atxmega64a3&#39;, u&#39;atxmega64d3&#39;, u&#39;atxmega64a1&#39;, u&#39;atxmega64a1u&#39;, u&#39;atxmega128a3&#39;, u&#39;atxmega128b1&#39;, u&#39;atxmega128d3&#39;, u&#39;atxmega192a3&#39;, u&#39;atxmega192d3&#39;, u&#39;atxmega256a3&#39;, u&#39;atxmega256a3b&#39;, u&#39;atxmega256a3bu&#39;, u&#39;atxmega256d3&#39;, u&#39;atxmega128a1&#39;, u&#39;atxmega128a1u&#39;, u&#39;attiny4&#39;, u&#39;attiny5&#39;, u&#39;attiny9&#39;, u&#39;attiny10&#39;, u&#39;attiny20&#39;, u&#39;attiny40&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">options_generated</span><span class="p">()</span>
 <span class="go">[&#39;avr-gcc&#39;, &#39;-Df_cpu=4000000&#39;, &#39;-mmcu=atmega48&#39;, &#39;--std=gnu99&#39;, &#39;-Wl,--relax&#39;, &#39;-Wl,--gc-sections&#39;, &#39;-ffunction-sections&#39;, &#39;-fdata-sections&#39;, &#39;-fno-inline-small-functions&#39;, &#39;-Os&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;int main(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">&#39;/tmp/pyavrutils_aKbOrD.elf&#39;</span>
+<span class="go">&#39;/tmp/pyavrutils_7JaARM.elf&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">AvrSize &lt;prog:80 bytes 2.0% mem:0 bytes 0.0% &gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
@@ -73,7 +73,7 @@
 <span class="go">[&#39;avr-gcc&#39;, &#39;-Df_cpu=4000000&#39;, &#39;-mmcu=atmega168&#39;, &#39;--std=gnu99&#39;, &#39;-Wl,--relax&#39;, &#39;-Wl,--gc-sections&#39;, &#39;-ffunction-sections&#39;, &#39;-fdata-sections&#39;, &#39;-fno-inline-small-functions&#39;, &#39;-Os&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;int main(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">&#39;/tmp/pyavrutils_aKbOrD.elf&#39;</span>
+<span class="go">&#39;/tmp/pyavrutils_7JaARM.elf&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
 <span class="go">132</span>
 </pre></div>
@@ -85,42 +85,45 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">Arduino</span><span class="p">(</span><span class="n">board</span><span class="o">=</span><span class="s">&#39;mini&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;void setup(){};void loop(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">path(&#39;/tmp/pyavrutils_YcXjFK/pyavrutils_TvvlzS/pyavrutils_TvvlzS.elf&#39;)</span>
+<span class="go">path(&#39;/tmp/pyavrutils_4lIppS/pyavrutils_MzA3ci/pyavrutils_MzA3ci.elf&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-<span class="go">AvrSize &lt;prog:1802 bytes 11.0% mem:191 bytes 18.7% &gt;</span>
+<span class="go">AvrSize &lt;prog:1856 bytes 11.3% mem:191 bytes 18.7% &gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
-<span class="go">1802</span>
+<span class="go">1856</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">board</span><span class="o">=</span><span class="s">&#39;pro&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;void setup(){};void loop(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">path(&#39;/tmp/pyavrutils_ssusd_/pyavrutils_hFRzOn/pyavrutils_hFRzOn.elf&#39;)</span>
+<span class="go">path(&#39;/tmp/pyavrutils_S7fK6_/pyavrutils_oJxwou/pyavrutils_oJxwou.elf&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
-<span class="go">1826</span>
+<span class="go">1880</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">warnings</span>
-<span class="go">[&#39;/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, &#39;build/core/Print.cpp:48: warning: comparison between signed and unsigned integer expressions&#39;, &#39;build/core/Tone.cpp:108: warning: only initialized variables can be placed into program memory area&#39;, &#39;/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, &#39;/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, &#39;build/core/pins_arduino.c:361: warning: initialization makes integer from pointer without a cast&#39;, &#39;build/core/pins_arduino.c:362: warning: initialization makes integer from pointer without a cast&#39;, &#39;build/core/pins_arduino.c:363: warning: initialization makes integer from pointer without a cast&#39;, &#39;build/core/pins_arduino.c:369: warning: initialization makes integer from pointer without a cast&#39;, &#39;build/core/pins_arduino.c:370: warning: initialization makes integer from pointer without a cast&#39;, &#39;build/core/pins_arduino.c:371: warning: initialization makes integer from pointer without a cast&#39;, &#39;build/core/pins_arduino.c:377: warning: initialization makes integer from pointer without a cast&#39;, &#39;build/core/pins_arduino.c:378: warning: initialization makes integer from pointer without a cast&#39;, &#39;build/core/pins_arduino.c:379: warning: initialization makes integer from pointer without a cast&#39;, &#39;/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, &#39;/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, &#39;/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, &#39;/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, &#39;/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;]</span>
+<span class="go">[u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;build/core/Print.cpp:48:32: warning: comparison between signed and unsigned integer expressions&#39;, u&#39;build/core/Tone.cpp:108:45: warning: only initialized variables can be placed into program memory area&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;build/core/pins_arduino.c:361:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:362:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:363:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:369:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:370:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:371:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:377:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:378:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:379:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;]</span>
 </pre></div>
 </div>
 <p>display warnings on console:</p>
 <div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.cli.arduino_warnings /usr/share/arduino/examples/Communication/Dimmer/Dimmer.pde
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-build/core/Print.cpp:48: warning: comparison between signed and unsigned integer expressions
-build/core/Tone.cpp:108: warning: only initialized variables can be placed into program memory area
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-build/core/pins_arduino.c:361: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:362: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:363: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:369: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:370: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:371: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:377: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:378: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:379: warning: initialization makes integer from pointer without a cast
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
+Traceback (most recent call last):
+  File &quot;/usr/lib/python2.7/runpy.py&quot;, line 162, in _run_module_as_main
+    &quot;__main__&quot;, fname, loader, pkg_name)
+  File &quot;/usr/lib/python2.7/runpy.py&quot;, line 72, in _run_code
+    exec code in run_globals
+  File &quot;/home/titi/aha/workspace/pyavrutils/pyavrutils/cli/arduino_warnings.py&quot;, line 6, in &lt;module&gt;
+    @entrypoint    
+  File &quot;/home/titi/pythonpath/entrypoint2/__init__.py&quot;, line 396, in entrypoint
+    return func(**kwargs)
+  File &quot;/home/titi/aha/workspace/pyavrutils/pyavrutils/cli/arduino_warnings.py&quot;, line 12, in warnings
+    cc.build(filename)
+  File &quot;pyavrutils/arduino.py&quot;, line 141, in build
+    return self.build_arscons(sources=sources)
+  File &quot;pyavrutils/arduino.py&quot;, line 168, in build_arscons
+    allfiles = self.setup_sources(tempdir, sources)    
+  File &quot;pyavrutils/arduino.py&quot;, line 119, in setup_sources
+    for y in x.parent.files():
+  File &quot;/usr/local/lib/python2.7/dist-packages/path.py&quot;, line 357, in files
+    return [p for p in self.listdir(pattern) if p.isfile()]
+  File &quot;/usr/local/lib/python2.7/dist-packages/path.py&quot;, line 328, in listdir
+    names = os.listdir(self)
+OSError: [Errno 2] No such file or directory: &#39;/usr/share/arduino/examples/Communication/Dimmer&#39;
 </pre></div>
 </div>
 </div>
@@ -181,12 +184,12 @@ build/core/pins_arduino.c:379: warning: initialization makes integer from pointe
         <li class="right" >
           <a href="readme.html" title="About"
              >previous</a> |</li>
-        <li><a href="index.html">pyavrutils 0.0.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.0.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011, ponty.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>API &mdash; pyavrutils 0.0.3 documentation</title>
+    <title>API &mdash; pyavrutils 0.0.7 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.3',
+        VERSION:     '0.0.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,9 +25,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pyavrutils 0.0.3 documentation" href="index.html" />
+    <link rel="top" title="pyavrutils 0.0.7 documentation" href="index.html" />
     <link rel="next" title="Development" href="dev.html" />
-    <link rel="prev" title="Build tests" href="build.html" /> 
+    <link rel="prev" title="Arduino build tests" href="build.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,9 +40,9 @@
           <a href="dev.html" title="Development"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="build.html" title="Build tests"
+          <a href="build.html" title="Arduino build tests"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pyavrutils 0.0.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.0.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -151,7 +151,7 @@ sources=&#8217;int main(){}&#8217;</p>
 
 <dl class="class">
 <dt id="pyavrutils.Arduino">
-<em class="property">class </em><tt class="descclassname">pyavrutils.</tt><tt class="descname">Arduino</tt><big>(</big><em>board='pro'</em>, <em>hwpack='arduino'</em>, <em>mcu=None</em>, <em>f_cpu=None</em>, <em>extra_lib=None</em>, <em>ver=None</em>, <em>home='auto'</em><big>)</big><a class="headerlink" href="#pyavrutils.Arduino" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">pyavrutils.</tt><tt class="descname">Arduino</tt><big>(</big><em>board='pro'</em>, <em>hwpack='arduino'</em>, <em>mcu=None</em>, <em>f_cpu=None</em>, <em>extra_lib=None</em>, <em>ver=None</em>, <em>home='auto'</em>, <em>backend='arscons'</em><big>)</big><a class="headerlink" href="#pyavrutils.Arduino" title="Permalink to this definition">¶</a></dt>
 <dd><p>wrapper for <a class="reference external" href="http://code.google.com/p/arscons/">arscons</a></p>
 <dl class="method">
 <dt id="pyavrutils.Arduino.build">
@@ -159,14 +159,39 @@ sources=&#8217;int main(){}&#8217;</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="pyavrutils.Arduino.build_arscons">
+<tt class="descname">build_arscons</tt><big>(</big><em>sources=None</em><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.build_arscons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.Arduino.build_ino">
+<tt class="descname">build_ino</tt><big>(</big><em>sources=None</em><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.build_ino" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="pyavrutils.Arduino.command_list">
 <tt class="descname">command_list</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.command_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.Arduino.command_list_arscons">
+<tt class="descname">command_list_arscons</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.command_list_arscons" title="Permalink to this definition">¶</a></dt>
 <dd><p>command line as list</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.Arduino.command_list_ino">
+<tt class="descname">command_list_ino</tt><big>(</big><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.command_list_ino" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="pyavrutils.Arduino.error_text">
 <tt class="descname">error_text</tt><a class="headerlink" href="#pyavrutils.Arduino.error_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.Arduino.guess_projname">
+<tt class="descname">guess_projname</tt><big>(</big><em>allfiles</em><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.guess_projname" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -182,6 +207,11 @@ sources=&#8217;int main(){}&#8217;</p>
 <dl class="attribute">
 <dt id="pyavrutils.Arduino.ok">
 <tt class="descname">ok</tt><a class="headerlink" href="#pyavrutils.Arduino.ok" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyavrutils.Arduino.setup_sources">
+<tt class="descname">setup_sources</tt><big>(</big><em>tempdir</em>, <em>sources</em><big>)</big><a class="headerlink" href="#pyavrutils.Arduino.setup_sources" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -211,7 +241,7 @@ sources=&#8217;int main(){}&#8217;</p>
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="build.html"
-                        title="previous chapter">Build tests</a></p>
+                        title="previous chapter">Arduino build tests</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="dev.html"
                         title="next chapter">Development</a></p>
@@ -247,14 +277,14 @@ sources=&#8217;int main(){}&#8217;</p>
           <a href="dev.html" title="Development"
              >next</a> |</li>
         <li class="right" >
-          <a href="build.html" title="Build tests"
+          <a href="build.html" title="Arduino build tests"
              >previous</a> |</li>
-        <li><a href="index.html">pyavrutils 0.0.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.0.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011, ponty.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

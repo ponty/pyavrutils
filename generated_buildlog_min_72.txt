@@ -23,54 +23,54 @@ avr-gcc -o build/core/wiring_shift.o -c -ffunction-sections -fdata-sections -fno
 fnProcessing(["build/min.cpp"], ["build/min.pde"])
 void setup();
 void loop();
-/tmp/pyavrutils_ESXNEH/min/min.pde min
+/tmp/pyavrutils_rBm03j/min/min.pde min
 avr-g++ -o build/min.o -c -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Os -mmcu=atmega328p -Wall -DARDUINO=22 -DF_CPU=16000000L -Ibuild/core build/min.cpp
-avr-gcc -mmcu=atmega328p -Os -Wl,--gc-sections -o min.elf build/min.o build/core/wiring_pulse.o build/core/pins_arduino.o build/core/wiring_analog.o build/core/wiring.o build/core/usb.o build/core/WInterrupts.o build/core/wiring_digital.o build/core/wiring_shift.o build/core/HardwareSerial.o build/core/WMath.o build/core/WString.o build/core/Print.o build/core/usb_api.o build/core/Tone.o -lm
+avr-gcc -mmcu=atmega328p -Os -Wl,--gc-sections -o min.elf build/min.o build/core/WInterrupts.o build/core/wiring_digital.o build/core/usb.o build/core/wiring_shift.o build/core/wiring_pulse.o build/core/pins_arduino.o build/core/wiring_analog.o build/core/wiring.o build/core/usb_api.o build/core/WString.o build/core/WMath.o build/core/HardwareSerial.o build/core/Tone.o build/core/Print.o -lm
 avr-objcopy -O ihex -R .eeprom min.elf min.hex
 avr-size --target=ihex min.hex
    text	   data	    bss	    dec	    hex	filename
-      0	   1598	      0	   1598	    63e	min.hex
+      0	   1634	      0	   1634	    662	min.hex
 scons: done building targets.
 
 ----------
 stderr
 ----------
-In file included from build/core/wiring_private.h:30,
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/HardwareSerial.cpp:38:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
 build/core/Print.cpp: In member function 'void Print::print(const String&)':
-build/core/Print.cpp:51: warning: comparison between signed and unsigned integer expressions
+build/core/Print.cpp:51:32: warning: comparison between signed and unsigned integer expressions
 build/core/Print.cpp: In member function 'void Print::print_P(prog_char*)':
-build/core/Print.cpp:236: warning: suggest parentheses around assignment used as truth value
-build/core/Tone.cpp:122: warning: only initialized variables can be placed into program memory area
-In file included from build/core/wiring_private.h:30,
+build/core/Print.cpp:236:19: warning: suggest parentheses around assignment used as truth value
+build/core/Tone.cpp:122:46: warning: only initialized variables can be placed into program memory area
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/WInterrupts.c:40:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/pins_arduino.c:26:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/pins_arduino.c:137:
-build/core/pins_duemilanove.cxx:73: warning: initialization makes integer from pointer without a cast
-build/core/pins_duemilanove.cxx:74: warning: initialization makes integer from pointer without a cast
-build/core/pins_duemilanove.cxx:75: warning: initialization makes integer from pointer without a cast
-build/core/pins_duemilanove.cxx:81: warning: initialization makes integer from pointer without a cast
-build/core/pins_duemilanove.cxx:82: warning: initialization makes integer from pointer without a cast
-build/core/pins_duemilanove.cxx:83: warning: initialization makes integer from pointer without a cast
-build/core/pins_duemilanove.cxx:89: warning: initialization makes integer from pointer without a cast
-build/core/pins_duemilanove.cxx:90: warning: initialization makes integer from pointer without a cast
-build/core/pins_duemilanove.cxx:91: warning: initialization makes integer from pointer without a cast
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/pins_arduino.c:137:0:
+build/core/pins_duemilanove.cxx:73:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_duemilanove.cxx:74:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_duemilanove.cxx:75:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_duemilanove.cxx:81:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_duemilanove.cxx:82:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_duemilanove.cxx:83:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_duemilanove.cxx:89:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_duemilanove.cxx:90:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_duemilanove.cxx:91:2: warning: initialization makes integer from pointer without a cast
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring.c:32:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring_analog.c:34:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring_digital.c:34:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring_pulse.c:25:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-In file included from build/core/wiring_private.h:30,
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from build/core/wiring_private.h:30:0,
                  from build/core/wiring_shift.c:25:
-/usr/lib/gcc/avr/4.3.5/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
