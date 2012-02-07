@@ -12,6 +12,7 @@ try:
     from paved.util import *
     from paved.docs import *
     from paved.pycheck import *
+    from paved.pkg import *
     from sphinxcontrib import paverutils
     from pyavrutils import support
     from pyavrutils.arduino import Arduino
@@ -48,14 +49,7 @@ classifiers = [
     "Programming Language :: Python",
     ]
 
-install_requires = [
-    'setuptools',
-    'unipath',
-    'easyprocess',
-    'entrypoint2',
-    'path.py',
-    'confduino',
-    ]
+install_requires = open("requirements.txt").read().split('\n')
 
 setup(
     name=NAME,
@@ -101,12 +95,23 @@ if ALL_TASKS_LOADED:
     
     options.paved.dist.manifest.include.remove('distribute_setup.py')
     options.paved.dist.manifest.recursive_include.add('pyavrutils SConstruct*')
+    options.paved.dist.manifest.include.add('requirements.txt')
 
     docroot = path(options.sphinx.docroot)
     
     
     @task
-    @needs('sloccount', 'boards', 'build_test', 'html', 'pdf', 'pdf', 'sdist', 'nose')
+    @needs(
+           'clean',
+           'sloccount', 
+           'boards', 
+           'build_test', 
+           'html', 
+           'pdf', 
+           'pdf', 
+           'sdist', 
+           'nose',
+           )
     def alltest():
         'all tasks to check'
         pass
