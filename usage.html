@@ -63,7 +63,7 @@
 <span class="go">[&#39;avr-gcc&#39;, &#39;-Df_cpu=4000000&#39;, &#39;-mmcu=atmega48&#39;, &#39;--std=gnu99&#39;, &#39;-Wl,--relax&#39;, &#39;-Wl,--gc-sections&#39;, &#39;-ffunction-sections&#39;, &#39;-fdata-sections&#39;, &#39;-fno-inline-small-functions&#39;, &#39;-Os&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;int main(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">&#39;/tmp/pyavrutils_7JaARM.elf&#39;</span>
+<span class="go">&#39;/tmp/pyavrutils_8t0omg.elf&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">AvrSize &lt;prog:80 bytes 2.0% mem:0 bytes 0.0% &gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
@@ -73,7 +73,7 @@
 <span class="go">[&#39;avr-gcc&#39;, &#39;-Df_cpu=4000000&#39;, &#39;-mmcu=atmega168&#39;, &#39;--std=gnu99&#39;, &#39;-Wl,--relax&#39;, &#39;-Wl,--gc-sections&#39;, &#39;-ffunction-sections&#39;, &#39;-fdata-sections&#39;, &#39;-fno-inline-small-functions&#39;, &#39;-Os&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;int main(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">&#39;/tmp/pyavrutils_7JaARM.elf&#39;</span>
+<span class="go">&#39;/tmp/pyavrutils_8t0omg.elf&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
 <span class="go">132</span>
 </pre></div>
@@ -85,7 +85,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">Arduino</span><span class="p">(</span><span class="n">board</span><span class="o">=</span><span class="s">&#39;mini&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;void setup(){};void loop(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">path(&#39;/tmp/pyavrutils_4lIppS/pyavrutils_MzA3ci/pyavrutils_MzA3ci.elf&#39;)</span>
+<span class="go">path(&#39;/tmp/pyavrutils_qt7mBT/pyavrutils_6UQT7o/pyavrutils_6UQT7o.elf&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">AvrSize &lt;prog:1856 bytes 11.3% mem:191 bytes 18.7% &gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
@@ -93,7 +93,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">board</span><span class="o">=</span><span class="s">&#39;pro&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;void setup(){};void loop(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">path(&#39;/tmp/pyavrutils_S7fK6_/pyavrutils_oJxwou/pyavrutils_oJxwou.elf&#39;)</span>
+<span class="go">path(&#39;/tmp/pyavrutils_p8mEAl/pyavrutils_rW_Csm/pyavrutils_rW_Csm.elf&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
 <span class="go">1880</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">warnings</span>
@@ -101,29 +101,26 @@
 </pre></div>
 </div>
 <p>display warnings on console:</p>
-<div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.cli.arduino_warnings /usr/share/arduino/examples/Communication/Dimmer/Dimmer.pde
-Traceback (most recent call last):
-  File &quot;/usr/lib/python2.7/runpy.py&quot;, line 162, in _run_module_as_main
-    &quot;__main__&quot;, fname, loader, pkg_name)
-  File &quot;/usr/lib/python2.7/runpy.py&quot;, line 72, in _run_code
-    exec code in run_globals
-  File &quot;/home/titi/aha/workspace/pyavrutils/pyavrutils/cli/arduino_warnings.py&quot;, line 6, in &lt;module&gt;
-    @entrypoint    
-  File &quot;/home/titi/pythonpath/entrypoint2/__init__.py&quot;, line 396, in entrypoint
-    return func(**kwargs)
-  File &quot;/home/titi/aha/workspace/pyavrutils/pyavrutils/cli/arduino_warnings.py&quot;, line 12, in warnings
-    cc.build(filename)
-  File &quot;pyavrutils/arduino.py&quot;, line 141, in build
-    return self.build_arscons(sources=sources)
-  File &quot;pyavrutils/arduino.py&quot;, line 168, in build_arscons
-    allfiles = self.setup_sources(tempdir, sources)    
-  File &quot;pyavrutils/arduino.py&quot;, line 119, in setup_sources
-    for y in x.parent.files():
-  File &quot;/usr/local/lib/python2.7/dist-packages/path.py&quot;, line 357, in files
-    return [p for p in self.listdir(pattern) if p.isfile()]
-  File &quot;/usr/local/lib/python2.7/dist-packages/path.py&quot;, line 328, in listdir
-    names = os.listdir(self)
-OSError: [Errno 2] No such file or directory: &#39;/usr/share/arduino/examples/Communication/Dimmer&#39;
+<div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.cli.arduino_warnings /usr/share/arduino/examples/4.Communication/Dimmer/Dimmer.pde
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
+build/core/Print.cpp:48:32: warning: comparison between signed and unsigned integer expressions
+build/core/Tone.cpp:108:45: warning: only initialized variables can be placed into program memory area
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
+build/core/pins_arduino.c:361:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_arduino.c:362:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_arduino.c:363:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_arduino.c:369:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_arduino.c:370:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_arduino.c:371:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_arduino.c:377:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_arduino.c:378:2: warning: initialization makes integer from pointer without a cast
+build/core/pins_arduino.c:379:2: warning: initialization makes integer from pointer without a cast
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
+/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
 </pre></div>
 </div>
 </div>
