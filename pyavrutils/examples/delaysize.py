@@ -1,5 +1,5 @@
-from pyavrutils.avrgcc import AvrGcc
 from entrypoint2 import entrypoint
+from pyavrutils.avrgcc import AvrGcc, AvrGccCompileError
 
 templ = '''
 #include <avr/io.h>
@@ -17,14 +17,14 @@ print  'compiler version:', cc.version()
 print
 
 def test(snippet, option=''):
-    print  snippet.ljust(33) , 
+    print  snippet.ljust(33) ,
     cc.options_extra = option.split()
     print  'compiler option:', option, '\t',
     try:
         cc.build([templ % snippet])
         size = cc.size()
         print 'program, data =', str(size.program_bytes).rjust(8) , ',', str(size.data_bytes).rjust(8)
-    except:
+    except AvrGccCompileError as e:
         print  'compile error'
 
 @entrypoint
@@ -37,4 +37,4 @@ def main():
     test('_delay_ms(4)', '-O3')
     test('_delay_ms(4)', '-Os')
 
-    test('volatile double x=3;_delay_ms(x)', '-Os')
+    test('volatile int x=3;_delay_ms(x)', '-Os')

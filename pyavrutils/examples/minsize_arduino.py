@@ -3,11 +3,10 @@ test minimum program size with all MCUs
 '''
 
 from entrypoint2 import entrypoint
-from pyavrutils.arduino import Arduino
+from pyavrutils.arduino import Arduino, targets
 
-def test(cc, mcu):
-    print 'MCU =', mcu.ljust(20),
-    cc.mcu = mcu
+def test(cc):
+    print 'MCU =', cc.mcu.ljust(20),
     cc.build(cc.minprog)
     print '    program/data size =', cc.size().program_bytes, ',', cc.size().data_bytes
 
@@ -17,5 +16,5 @@ def main():
 #    print 'compiler version:', cc.version()
     print 'code:', cc.minprog
     print
-    for mcu in cc.targets:
-        test(cc, mcu)
+    for cc in targets(uniq_mcu=True):
+        test(cc)

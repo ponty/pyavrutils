@@ -12,7 +12,7 @@ def test(cc, mcu):
         cc.build(cc.minprog)
         print '    program/data size =', cc.size().program_bytes, ',', cc.size().data_bytes
     except AvrGccCompileError:
-        print '    compile error:', cc.error_text.splitlines()[0]
+        print '    compile error'
 
 @entrypoint
 def main():
