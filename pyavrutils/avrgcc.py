@@ -90,21 +90,37 @@ class AvrGcc(object):
     @property
     def targets(self):
         if not self._targets:
-            cc = AvrGcc()
-            cc.optimize_no()
-            cc.mcu = 'xxxx'
-            try:
-                cc.build(self.minprog)
-            except AvrGccCompileError:
-                pass
-            lines = cc.error_text.splitlines()
-            lines = [x for x in lines if '/' not in x]
-            lines = [x for x in lines if ':' not in x]
-            lines = [x for x in lines if 'xxxx' not in x]
-            lines = [x for x in lines if '\\' not in x]
-            lines = [x.strip() for x in lines]
-            lines.sort()
-            self._targets = lines
+            
+#            cc = AvrGcc()
+#            cc.optimize_no()
+#            cc.mcu = 'xxxx'
+#            try:
+#                cc.build(self.minprog)
+#            except AvrGccCompileError:
+#                pass
+#            lines = cc.error_text.splitlines()
+#            lines = [x for x in lines if '/' not in x]
+#            lines = [x for x in lines if ':' not in x]
+#            lines = [x for x in lines if 'xxxx' not in x]
+#            lines = [x for x in lines if '\\' not in x]
+#            lines = [x.strip() for x in lines]
+#            lines.sort()
+#            self._targets = lines
+            def filt1(lines):
+                for i, x in enumerate(lines):
+                    if 'known mcu names' in x.lower():
+                        return lines[i+1:]
+            def filt2(lines):
+                for i, x in enumerate(lines):
+                    if not x:
+                        return lines[:i]
+                    
+            s = Proc([self.cc, '--target-help']).call().stdout
+            lines = s.splitlines()
+            lines=filt1(lines)        
+            lines=filt2(lines)
+            mcus=' '.join(lines).strip().split()
+            self._targets=mcus        
         return self._targets
 
     @property
