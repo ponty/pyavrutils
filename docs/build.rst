@@ -1,5 +1,5 @@
-Build tests
-============
+Arduino build tests
+=====================
 
 .. highlight:: c
 
