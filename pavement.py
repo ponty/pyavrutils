@@ -1,18 +1,24 @@
-from paver.easy import *
-from paver.setuputils import setup
-from setuptools import find_packages
-import os
-
-import paver.doctools
-import paver.misctasks
 from paved import *
 from paved.dist import *
-from paved.util import *
 from paved.docs import *
-from paved.pycheck import *
 from paved.pkg import *
-from sphinxcontrib import paverutils
+from paved.pycheck import *
+from paved.util import *
+from paver.easy import *
+from paver.setuputils import setup
 from pyavrutils import support
+from setuptools import find_packages
+from sphinxcontrib import paverutils
+import logging
+import os
+import paver.doctools
+import paver.misctasks
+
+
+#logging.basicConfig(
+#                level=logging.DEBUG,
+#                format='%(asctime)-6s: %(name)s - %(levelname)s - %(message)s',
+#                )
 
 # get info from setup.py
 setup_py=''.join([x for x in path('setup.py').lines() if 'setuptools' not in x])
@@ -105,7 +111,7 @@ def build_test():
 @task
 def boards():
     for ver in ARDUINO_VERSIONS:
-        support.set_arduino_path('~/opt/arduino-{0}'.format(ver))
+        os.environ['ARDUINO_HOME'] = path('~/opt/arduino-{0}'.format(ver)).expanduser()
         csv = docroot / 'generated_boards_{0}.csv'.format(ver)
         support.boards2csv(csv, logger=info)
 

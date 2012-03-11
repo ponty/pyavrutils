@@ -1,10 +1,13 @@
-from confduino import boardlist, hwpacklist, mculist
+from confduino import set_arduino_path, version, mculist, hwpacklist, boardlist
 from easyprocess import Proc
 from path import path
 from pyavrutils.avrsize import AvrSize
 from pyavrutils.util import tmpdir, separate_sources, tmpfile, rename, \
     CompileError
+import logging
 import os
+
+log = logging.getLogger(__name__)
 
 class ArduinoCompileError(CompileError):
     pass
@@ -24,7 +27,7 @@ class Arduino(object):
                  f_cpu=None,
                  extra_lib=None,
                  ver=None ,
-                 home='auto',
+#                 home='auto',
 #                 backend='ino',
                  backend='arscons',
                  ):
@@ -33,9 +36,12 @@ class Arduino(object):
         '''
         assert board or mcu
 
-        if home == 'auto':
-            home = os.environ.get('ARDUINO_HOME', None)
-        self.home = home        
+#        if home == 'auto':
+#            home = os.environ.get('ARDUINO_HOME', None)
+#        else:
+#            set_arduino_path(home)
+#        self.home = home        
+
         self.board = board        
         self.hwpack = hwpack        
         self.mcu = mcu        
@@ -57,8 +63,8 @@ class Arduino(object):
     def command_list_ino(self):
         cmd = []
         cmd += ['ino', 'build']
-        if self.home:
-            cmd += ['-d' , self.home]
+#        if self.home:
+#            cmd += ['-d' , self.home]
 
         if self.board:
             cmd += ['-m' , self.board]
@@ -83,8 +89,11 @@ class Arduino(object):
         '''command line as list'''
         cmd = []
         cmd += ['scons']
-        if self.home:
-            cmd += ['ARDUINO_HOME=' + self.home]
+        
+#        if self.home:
+#            cmd += ['ARDUINO_HOME=' + self.home]
+        if os.environ.get('ARDUINO_HOME',None):
+            cmd += ['ARDUINO_HOME=' + os.environ.get('ARDUINO_HOME')]
 
         if self.board:
             cmd += ['ARDUINO_BOARD=' + self.board]
@@ -107,26 +116,38 @@ class Arduino(object):
     
     def setup_sources(self, tempdir, sources):
         strings, files = separate_sources(sources)
+        
+        log.debug('version: %s' % (version.intversion()))
+        log.debug('''input sources:
+  strings:
+%s
+  files:
+%s
+''' % ('\n----\n'.join(strings), '\n'.join(files)))
+        
         allfiles = []
         for x in strings:
-            f = tmpfile(x, tempdir, '.pde')
+            f = tmpfile(x, tempdir, version.sketch_extension())
             allfiles += [f]
             
         for x in files:
-            f = tempdir / x.name
+            f = tempdir / x.namebase + version.sketch_extension()
             if x.parent.name == x.namebase:
-                # copy all files from pde directory
+                # copy other files from pde directory
                 for y in x.parent.files():
-                    y.copy(tempdir / y.name)
-            else:
-                # copy only pde
-                x.copy(f)
+                    if y != x:
+                        y.copy(tempdir / y.name)
+
+            # copy pde
+            x.copy(f)
+
             allfiles += [f]
+        log.debug('  converted to:\n%s' % ('\n'.join(allfiles)))
         return allfiles
     
     def guess_projname(self, allfiles):
         for x in allfiles:
-            if x.ext == '.pde' and 'setup' in x.text() and 'loop' in x.text() :
+            if x.ext in version.all_sketch_extensions() and 'setup' in x.text() and 'loop' in x.text() :
                 projname = x.namebase
                 break
         
@@ -144,9 +165,9 @@ class Arduino(object):
     def build_ino(self, sources=None):
         # TODO: remove tempdir
         tempdir = tmpdir(dir=tmpdir())
-        lib=tempdir / 'lib'
-        src=tempdir / 'src'
-        build=tempdir / '.build'
+        lib = tempdir / 'lib'
+        src = tempdir / 'src'
+        build = tempdir / '.build'
         lib.mkdir()
         src.mkdir()
         
@@ -157,7 +178,7 @@ class Arduino(object):
         if not self.ok:
             raise ArduinoCompileError(cmd, sources, self.error_text)
         self.output = build.files('*.elf')[0]
-        
+
     def build_arscons(self, sources=None):
         # TODO: remove tempdir
         tempdir = tmpdir(dir=tmpdir())
@@ -210,8 +231,10 @@ class Arduino(object):
     def ok(self):
         if self.proc:
             return self.proc.return_code == 0
-# TODO: remove filter
-def targets(filter=True, uniq_mcu=False):
+
+def targets(uniq_mcu=False):
+#    if home:
+#        set_arduino_path(home)
     ls = []
     oldmcus = []
     for h in hwpacklist.hwpack_names():
@@ -221,8 +244,11 @@ def targets(filter=True, uniq_mcu=False):
             if b in 'atmega8u2 attiny861 sanguino'.split():
                 continue
             if not uniq_mcu or mcu not in oldmcus:
-                cc = Arduino(board=b, hwpack=h
-                             ,mcu=mcu)
+                cc = Arduino(board=b,
+                             hwpack=h,
+                             mcu=mcu,
+#                             home=home,
+                             )
                 cc.board_options = boardlist.boards(h)[b]
                 ls += [cc]
                 oldmcus += [mcu]

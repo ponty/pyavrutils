@@ -1,14 +1,18 @@
+from confduino import version
 from path import path
 from pyavrutils import arduino
 from pyavrutils.arduino import Arduino, ArduinoCompileError
+import confduino
 import csv
 
 def find_examples(root):
     root = path(root)
-    examples = [x for x in root.walkfiles('*.pde') if x.parent.name == x.namebase]
+    examples=[]
+    for e in version.all_sketch_extensions():
+        examples += [x for x in root.walkfiles('*'+e) if x.parent.name == x.namebase]
     return examples
 
-def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None, filter=True):
+def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None):
     csv_path = path(csv_path).abspath()
     if not logger:
         logger = (lambda x:x)
@@ -20,7 +24,7 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None, filter=Tru
         logdir.makedirs()
     
 #    cc = Arduino(extra_lib=extra_lib)
-    targets = arduino.targets(filter=filter)
+    targets = arduino.targets()
     
     fx = open(csv_path, 'wb')
     writer = csv.writer(fx)
@@ -34,9 +38,12 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None, filter=Tru
                      'board',
                      ] + [ex.namebase for ex in sources])
 
-    index = 0
+    if not hasattr(build2csv,'index'):
+        build2csv.index = 0
     for cc in targets:
-        index += 1
+        build2csv.index += 1
+        index=build2csv.index
+        
         logger('building target: ' + cc.board)
         outs = []
         for ex in sources:
@@ -51,12 +58,12 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None, filter=Tru
             logfile.write_text('----------\nstdout\n----------\n%s\n\n----------\nstderr\n----------\n%s'% (cc.proc.stdout,cc.error_text))
 
             if ok:
-                label='OK'
-#                TODO: fix arduino size first
-#                if cc.size().ok:
-#                    label='OK'
-#                else:
-#                    label='BIG'
+                avr_size=cc.size()
+                if avr_size.ok:
+                    label='OK'
+                else:
+                    label='BIG'
+                label+=' (P:%s D:%s)' % ( avr_size.program_bytes, avr_size.data_bytes)
             else:
                 label='ERR'
             # anonymous link: __
@@ -70,12 +77,12 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None, filter=Tru
                          ] + outs)
     
     
-def boards2csv(csv_path, logger=None,filter=False):
+def boards2csv(csv_path, logger=None):
     csv_path = path(csv_path).abspath()
     if not logger:
         logger = (lambda x:x)
         
-    targets = arduino.targets(filter=filter)
+    targets = arduino.targets()
     
     fx = open(csv_path, 'wb')
     writer = csv.writer(fx)
@@ -83,9 +90,12 @@ def boards2csv(csv_path, logger=None,filter=False):
 
     writer.writerow('index package id name MCU F_CPU'.split())
 
-    index = 0
+    if not hasattr(boards2csv,'index'):
+        boards2csv.index = 0
     for cc in targets:
-        index += 1
+        boards2csv.index += 1
+        index=boards2csv.index
+        
         writer.writerow([
                          index,
                          cc.hwpack,
@@ -95,3 +105,5 @@ def boards2csv(csv_path, logger=None,filter=False):
                          cc.board_options.build.f_cpu,
                          ])
     
+def set_arduino_path(directory):
+    confduino.set_arduino_path(directory)
