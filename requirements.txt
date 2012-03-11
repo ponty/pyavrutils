@@ -1,4 +1,3 @@
-setuptools
 unipath
 easyprocess
 entrypoint2
