@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Usage &mdash; pyavrutils 0.0.7 documentation</title>
+    <title>Usage &mdash; pyavrutils 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.7',
+        VERSION:     '0.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pyavrutils 0.0.7 documentation" href="index.html" />
+    <link rel="top" title="pyavrutils 0.1.0 documentation" href="index.html" />
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="About" href="readme.html" /> 
   </head>
@@ -42,7 +42,7 @@
         <li class="right" >
           <a href="readme.html" title="About"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pyavrutils 0.0.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -63,7 +63,7 @@
 <span class="go">[&#39;avr-gcc&#39;, &#39;-Df_cpu=4000000&#39;, &#39;-mmcu=atmega48&#39;, &#39;--std=gnu99&#39;, &#39;-Wl,--relax&#39;, &#39;-Wl,--gc-sections&#39;, &#39;-ffunction-sections&#39;, &#39;-fdata-sections&#39;, &#39;-fno-inline-small-functions&#39;, &#39;-Os&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;int main(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">&#39;/tmp/pyavrutils_8t0omg.elf&#39;</span>
+<span class="go">&#39;/tmp/pyavrutils_odD4ma.elf&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">AvrSize &lt;prog:80 bytes 2.0% mem:0 bytes 0.0% &gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
@@ -73,7 +73,7 @@
 <span class="go">[&#39;avr-gcc&#39;, &#39;-Df_cpu=4000000&#39;, &#39;-mmcu=atmega168&#39;, &#39;--std=gnu99&#39;, &#39;-Wl,--relax&#39;, &#39;-Wl,--gc-sections&#39;, &#39;-ffunction-sections&#39;, &#39;-fdata-sections&#39;, &#39;-fno-inline-small-functions&#39;, &#39;-Os&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;int main(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">&#39;/tmp/pyavrutils_8t0omg.elf&#39;</span>
+<span class="go">&#39;/tmp/pyavrutils_odD4ma.elf&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
 <span class="go">132</span>
 </pre></div>
@@ -85,42 +85,27 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">Arduino</span><span class="p">(</span><span class="n">board</span><span class="o">=</span><span class="s">&#39;mini&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;void setup(){};void loop(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">path(&#39;/tmp/pyavrutils_qt7mBT/pyavrutils_6UQT7o/pyavrutils_6UQT7o.elf&#39;)</span>
+<span class="go">path(&#39;/tmp/pyavrutils_p7OQV3/pyavrutils__RoiAe/pyavrutils__RoiAe.elf&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-<span class="go">AvrSize &lt;prog:1856 bytes 11.3% mem:191 bytes 18.7% &gt;</span>
+<span class="go">AvrSize &lt;prog:430 bytes 2.6% mem:9 bytes 0.9% &gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
-<span class="go">1856</span>
+<span class="go">430</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">board</span><span class="o">=</span><span class="s">&#39;pro&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s">&#39;void setup(){};void loop(){}&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">output</span>
-<span class="go">path(&#39;/tmp/pyavrutils_p8mEAl/pyavrutils_rW_Csm/pyavrutils_rW_Csm.elf&#39;)</span>
+<span class="go">path(&#39;/tmp/pyavrutils_oI9M6y/pyavrutils_sz6jqe/pyavrutils_sz6jqe.elf&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
-<span class="go">1880</span>
+<span class="go">454</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">warnings</span>
-<span class="go">[u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;build/core/Print.cpp:48:32: warning: comparison between signed and unsigned integer expressions&#39;, u&#39;build/core/Tone.cpp:108:45: warning: only initialized variables can be placed into program memory area&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;build/core/pins_arduino.c:361:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:362:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:363:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:369:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:370:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:371:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:377:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:378:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;build/core/pins_arduino.c:379:2: warning: initialization makes integer from pointer without a cast&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;, u&#39;/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;&#39;]</span>
+<span class="go">[u&#39;build/core/IPAddress.h:51:55: warning: dereferencing type-punned pointer will break strict-aliasing rules&#39;, u&#39;build/core/IPAddress.h:52:75: warning: dereferencing type-punned pointer will break strict-aliasing rules&#39;, u&#39;build/core/IPAddress.h:52:108: warning: dereferencing type-punned pointer will break strict-aliasing rules&#39;, u&#39;build/core/Tone.cpp:108:45: warning: only initialized variables can be placed into program memory area&#39;]</span>
 </pre></div>
 </div>
 <p>display warnings on console:</p>
 <div class="highlight-text"><div class="highlight"><pre>$ python -m pyavrutils.cli.arduino_warnings /usr/share/arduino/examples/4.Communication/Dimmer/Dimmer.pde
-/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-build/core/Print.cpp:48:32: warning: comparison between signed and unsigned integer expressions
+build/core/IPAddress.h:51:55: warning: dereferencing type-punned pointer will break strict-aliasing rules
+build/core/IPAddress.h:52:75: warning: dereferencing type-punned pointer will break strict-aliasing rules
+build/core/IPAddress.h:52:108: warning: dereferencing type-punned pointer will break strict-aliasing rules
 build/core/Tone.cpp:108:45: warning: only initialized variables can be placed into program memory area
-/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-build/core/pins_arduino.c:361:2: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:362:2: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:363:2: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:369:2: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:370:2: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:371:2: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:377:2: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:378:2: warning: initialization makes integer from pointer without a cast
-build/core/pins_arduino.c:379:2: warning: initialization makes integer from pointer without a cast
-/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
-/usr/lib/gcc/avr/4.5.3/../../../avr/include/avr/delay.h:36:2: warning: #warning &quot;This file has been moved to &lt;util/delay.h&gt;.&quot;
 </pre></div>
 </div>
 </div>
@@ -181,7 +166,7 @@ build/core/pins_arduino.c:379:2: warning: initialization makes integer from poin
         <li class="right" >
           <a href="readme.html" title="About"
              >previous</a> |</li>
-        <li><a href="index.html">pyavrutils 0.0.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
