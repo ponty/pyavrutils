@@ -40,6 +40,6 @@ arduino
 
 display warnings on console:
 
-.. program-output:: python -m pyavrutils.cli.arduino_warnings /usr/share/arduino/examples/4.Communication/Dimmer/Dimmer.pde
+.. program-output:: python -m pyavrutils.cli.arduino.build /usr/share/arduino/examples/4.Communication/Dimmer/Dimmer.ino
     :prompt:
         
