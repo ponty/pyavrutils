@@ -157,10 +157,11 @@ class Arduino(object):
         
     def build(self, sources=None):
         if self.backend == 'ino':
-            return self.build_ino(sources=sources)
-        if self.backend == 'arscons':
-            return self.build_arscons(sources=sources)
-        assert 0
+            self.build_ino(sources=sources)
+        elif self.backend == 'arscons':
+            self.build_arscons(sources=sources)
+        else:
+            assert 0            
         
     def build_ino(self, sources=None):
         # TODO: remove tempdir
@@ -225,7 +226,7 @@ class Arduino(object):
     @property
     def warnings(self):
         if self.proc:
-            return [line for line in self.stderr.splitlines() if 'warning:' in line]
+            return sorted([line for line in self.stderr.splitlines() if 'warning:' in line])
     
     @property
     def ok(self):

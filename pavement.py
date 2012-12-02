@@ -64,7 +64,7 @@ docroot = path(options.sphinx.docroot)
 @needs(
 #           'clean',
        'sloccount', 
-       'boards', 
+       #'boards', 
        'build_test', 
        'html', 
        'pdf', 
@@ -91,7 +91,7 @@ def pdf():
 
 ARDUINO_VERSIONS=[
                   '0022', 
-                  '0023', 
+                  #'0023', 
                   '1.0',
                   ]
 
@@ -107,13 +107,6 @@ def build_test():
                           logdir=docroot / '_build' / 'html', 
                           logger=info, 
                           )
-
-@task
-def boards():
-    for ver in ARDUINO_VERSIONS:
-        os.environ['ARDUINO_HOME'] = path('~/opt/arduino-{0}'.format(ver)).expanduser()
-        csv = docroot / 'generated_boards_{0}.csv'.format(ver)
-        support.boards2csv(csv, logger=info)
 
     
 @task
