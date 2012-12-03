@@ -6,10 +6,11 @@ from unittest import TestCase
 import os
 
 ARDUINO_VERSIONS = [
-                  '0022',
-#                  '0023',
-                  '1.0',
-                  ]
+    '0022',
+    #                  '0023',
+    '1.0',
+]
+
 
 class Test(TestCase):
     def test(self):
@@ -23,7 +24,7 @@ class Test(TestCase):
 
     def test_targets_list(self):
         ok_(len(targets()))
-        
+
     def test_targets(self):
         boards = 'lilypad mega2560 mega'.split()
         for ver in ARDUINO_VERSIONS:
@@ -33,9 +34,9 @@ class Test(TestCase):
             for b in boards:
 
                 cc = Arduino(
-                             board=b,
-#                             home=h,
-                             )
+                    board=b,
+                    #                             home=h,
+                )
 
                 try:
                     cc.build(path(__file__).parent / 'min.pde')
@@ -45,14 +46,14 @@ class Test(TestCase):
                 except ArduinoCompileError, e:
                     print '    compile error:', cc.error_text.splitlines()
                     raise e
-    
+
     def test_bad_dir(self):
         d = tmpdir() / 'Bad'
         d.makedirs()
         f = d / 'Foo.pde'
         f.write_text(Arduino.minprog)
         Arduino().build(f)
-        
+
     def test_file(self):
         d = tmpdir() / 'Foo'
         d.makedirs()
@@ -73,25 +74,23 @@ class Test(TestCase):
 #        d.makedirs()
 #        f = d / 'Foo.pde'
 #        f.write_text('''
-#        #include "x.h" 
-#        int x=foo; 
+#        #include "x.h"
+#        int x=foo;
 #        ''' + Arduino.minprog)
 #        (d / 'x.h').write_text('''
 #        #define foo 3
-#        
+#
 #        class X
 #        {
 #        void fun();
 #        };
 #        ''')
 #        (d / 'x.pde').write_text('''
-#        //#include "x.h" 
-#        
+#        //#include "x.h"
+#
 #        void X::fun()
 #        {
 #            int x=foo;
 #        }
 #        ''')
 #        Arduino().build(f)
-
-        

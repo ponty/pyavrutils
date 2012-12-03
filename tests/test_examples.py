@@ -1,28 +1,30 @@
 from pyavrutils.examples import deadcode, delaysize, minsize_arduino, minsize, \
-    pgmspace, simple,targets
+    pgmspace, simple, targets
+
 
 def test_deadcode():
     deadcode.main()
-    
+
+
 def test_delaysize():
-    delaysize.main()    
-    
+    delaysize.main()
+
+
 def test_minsize_arduino():
-    minsize_arduino.main()  
-      
+    minsize_arduino.main()
+
+
 def test_minsize():
-    minsize.main()  
-      
+    minsize.main()
+
+
 def test_pgmspace():
-    pgmspace.main()   
-     
+    pgmspace.main()
+
+
 def test_simple():
-    simple.main()    
-    
+    simple.main()
+
+
 def test_targets():
-    targets.main()    
-    
-    
-    
-    
-    
+    targets.main()

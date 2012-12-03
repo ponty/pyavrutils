@@ -1,8 +1,10 @@
 from easyprocess import Proc
 from unipath.path import Path
 
+
 class AvrSizeError(Exception):
     pass
+
 
 class AvrSize(object):
     '''
@@ -13,21 +15,21 @@ class AvrSize(object):
         self.data_bytes = 0
         self.program_percentage = 0
         self.data_percentage = 0
-        
+
     def __repr__(self):
         return 'AvrSize <prog:%s bytes %s%% mem:%s bytes %s%% >' % (self.program_bytes, self.program_percentage, self.data_bytes, self.data_percentage)
-        
+
     def parse_output(self, s):
         '''
         Example output:
-    
+
         AVR Memory Usage
         ----------------
         Device: atmega2561
-    
+
         Program:    4168 bytes (1.6% Full)
         (.text + .data + .bootloader)
-    
+
         Data:         72 bytes (0.9% Full)
         (.data + .bss + .noinit)
         '''
@@ -45,14 +47,14 @@ class AvrSize(object):
                 else:
                     self.data_bytes = bytes
                     self.data_percentage = perc
-    
-    
+
     def run(self, objfile, mcu):
-    
+
         objfile = Path(objfile).absolute()
         if not objfile.exists():
             raise AvrSizeError('no hex file! ' + objfile.absolute())
-        cmd = 'avr-size --format=avr --mcu={mcu} {objfile}'.format(objfile=objfile, mcu=mcu)
+        cmd = 'avr-size --format=avr --mcu={mcu} {objfile}'.format(
+            objfile=objfile, mcu=mcu)
         p = Proc(cmd).call()
         self.parse_output(p.stdout)
 

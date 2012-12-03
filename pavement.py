@@ -15,13 +15,14 @@ import paver.doctools
 import paver.misctasks
 
 
-#logging.basicConfig(
+# logging.basicConfig(
 #                level=logging.DEBUG,
 #                format='%(asctime)-6s: %(name)s - %(levelname)s - %(message)s',
 #                )
 
 # get info from setup.py
-setup_py=''.join([x for x in path('setup.py').lines() if 'setuptools' not in x])
+setup_py = ''.join(
+    [x for x in path('setup.py').lines() if 'setuptools' not in x])
 exec(setup_py)
 
 
@@ -29,26 +30,26 @@ options(
     sphinx=Bunch(
         docroot='docs',
         builddir="_build",
-        ),
+    ),
     pdf=Bunch(
         builddir='_build',
         builder='latex',
     ),
-    )
+)
 
-options.paved.clean.rmdirs +=   ['.tox',
-                                 'dist',
-                                 'build' ,
-                                 ]
+options.paved.clean.rmdirs += ['.tox',
+                               'dist',
+                               'build',
+                               ]
 options.paved.clean.patterns += ['*.pickle',
                                  '*.doctree',
-                                 '*.gz' ,
+                                 '*.gz',
                                  'nosetests.xml',
                                  'sloccount.sc',
                                  '*.pdf', '*.tex',
                                  '*.png',
                                  'generated*',
-                                 '*.zip',   
+                                 '*.zip',
                                  'distribute_setup.py',
                                  ]
 
@@ -62,24 +63,26 @@ docroot = path(options.sphinx.docroot)
 
 @task
 @needs(
-#           'clean',
-       'sloccount', 
-       #'boards', 
-       'build_test', 
-       'html', 
-       'pdf', 
-       'pdf', 
-       'sdist', 
-       'nose',   'tox',
-       )
+    #           'clean',
+    'sloccount',
+    #'boards',
+    'build_test',
+    'html',
+    'pdf',
+    'pdf',
+    'sdist',
+    'nose', 'tox',
+)
 def alltest():
     'all tasks to check'
     pass
+
 
 @task
 @needs('sphinxcontrib.paverutils.html')
 def html():
     pass
+
 
 @task
 @needs('sphinxcontrib.paverutils.pdf')
@@ -89,31 +92,34 @@ def pdf():
     d.makedirs()
     fpdf.copy(d)
 
-ARDUINO_VERSIONS=[
-                  '0022', 
-                  #'0023', 
-                  '1.0',
-                  ]
+ARDUINO_VERSIONS = [
+    '0022',
+    #'0023',
+    '1.0',
+]
+
 
 @task
 def build_test():
     for ver in ARDUINO_VERSIONS:
 #            support.set_arduino_path('~/opt/arduino-{0}'.format(ver))
-        os.environ['ARDUINO_HOME'] = path('~/opt/arduino-{0}'.format(ver)).expanduser()
+        os.environ['ARDUINO_HOME'] = path(
+            '~/opt/arduino-{0}'.format(ver)).expanduser()
         csv = docroot / 'generated_build_test_{0}.csv'.format(ver)
         support.build2csv(
-                          [path('tests/min.pde')], 
-                          csv, 
-                          logdir=docroot / '_build' / 'html', 
-                          logger=info, 
-                          )
+            [path('tests/min.pde')],
+            csv,
+            logdir=docroot / '_build' / 'html',
+            logger=info,
+        )
 
-    
+
 @task
 def tox():
     '''Run tox.'''
     sh('tox')
-    
+
+
 @task
 @needs('manifest', 'setuptools.command.sdist')
 def sdist():

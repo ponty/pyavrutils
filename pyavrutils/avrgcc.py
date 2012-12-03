@@ -5,11 +5,14 @@ from pyavrutils.util import tmpdir, tmpfile, separate_sources, CompileError
 from unipath.path import Path
 import tempfile
 
+
 class AvrGccCompileError(CompileError):
     pass
 
+
 class AvrGcc(object):
     minprog = 'int main(){};'
+
     def __init__(self, mcu='atmega168'):
         self.cc = 'avr-gcc'
         self.proc = None
@@ -26,7 +29,7 @@ class AvrGcc(object):
 
         self.std = 'gnu99'
 
-        #http://www.network-theory.co.uk/docs/gccintro/gccintro_49.html
+        # http://www.network-theory.co.uk/docs/gccintro/gccintro_49.html
         # 0/1/2/3/s (s=for size)
         self.optimization = 0
 
@@ -80,7 +83,6 @@ class AvrGcc(object):
         self.ffunction_sections = False
         self.fdata_sections = False
         self.fno_inline_small_functions = False
-        
 
     @property
     def ok(self):
@@ -90,7 +92,7 @@ class AvrGcc(object):
     @property
     def targets(self):
         if not self._targets:
-            
+
 #            cc = AvrGcc()
 #            cc.optimize_no()
 #            cc.mcu = 'xxxx'
@@ -109,18 +111,19 @@ class AvrGcc(object):
             def filt1(lines):
                 for i, x in enumerate(lines):
                     if 'known mcu names' in x.lower():
-                        return lines[i+1:]
+                        return lines[i + 1:]
+
             def filt2(lines):
                 for i, x in enumerate(lines):
                     if not x:
                         return lines[:i]
-                    
+
             s = Proc([self.cc, '--target-help']).call().stdout
             lines = s.splitlines()
-            lines=filt1(lines)        
-            lines=filt2(lines)
-            mcus=' '.join(lines).strip().split()
-            self._targets=mcus        
+            lines = filt1(lines)
+            lines = filt2(lines)
+            mcus = ' '.join(lines).strip().split()
+            self._targets = mcus
         return self._targets
 
     @property
@@ -150,11 +153,12 @@ class AvrGcc(object):
 #            raise ValueError('invalid mcu:' + self.mcu)
 
         if not _opt:
-            sources = [ abspath(x) for  x in sources]
-        includes = [ abspath(x) for  x in self.includes]
+            sources = [abspath(x) for x in sources]
+        includes = [abspath(x) for x in self.includes]
 
         if not self.output:
-            self.output = tempfile.NamedTemporaryFile(prefix='pyavrutils_', suffix='.elf', delete=0).name
+            self.output = tempfile.NamedTemporaryFile(
+                prefix='pyavrutils_', suffix='.elf', delete=0).name
 
         defines = self.defines + ['f_cpu=' + str(self.f_cpu)]
 
@@ -165,7 +169,7 @@ class AvrGcc(object):
             cmd += ['-D' + x for x in defines]
             cmd += ['-I' + x for x in includes]
             if not _opt:
-                cmd += ['-o' , self.output]
+                cmd += ['-o', self.output]
             cmd += ['-mmcu=' + self.mcu]
             cmd += ['--std=' + self.std]
             if self.relax:
@@ -195,15 +199,13 @@ class AvrGcc(object):
         if len(strings) or headers:
             # TODO: remove tempdir
             tempdir = tmpdir()
-        
-        temp_list = [tmpfile(x, tempdir, '.c') for x in strings]
 
+        temp_list = [tmpfile(x, tempdir, '.c') for x in strings]
 
         if headers:
             for n, s in headers.items():
                 Path(tempdir).child(n).write_file(s)
-            
-        
+
         cmd = self.command_list(files + temp_list)
         if tempdir:
             cmd += ['-I' + tempdir]
@@ -218,6 +220,7 @@ class AvrGcc(object):
         s = AvrSize()
         s.run(self.output, self.mcu)
         return s
+
 
 @entrypoint
 def _test():

@@ -5,30 +5,33 @@ from pyavrutils.arduino import Arduino, ArduinoCompileError
 import confduino
 import csv
 
+
 def find_examples(root):
     root = path(root)
     examples = []
     for e in version.all_sketch_extensions():
-        examples += [x for x in root.walkfiles('*' + e) if x.parent.name == x.namebase]
+        examples += [x for x in root.walkfiles('*' + e)
+                     if x.parent.name == x.namebase]
     return examples
+
 
 def simple_targets():
     mcus = [
-                       'atmega8',
-                       'atmega48',
-                       'atmega168',
-                       'atmega328p',
-                       'atmega640',
-                       'atmega1280',
-                       'atmega2560',
-                       ]
+        'atmega8',
+        'atmega48',
+        'atmega168',
+        'atmega328p',
+        'atmega640',
+        'atmega1280',
+        'atmega2560',
+    ]
     return [Arduino(mcu=x) for x in mcus]
 
 
 def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None):
     csv_path = path(csv_path).abspath()
     if not logger:
-        logger = (lambda x:x)
+        logger = (lambda x: x)
 
 #    if not logdir:
 #        logdir = csv_path.parent
@@ -38,7 +41,7 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None):
 
 #    targets = arduino.targets()
     targets = simple_targets()
-    
+
     fx = open(csv_path, 'wb')
     writer = csv.writer(fx)
     logger('generating ' + csv_path)
@@ -47,9 +50,9 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None):
 #                     'source',
 #                     ] + range(len(targets)))
     writer.writerow([
-                     'index',
-                     'board',
-                     ] + [ex.namebase for ex in sources])
+                    'index',
+                    'board',
+                    ] + [ex.namebase for ex in sources])
 
     if not hasattr(build2csv, 'index'):
         build2csv.index = 0
@@ -67,7 +70,8 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None):
                 ok = True
             except ArduinoCompileError:
                 pass
-            logfile = logdir / ('generated_buildlog_%s_%s.txt' % (ex.namebase, index))
+            logfile = logdir / (
+                'generated_buildlog_%s_%s.txt' % (ex.namebase, index))
             logfile.write_text('----------\nstdout\n----------\n%s\n\n----------\nstderr\n----------\n%s' % (cc.proc.stdout, cc.error_text))
 
             if ok:
@@ -76,24 +80,24 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None):
                     label = 'OK'
                 else:
                     label = 'BIG'
-                label += ' (P:%s D:%s)' % (avr_size.program_bytes, avr_size.data_bytes)
+                label += ' (P:%s D:%s)' % (
+                    avr_size.program_bytes, avr_size.data_bytes)
             else:
                 label = 'ERR'
             # anonymous link: __
             outs += ['`%s <%s>`__' % (label, logfile.name)]
 
-
         writer.writerow([
-                         index,
-#                         ex.namebase,
+                        index,
+                        #                         ex.namebase,
                         cc.mcu,
-                         ] + outs)
+                        ] + outs)
 
 
 def boards2csv(csv_path, logger=None):
     csv_path = path(csv_path).abspath()
     if not logger:
-        logger = (lambda x:x)
+        logger = (lambda x: x)
 
     targets = arduino.targets()
 
@@ -110,13 +114,14 @@ def boards2csv(csv_path, logger=None):
         index = boards2csv.index
 
         writer.writerow([
-                         index,
-                         cc.hwpack,
-                         cc.board,
-                         cc.board_options.name,
-                         cc.board_options.build.mcu,
-                         cc.board_options.build.f_cpu,
-                         ])
+                        index,
+                        cc.hwpack,
+                        cc.board,
+                        cc.board_options.name,
+                        cc.board_options.build.mcu,
+                        cc.board_options.build.f_cpu,
+                        ])
+
 
 def set_arduino_path(directory):
     confduino.set_arduino_path(directory)

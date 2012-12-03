@@ -16,16 +16,18 @@ cc.optimize_no()
 print  'compiler version:', cc.version()
 print
 
+
 def test(snippet, option=''):
-    print  snippet.ljust(33) ,
+    print  snippet.ljust(33),
     cc.options_extra = option.split()
     print  'compiler option:', option, '\t',
     try:
         cc.build([templ % snippet])
         size = cc.size()
-        print 'program, data =', str(size.program_bytes).rjust(8) , ',', str(size.data_bytes).rjust(8)
+        print 'program, data =', str(size.program_bytes).rjust(8), ',', str(size.data_bytes).rjust(8)
     except AvrGccCompileError as e:
         print  'compile error'
+
 
 @entrypoint
 def main():

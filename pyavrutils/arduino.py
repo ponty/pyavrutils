@@ -9,26 +9,29 @@ import os
 
 log = logging.getLogger(__name__)
 
+
 class ArduinoCompileError(CompileError):
     pass
+
 
 class Arduino(object):
     '''
     wrapper for arscons_
 
-    
+
     .. _arscons: http://code.google.com/p/arscons/
     '''
     minprog = 'void setup(){};void loop(){};'
+
     def __init__(self,
                  board='pro',
                  hwpack='arduino',
                  mcu=None,
                  f_cpu=None,
                  extra_lib=None,
-                 ver=None ,
-#                 home='auto',
-#                 backend='ino',
+                 ver=None,
+                 #                 home='auto',
+                 #                 backend='ino',
                  backend='arscons',
                  ):
         '''
@@ -40,26 +43,26 @@ class Arduino(object):
 #            home = os.environ.get('ARDUINO_HOME', None)
 #        else:
 #            set_arduino_path(home)
-#        self.home = home        
+#        self.home = home
 
-        self.board = board        
-        self.hwpack = hwpack        
-        self.mcu = mcu        
-        self.backend = backend        
-        self.f_cpu = f_cpu        
-        self.ver = ver        
-        self.extra_lib = extra_lib     
-           
+        self.board = board
+        self.hwpack = hwpack
+        self.mcu = mcu
+        self.backend = backend
+        self.f_cpu = f_cpu
+        self.ver = ver
+        self.extra_lib = extra_lib
+
         self.proc = None
         self.output = None
-        
+
     def command_list(self):
         if self.backend == 'ino':
             return self.command_list_ino()
         if self.backend == 'arscons':
             return self.command_list_arscons()
         assert 0
-        
+
     def command_list_ino(self):
         cmd = []
         cmd += ['ino', 'build']
@@ -67,56 +70,56 @@ class Arduino(object):
 #            cmd += ['-d' , self.home]
 
         if self.board:
-            cmd += ['-m' , self.board]
-            
+            cmd += ['-m', self.board]
+
         if self.hwpack != 'arduino':
             raise NotImplementedError()
-            
+
         if self.mcu:
             raise NotImplementedError()
         if self.f_cpu:
             raise NotImplementedError()
-        
+
         if self.ver:
             raise NotImplementedError()
-            
+
         if self.extra_lib:
             raise NotImplementedError()
-            
+
         return cmd
-        
+
     def command_list_arscons(self):
         '''command line as list'''
         cmd = []
         cmd += ['scons']
-        
+
 #        if self.home:
 #            cmd += ['ARDUINO_HOME=' + self.home]
-        if os.environ.get('ARDUINO_HOME',None):
+        if os.environ.get('ARDUINO_HOME', None):
             cmd += ['ARDUINO_HOME=' + os.environ.get('ARDUINO_HOME')]
 
         if self.board:
             cmd += ['ARDUINO_BOARD=' + self.board]
-            
+
         if self.hwpack:
             cmd += ['ARDUINO_HARDWARE_PACKAGE=' + self.hwpack]
-            
+
         if self.mcu:
             cmd += ['MCU=' + self.mcu]
         if self.f_cpu:
             cmd += ['F_CPU=' + str(self.f_cpu)]
-        
+
         if self.ver:
             cmd += ['ARDUINO_VER=' + self.ver]
-            
+
         if self.extra_lib:
             cmd += ['EXTRA_LIB=' + self.extra_lib]
-            
+
         return cmd
-    
+
     def setup_sources(self, tempdir, sources):
         strings, files = separate_sources(sources)
-        
+
         log.debug('version: %s' % (version.intversion()))
         log.debug('''input sources:
   strings:
@@ -124,12 +127,12 @@ class Arduino(object):
   files:
 %s
 ''' % ('\n----\n'.join(strings), '\n'.join(files)))
-        
+
         allfiles = []
         for x in strings:
             f = tmpfile(x, tempdir, version.sketch_extension())
             allfiles += [f]
-            
+
         for x in files:
             f = tempdir / x.namebase + version.sketch_extension()
             if x.parent.name == x.namebase:
@@ -144,25 +147,24 @@ class Arduino(object):
             allfiles += [f]
         log.debug('  converted to:\n%s' % ('\n'.join(allfiles)))
         return allfiles
-    
+
     def guess_projname(self, allfiles):
         for x in allfiles:
-            if x.ext in version.all_sketch_extensions() and 'setup' in x.text() and 'loop' in x.text() :
+            if x.ext in version.all_sketch_extensions() and 'setup' in x.text() and 'loop' in x.text():
                 projname = x.namebase
                 break
-        
+
         assert projname
         return projname
-    
-        
+
     def build(self, sources=None):
         if self.backend == 'ino':
             self.build_ino(sources=sources)
         elif self.backend == 'arscons':
             self.build_arscons(sources=sources)
         else:
-            assert 0            
-        
+            assert 0
+
     def build_ino(self, sources=None):
         # TODO: remove tempdir
         tempdir = tmpdir(dir=tmpdir())
@@ -171,10 +173,10 @@ class Arduino(object):
         build = tempdir / '.build'
         lib.mkdir()
         src.mkdir()
-        
-        self.setup_sources(src, sources)    
+
+        self.setup_sources(src, sources)
         cmd = self.command_list()
-        
+
         self.proc = Proc(cmd, cwd=tempdir).call()
         if not self.ok:
             raise ArduinoCompileError(cmd, sources, self.error_text)
@@ -183,21 +185,20 @@ class Arduino(object):
     def build_arscons(self, sources=None):
         # TODO: remove tempdir
         tempdir = tmpdir(dir=tmpdir())
-        
+
         SConstruct = path(__file__).parent / 'SConstruct'
         SConstruct.copy(tempdir / 'SConstruct')
-        
-        allfiles = self.setup_sources(tempdir, sources)    
+
+        allfiles = self.setup_sources(tempdir, sources)
         projname = self.guess_projname(allfiles)
         tempdir = rename(tempdir, tempdir.parent / projname)
         cmd = self.command_list()
-        
+
         self.proc = Proc(cmd, cwd=tempdir).call()
         if not self.ok:
             raise ArduinoCompileError(cmd, sources, self.error_text)
         self.output = tempdir.files('*.elf')[0]
-        
-        
+
     def mcu_compiler(self):
         mcu = self.mcu
         if not mcu:
@@ -205,7 +206,7 @@ class Arduino(object):
             mcu = mculist.mcu(self.board, self.hwpack)
         assert mcu
         return mcu
-        
+
     def size(self):
         s = AvrSize()
         mcu = self.mcu_compiler()
@@ -217,21 +218,22 @@ class Arduino(object):
     def error_text(self):
         if self.proc:
             return self.proc.stderr
-        
+
     @property
     def stderr(self):
         if self.proc:
             return self.proc.stderr
-        
+
     @property
     def warnings(self):
         if self.proc:
             return sorted([line for line in self.stderr.splitlines() if 'warning:' in line])
-    
+
     @property
     def ok(self):
         if self.proc:
             return self.proc.return_code == 0
+
 
 def targets(uniq_mcu=False):
 #    if home:
@@ -248,7 +250,7 @@ def targets(uniq_mcu=False):
                 cc = Arduino(board=b,
                              hwpack=h,
                              mcu=mcu,
-#                             home=home,
+                             #                             home=home,
                              )
                 cc.board_options = boardlist.boards(h)[b]
                 ls += [cc]
