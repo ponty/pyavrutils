@@ -180,7 +180,7 @@ class Arduino(object):
         self.proc = Proc(cmd, cwd=tempdir).call()
         if not self.ok:
             raise ArduinoCompileError(cmd, sources, self.error_text)
-        self.output = build.files('*.elf')[0]
+        self.output = build.walkfiles('*.elf')[0]
 
     def build_arscons(self, sources=None):
         # TODO: remove tempdir
