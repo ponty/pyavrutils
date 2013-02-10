@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Examples &mdash; pyavrutils 0.1.1 documentation</title>
+    <title>Examples &mdash; pyavrutils 0.1.2 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1.1',
+        VERSION:     '0.1.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pyavrutils 0.1.1 documentation" href="index.html" />
+    <link rel="top" title="pyavrutils 0.1.2 documentation" href="index.html" />
     <link rel="next" title="Arduino build tests" href="build.html" />
     <link rel="prev" title="Usage" href="usage.html" /> 
   </head>
@@ -42,7 +42,7 @@
         <li class="right" >
           <a href="usage.html" title="Usage"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pyavrutils 0.1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -66,17 +66,19 @@
 <span class="n">cc</span> <span class="o">=</span> <span class="n">AvrGcc</span><span class="p">()</span>
 <span class="n">code</span> <span class="o">=</span> <span class="s">&#39;int main(){}&#39;</span>
 
+
 <span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
     <span class="k">print</span> <span class="s">&#39;    compiler option:&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cc</span><span class="o">.</span><span class="n">options_generated</span><span class="p">())</span>
     <span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
     <span class="k">print</span> <span class="s">&#39;    program size =&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">program_bytes</span>
 
+
 <span class="nd">@entrypoint</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">print</span> <span class="s">&#39;compiler version:&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
     <span class="k">print</span> <span class="s">&#39;code:&#39;</span><span class="p">,</span> <span class="n">code</span>
-    <span class="k">print</span> 
-    <span class="k">print</span> <span class="s">&#39;no optimizations::&#39;</span>    
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="s">&#39;no optimizations::&#39;</span>
     <span class="k">print</span>
     <span class="n">cc</span><span class="o">.</span><span class="n">optimize_no</span><span class="p">()</span>
     <span class="n">test</span><span class="p">()</span>
@@ -112,28 +114,31 @@ optimize for size::
 
 <span class="n">cc</span> <span class="o">=</span> <span class="n">AvrGcc</span><span class="p">()</span>
 
+
 <span class="k">def</span> <span class="nf">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">optimization</span><span class="p">,</span> <span class="n">gc_sections</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ffunction_sections</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="k">print</span> <span class="s">&#39;optimization =&#39;</span><span class="p">,</span> <span class="n">optimization</span><span class="p">,</span>
     <span class="k">print</span> <span class="s">&#39;gc_sections =&#39;</span><span class="p">,</span> <span class="n">gc_sections</span><span class="p">,</span>
     <span class="k">print</span> <span class="s">&#39;ffunction_sections =&#39;</span><span class="p">,</span> <span class="n">ffunction_sections</span><span class="p">,</span>
     <span class="k">print</span>
-    
+
     <span class="n">cc</span><span class="o">.</span><span class="n">optimization</span> <span class="o">=</span> <span class="n">optimization</span>
     <span class="n">cc</span><span class="o">.</span><span class="n">gc_sections</span> <span class="o">=</span> <span class="n">gc_sections</span>
     <span class="n">cc</span><span class="o">.</span><span class="n">ffunction_sections</span> <span class="o">=</span> <span class="n">ffunction_sections</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
         <span class="n">size</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-        <span class="k">print</span> <span class="s">&#39;program, data =&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">program_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">data_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;program, data =&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">program_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">data_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="k">print</span>  <span class="s">&#39;compile error&#39;</span>
+
 
 <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">sources</span><span class="p">):</span>
     <span class="k">print</span> <span class="s">&#39;sources:&#39;</span><span class="p">,</span> <span class="n">sources</span>
     <span class="n">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">test_option</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
 
 <span class="nd">@entrypoint</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
@@ -154,7 +159,6 @@ optimize for size::
     <span class="k">print</span> <span class="s">&#39;unused function in the same file&#39;</span>
     <span class="k">print</span> <span class="mi">40</span> <span class="o">*</span> <span class="s">&#39;=&#39;</span>
     <span class="n">test</span><span class="p">([</span><span class="s">&#39;int main(){}; int f(){return 2;}&#39;</span><span class="p">])</span>
-    
 </pre></div>
 </div>
 <p>Output:</p>
@@ -228,16 +232,18 @@ program, data =      138 ,        0
 <span class="k">print</span>  <span class="s">&#39;compiler version:&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
 <span class="k">print</span>
 
+
 <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">snippet</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
-    <span class="k">print</span>  <span class="n">snippet</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">33</span><span class="p">)</span> <span class="p">,</span>
+    <span class="k">print</span>  <span class="n">snippet</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">33</span><span class="p">),</span>
     <span class="n">cc</span><span class="o">.</span><span class="n">options_extra</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
     <span class="k">print</span>  <span class="s">&#39;compiler option:&#39;</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="s">&#39;</span><span class="se">\t</span><span class="s">&#39;</span><span class="p">,</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">([</span><span class="n">templ</span> <span class="o">%</span> <span class="n">snippet</span><span class="p">])</span>
         <span class="n">size</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-        <span class="k">print</span> <span class="s">&#39;program, data =&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">program_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">data_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;program, data =&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">program_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">data_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">AvrGccCompileError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">print</span>  <span class="s">&#39;compile error&#39;</span>
+
 
 <span class="nd">@entrypoint</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
@@ -248,8 +254,6 @@ program, data =      138 ,        0
     <span class="n">test</span><span class="p">(</span><span class="s">&#39;_delay_ms(4)&#39;</span><span class="p">,</span> <span class="s">&#39;-O2&#39;</span><span class="p">)</span>
     <span class="n">test</span><span class="p">(</span><span class="s">&#39;_delay_ms(4)&#39;</span><span class="p">,</span> <span class="s">&#39;-O3&#39;</span><span class="p">)</span>
     <span class="n">test</span><span class="p">(</span><span class="s">&#39;_delay_ms(4)&#39;</span><span class="p">,</span> <span class="s">&#39;-Os&#39;</span><span class="p">)</span>
-
-    <span class="n">test</span><span class="p">(</span><span class="s">&#39;volatile int x=3;_delay_ms(x)&#39;</span><span class="p">,</span> <span class="s">&#39;-Os&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Output:</p>
@@ -261,7 +265,6 @@ _delay_ms(4)                      compiler option: -O1 	program, data =      150
 _delay_ms(4)                      compiler option: -O2 	program, data =      150 ,        0
 _delay_ms(4)                      compiler option: -O3 	program, data =      150 ,        0
 _delay_ms(4)                      compiler option: -Os 	program, data =      150 ,        0
-volatile int x=3;_delay_ms(x)     compiler option: -Os 	compile error
 </pre></div>
 </div>
 <dl class="docutils">
@@ -290,31 +293,35 @@ volatile int x=3;_delay_ms(x)     compiler option: -Os 	compile error
 <span class="s">&#39;&#39;&#39;</span>
 
 <span class="n">cc</span> <span class="o">=</span> <span class="n">AvrGcc</span><span class="p">()</span>
-<span class="n">cc</span><span class="o">.</span><span class="n">optimization</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">cc</span><span class="o">.</span><span class="n">optimization</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">print</span>  <span class="s">&#39;compiler version:&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
 <span class="k">print</span>  <span class="s">&#39;compiler options:&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cc</span><span class="o">.</span><span class="n">options_generated</span><span class="p">())</span>
 <span class="k">print</span>
 
+
 <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">snippet</span><span class="p">):</span>
-    <span class="k">print</span>  <span class="n">snippet</span> <span class="p">,</span><span class="s">&#39;</span><span class="se">\t\t</span><span class="s">&#39;</span><span class="p">,</span>
+    <span class="k">print</span>  <span class="n">snippet</span><span class="p">,</span> <span class="s">&#39;</span><span class="se">\t\t</span><span class="s">&#39;</span><span class="p">,</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">cc</span><span class="o">.</span><span class="n">build</span><span class="p">([</span><span class="n">templ</span> <span class="o">%</span> <span class="n">snippet</span><span class="p">])</span>
         <span class="n">size</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-        <span class="k">print</span> <span class="s">&#39;program, data =&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">program_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">data_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;program, data =&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">program_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">data_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="k">print</span>  <span class="s">&#39;compile error&#39;</span>
 
 
 <span class="k">def</span> <span class="nf">test_comb</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="n">words</span><span class="o">=</span><span class="s">&#39;static const PROGMEM&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="s">&#39;static const PROGMEM&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
     <span class="k">def</span> <span class="nf">choice</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s">&#39; &#39;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span>
-    
+        <span class="k">return</span> <span class="p">[</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s">&#39; &#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span>
+
     <span class="k">for</span> <span class="n">s0</span> <span class="ow">in</span> <span class="n">choice</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">s1</span> <span class="ow">in</span> <span class="n">choice</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">s2</span> <span class="ow">in</span> <span class="n">choice</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
 <span class="c">#                    for s3 in choice(3):</span>
-                        <span class="n">test</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> char s[] </span><span class="si">%s</span><span class="s"> = &quot;</span><span class="si">%s</span><span class="s">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s0</span><span class="p">,</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,</span><span class="n">s</span><span class="p">))</span>
+                        <span class="n">test</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> char s[] </span><span class="si">%s</span><span class="s"> = &quot;</span><span class="si">%s</span><span class="s">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s0</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+
+
 <span class="nd">@entrypoint</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">test_comb</span><span class="p">(</span><span class="s">&quot;12345&quot;</span><span class="p">)</span>
@@ -364,6 +371,7 @@ static       char s[]         = &quot;1234512345&quot; 		program, data =      16
 <span class="kn">from</span> <span class="nn">entrypoint2</span> <span class="kn">import</span> <span class="n">entrypoint</span>
 <span class="kn">from</span> <span class="nn">pyavrutils.avrgcc</span> <span class="kn">import</span> <span class="n">AvrGcc</span><span class="p">,</span> <span class="n">AvrGccCompileError</span>
 
+
 <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">cc</span><span class="p">,</span> <span class="n">mcu</span><span class="p">):</span>
     <span class="k">print</span> <span class="s">&#39;MCU =&#39;</span><span class="p">,</span> <span class="n">mcu</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
     <span class="n">cc</span><span class="o">.</span><span class="n">mcu</span> <span class="o">=</span> <span class="n">mcu</span>
@@ -373,13 +381,14 @@ static       char s[]         = &quot;1234512345&quot; 		program, data =      16
     <span class="k">except</span> <span class="n">AvrGccCompileError</span><span class="p">:</span>
         <span class="k">print</span> <span class="s">&#39;    compile error&#39;</span>
 
+
 <span class="nd">@entrypoint</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">cc</span> <span class="o">=</span> <span class="n">AvrGcc</span><span class="p">()</span>
     <span class="k">print</span> <span class="s">&#39;--------------&#39;</span>
     <span class="k">print</span> <span class="s">&#39;avr-gcc&#39;</span>
     <span class="k">print</span> <span class="s">&#39;--------------&#39;</span>
-    
+
     <span class="k">print</span> <span class="s">&#39;compiler version:&#39;</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
     <span class="n">cc</span><span class="o">.</span><span class="n">optimize_for_size</span><span class="p">()</span>
     <span class="k">print</span> <span class="s">&#39;compiler options:&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cc</span><span class="o">.</span><span class="n">options_generated</span><span class="p">())</span>
@@ -672,7 +681,7 @@ MCU = attiny40                 program/data size = 62 , 0
         <li class="right" >
           <a href="usage.html" title="Usage"
              >previous</a> |</li>
-        <li><a href="index.html">pyavrutils 0.1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

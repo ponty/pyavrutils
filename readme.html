@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>About &mdash; pyavrutils 0.1.1 documentation</title>
+    <title>About &mdash; pyavrutils 0.1.2 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1.1',
+        VERSION:     '0.1.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pyavrutils 0.1.1 documentation" href="index.html" />
+    <link rel="top" title="pyavrutils 0.1.2 documentation" href="index.html" />
     <link rel="next" title="Usage" href="usage.html" />
     <link rel="prev" title="Indices and tables" href="index.html" /> 
   </head>
@@ -42,7 +42,7 @@
         <li class="right" >
           <a href="index.html" title="Indices and tables"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pyavrutils 0.1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -53,7 +53,7 @@
             
   <div class="section" id="about">
 <h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
-<p>pyavrutils can build <a class="reference external" href="http://en.wikipedia.org/wiki/Atmel_AVR">AVR</a> and <a class="reference external" href="http://arduino.cc/">arduino</a> code from <a class="reference external" href="http://www.python.org/">python</a></p>
+<p>pyavrutils is a Python library that can build <a class="reference external" href="http://en.wikipedia.org/wiki/Atmel_AVR">AVR</a> and <a class="reference external" href="http://arduino.cc/">arduino</a> code at runtime.</p>
 <dl class="docutils">
 <dt>Links:</dt>
 <dd><ul class="first last simple">
@@ -68,23 +68,13 @@
 <li>MCU list</li>
 <li>get code size using avr-size</li>
 <li>avr-gcc default is optimized for size</li>
+<li>supported python versions: 2.6, 2.7</li>
 </ul>
 </dd>
 <dt>Known problems:</dt>
-<dd><ul class="first last">
-<li><p class="first">Python 3 is not supported</p>
-</li>
-<li><p class="first">temp files are not removed</p>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="http://code.google.com/p/arscons/">arscons</a> has some problems:</dt>
 <dd><ul class="first last simple">
-<li>it builds bigger programs</li>
-<li>compile error in some cases</li>
-</ul>
-</dd>
-</dl>
-</li>
+<li>temp files are not removed</li>
+<li><a class="reference external" href="http://code.google.com/p/arscons/">arscons</a> does not perfectly matches the Arduino build process</li>
 </ul>
 </dd>
 <dt>Possible usage:</dt>
@@ -141,7 +131,9 @@ sudo apt-get install binutils-avr
 sudo apt-get install gcc-avr
 sudo apt-get install scons
 sudo apt-get install arduino
-sudo pip install pyavrutils</pre>
+sudo pip install pyavrutils
+# optional for examples:
+sudo pip install entrypoint2</pre>
 </div>
 </div>
 <div class="section" id="uninstall">
@@ -211,7 +203,7 @@ pip uninstall pyavrutils</pre>
         <li class="right" >
           <a href="index.html" title="Indices and tables"
              >previous</a> |</li>
-        <li><a href="index.html">pyavrutils 0.1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pyavrutils 0.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

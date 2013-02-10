@@ -13,7 +13,6 @@ Contents:
     examples
     build
     api
-    dev
 
 Indices and tables
 ==================
