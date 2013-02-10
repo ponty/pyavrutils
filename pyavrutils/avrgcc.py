@@ -2,8 +2,8 @@ from easyprocess import Proc, extract_version
 from entrypoint2 import entrypoint
 from pyavrutils.avrsize import AvrSize
 from pyavrutils.util import tmpdir, tmpfile, separate_sources, CompileError
-from unipath.path import Path
 import tempfile
+from path import path
 
 
 class AvrGccCompileError(CompileError):
@@ -141,9 +141,9 @@ class AvrGcc(object):
     def command_list(self, sources, _opt=False):
         '''command line as list'''
         def abspath(x):
-            x = Path(x).absolute()
+            x = path(x).abspath()
             if not x.exists():
-                raise ValueError('file not found! ' + x.absolute())
+                raise ValueError('file not found! ' + x)
             return x
 
         self.f_cpu = int(self.f_cpu)
@@ -204,7 +204,7 @@ class AvrGcc(object):
 
         if headers:
             for n, s in headers.items():
-                Path(tempdir).child(n).write_file(s)
+                (path(tempdir) / n).write_text(s)
 
         cmd = self.command_list(files + temp_list)
         if tempdir:
