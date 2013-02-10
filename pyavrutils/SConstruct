@@ -140,7 +140,7 @@ def getBoardConf(conf, default = None):
     ret = default
     if ret == None:
         print "ERROR! can't find %s in %s" % (conf, ARDUINO_CONF)
-        assert(False)
+        #assert(False)
     return ret
 
 ARDUINO_CORE = path.join(ARDUINO_HOME, path.dirname(ARDUINO_CONF),
