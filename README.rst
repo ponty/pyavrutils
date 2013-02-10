@@ -68,6 +68,8 @@ Ubuntu
     sudo apt-get install scons
     sudo apt-get install arduino
     sudo pip install pyavrutils
+    # optional for examples:
+    sudo pip install entrypoint2
 
 Uninstall
 ----------

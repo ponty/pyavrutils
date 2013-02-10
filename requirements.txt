@@ -1,6 +1,5 @@
 unipath
 easyprocess
-entrypoint2
 path.py
 confduino
 
