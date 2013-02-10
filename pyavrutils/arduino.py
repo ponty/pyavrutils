@@ -16,34 +16,51 @@ class ArduinoCompileError(CompileError):
 
 class Arduino(object):
     '''
-    wrapper for arscons_
+    wrapper for arscons_ and ino_
 
 
-    .. _arscons: http://code.google.com/p/arscons/
+    .. _arscons: https://github.com/suapapa/arscons
+    .. _ino: https://github.com/amperka/ino
     '''
     minprog = 'void setup(){};void loop(){};'
 
     def __init__(self,
-                 board='pro',
-                 hwpack='arduino',
                  mcu=None,
                  f_cpu=None,
+                 board=None,
+                 hwpack='arduino',
                  extra_lib=None,
                  ver=None,
-                 #                 home='auto',
-                 #                 backend='ino',
-                 backend='arscons',
+                 backend='arscons',  # 'ino',
+                 arduino_home=None,
+                 avr_home=None,
                  ):
         '''
         :param home:  'auto' -> ARDUINO_HOME env var
         '''
-        assert board or mcu
+#        assert board or mcu, (board,  mcu)
+        assert not (board and mcu), (board, mcu)
+        assert not (board and mcu), (board, mcu)
 
-#        if home == 'auto':
-#            home = os.environ.get('ARDUINO_HOME', None)
-#        else:
-#            set_arduino_path(home)
-#        self.home = home
+        if not board:
+            if not mcu:
+                mcu = 'atmega328p'
+            if not f_cpu:
+                f_cpu = 16000000
+
+        if not arduino_home:
+            arduino_home = os.environ.get('ARDUINO_HOME', None)
+        self.arduino_home = arduino_home
+
+        if not avr_home:
+            avr_home = os.environ.get('AVR_HOME', None)
+        if arduino_home and not avr_home:
+            # serach for avr-gcc delivered by arduino
+            avr_home = path(
+                arduino_home) / 'hardware' / 'tools' / 'avr' / 'bin'
+            if not avr_home.exists():
+                avr_home = None
+        self.avr_home = avr_home
 
         self.board = board
         self.hwpack = hwpack
@@ -93,10 +110,13 @@ class Arduino(object):
         cmd = []
         cmd += ['scons']
 
-#        if self.home:
-#            cmd += ['ARDUINO_HOME=' + self.home]
-        if os.environ.get('ARDUINO_HOME', None):
-            cmd += ['ARDUINO_HOME=' + os.environ.get('ARDUINO_HOME')]
+        if self.arduino_home:
+            cmd += ['ARDUINO_HOME=' + self.arduino_home]
+#        if os.environ.get('ARDUINO_HOME', None):
+#            cmd += ['ARDUINO_HOME=' + os.environ.get('ARDUINO_HOME')]
+
+        if self.avr_home:
+            cmd += ['AVR_HOME=' + self.avr_home]
 
         if self.board:
             cmd += ['ARDUINO_BOARD=' + self.board]
@@ -234,25 +254,40 @@ class Arduino(object):
         if self.proc:
             return self.proc.return_code == 0
 
+# atmega32u4
+# USB_VID is not supported
+TARGETS = '''
+atmega168
+atmega328p
+atmega8
+atmega88
+atmega1280
+atmega2560
+'''
 
-def targets(uniq_mcu=False):
-#    if home:
-#        set_arduino_path(home)
-    ls = []
-    oldmcus = []
-    for h in hwpacklist.hwpack_names():
-        for b in boardlist.board_names(h):
-            mcu = mculist.mcu(b, h)
-            # TODO: not working
-            if b in 'atmega8u2 attiny861 sanguino'.split():
-                continue
-            if not uniq_mcu or mcu not in oldmcus:
-                cc = Arduino(board=b,
-                             hwpack=h,
-                             mcu=mcu,
-                             #                             home=home,
-                             )
-                cc.board_options = boardlist.boards(h)[b]
-                ls += [cc]
-                oldmcus += [mcu]
-    return ls
+
+def targets():
+    return sorted(TARGETS.strip().split())
+
+# def targets(uniq_mcu=False):
+# #    if home:
+# #        set_arduino_path(home)
+#    ls = []
+#    oldmcus = []
+#    for h in hwpacklist.hwpack_names():
+#        for b in boardlist.board_names(h):
+#            mcu = mculist.mcu(b, h)
+#            # TODO: not working
+#            if b in 'atmega8u2 attiny861 sanguino'.split():
+#                continue
+#            if not uniq_mcu or mcu not in oldmcus:
+#                print mcu
+#                cc = Arduino(board=b,
+#                             hwpack=h,
+#                             mcu=mcu,
+#                             #                             home=home,
+#                             )
+#                cc.board_options = boardlist.boards(h)[b]
+#                ls += [cc]
+#                oldmcus += [mcu]
+#    return ls

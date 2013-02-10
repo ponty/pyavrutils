@@ -32,7 +32,7 @@ def warnings(filename,
 
     print 'backend:', cc.backend
     print 'MCU:', cc.mcu_compiler()
-    print 'avr-gcc:', AvrGcc().version()
+#    print 'avr-gcc:', AvrGcc().version()
 
     print
     print('=============================================')

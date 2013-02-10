@@ -18,5 +18,6 @@ def main():
 #    print 'compiler version:', cc.version()
     print 'code:', cc.minprog
     print
-    for cc in targets(uniq_mcu=True):
+    for mcu in targets():
+        cc = Arduino(mcu=mcu)
         test(cc)

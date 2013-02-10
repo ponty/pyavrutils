@@ -38,5 +38,3 @@ def main():
     test('_delay_ms(4)', '-O2')
     test('_delay_ms(4)', '-O3')
     test('_delay_ms(4)', '-Os')
-
-    test('volatile int x=3;_delay_ms(x)', '-Os')

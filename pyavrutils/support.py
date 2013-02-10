@@ -50,8 +50,7 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None):
 #                     'source',
 #                     ] + range(len(targets)))
     writer.writerow([
-                    'index',
-                    'board',
+                    'MCU',
                     ] + [ex.namebase for ex in sources])
 
     if not hasattr(build2csv, 'index'):
@@ -88,7 +87,7 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None):
             outs += ['`%s <%s>`__' % (label, logfile.name)]
 
         writer.writerow([
-                        index,
+#                        index,
                         #                         ex.namebase,
                         cc.mcu,
                         ] + outs)

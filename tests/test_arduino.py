@@ -1,14 +1,14 @@
-from nose.tools import eq_, ok_
+from nose.tools import eq_, ok_, raises
 from path import path
 from pyavrutils.arduino import Arduino, ArduinoCompileError, targets
 from pyavrutils.util import tmpdir
 from unittest import TestCase
 import os
-
 ARDUINO_VERSIONS = [
     '0022',
     #                  '0023',
     '1.0',
+    '1.0.3',
 ]
 
 
@@ -69,28 +69,15 @@ class Test(TestCase):
         (d / 'x.h').write_text('#define foo 3')
         Arduino().build(f)
 
-#    def test_more_pde(self):
-#        d = tmpdir() / 'Foo'
-#        d.makedirs()
-#        f = d / 'Foo.pde'
-#        f.write_text('''
-#        #include "x.h"
-#        int x=foo;
-#        ''' + Arduino.minprog)
-#        (d / 'x.h').write_text('''
-#        #define foo 3
-#
-#        class X
-#        {
-#        void fun();
-#        };
-#        ''')
-#        (d / 'x.pde').write_text('''
-#        //#include "x.h"
-#
-#        void X::fun()
-#        {
-#            int x=foo;
-#        }
-#        ''')
-#        Arduino().build(f)
+
+def test_params():
+    Arduino(mcu='atmega88', f_cpu=1000000)
+    Arduino(mcu='atmega88')
+    Arduino(board='mega')
+    Arduino(f_cpu=1000000)
+    Arduino(board='mega', f_cpu=1000000)
+
+
+@raises(Exception)
+def test_exc():
+    Arduino(board='mega', mcu='atmega88')
