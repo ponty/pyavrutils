@@ -1,4 +1,4 @@
-pyavrutils can build AVR_ and arduino_ code from python_
+pyavrutils is a Python library that can build AVR_ and arduino_ code at runtime.
 
 Links:
  * home: https://github.com/ponty/pyavrutils
@@ -10,13 +10,11 @@ Features:
  - MCU list 
  - get code size using avr-size
  - avr-gcc default is optimized for size
+ - supported python versions: 2.6, 2.7
 
 Known problems:
- - Python 3 is not supported
  - temp files are not removed
- - arscons_ has some problems:
-     - it builds bigger programs
-     - compile error in some cases
+ - arscons_ does not perfectly matches the Arduino build process
  
 Possible usage:
  - experimenting with flags
