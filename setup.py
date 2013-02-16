@@ -14,7 +14,7 @@ def read_project_version(package):
 
 NAME = 'pyavrutils'
 URL = 'https://github.com/ponty/pyavrutils'
-DESCRIPTION = 'pyavrutils can build AVR and arduino code from python'
+DESCRIPTION = 'pyavrutils is a Python library that can build AVR_ and arduino_ code at runtime.'
 VERSION = read_project_version(NAME)
 
 extra = {}
