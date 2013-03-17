@@ -8,7 +8,6 @@ from paver.easy import *
 from paver.setuputils import setup
 from pyavrutils import support
 from setuptools import find_packages
-from sphinxcontrib import paverutils
 import logging
 import os
 import paver.doctools
@@ -31,10 +30,10 @@ options(
         docroot='docs',
         builddir="_build",
     ),
-    pdf=Bunch(
-        builddir='_build',
-        builder='latex',
-    ),
+#    pdf=Bunch(
+#        builddir='_build',
+#        builder='latex',
+#    ),
 )
 
 options.paved.clean.rmdirs += ['.tox',
@@ -77,21 +76,6 @@ def alltest():
     'all tasks to check'
     pass
 
-
-@task
-@needs('sphinxcontrib.paverutils.html')
-def html():
-    pass
-
-
-@task
-@needs('sphinxcontrib.paverutils.pdf')
-def pdf():
-    fpdf = list(path('docs/_build/latex').walkfiles('*.pdf'))[0]
-    d = path('docs/_build/html')
-    d.makedirs()
-    fpdf.copy(d)
-
 ARDUINO_VERSIONS = [
     '0022',
     #'0023',
@@ -112,12 +96,6 @@ def build_test():
             logdir=docroot / '_build' / 'html',
             logger=info,
         )
-
-
-@task
-def tox():
-    '''Run tox.'''
-    sh('tox')
 
 
 @task
