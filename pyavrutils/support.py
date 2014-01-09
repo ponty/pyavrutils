@@ -62,7 +62,8 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None):
         logger('building target: ' + cc.mcu)
         outs = []
         for ex in sources:
-            cc.extra_lib = path(extra_lib).abspath()
+            if extra_lib:
+                cc.extra_lib = path(extra_lib).abspath()
             ok = False
             try:
                 cc.build(ex)
