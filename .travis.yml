@@ -23,7 +23,7 @@ script:
  - env
  - head /usr/bin/scons
  - scons
- - sudo sed -i -e "s+/usr/bin/python+/usr/bin/python2+" 		/usr/bin/scons
+ - sudo sed -i -e "s/python/python2/" 		/usr/bin/scons
  - head /usr/bin/scons
  - scons
  - nosetests -v --with-coverage --cover-package=pyavrutils  .
