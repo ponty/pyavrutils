@@ -13,7 +13,7 @@ Features:
  - MCU list 
  - get code size using avr-size
  - avr-gcc default is optimized for size
- * supported python versions: 2.6, 2.7, 3.3, 3.4, 3.5
+ - supported python versions: 2.6, 2.7, 3.3, 3.4, 3.5
 
 Known problems:
  - temp files are not removed
@@ -21,7 +21,6 @@ Known problems:
  
 Possible usage:
  - experimenting with flags
- - building from paver_
  - unit tests
  - building arduino_ code without GUI
   
@@ -760,12 +759,11 @@ Results:
     :header-rows: 1
 
         
-.. _pip: http://pip.openplans.org/
-.. _arscons: http://code.google.com/p/arscons/
+.. _pip: https://pypi.python.org/pypi/pip
+.. _arscons: https://github.com/suapapa/arscons
 .. _arduino: http://arduino.cc/
 .. _python: http://www.python.org/
 .. _avr: http://en.wikipedia.org/wiki/Atmel_AVR
-.. _paver: http://paver.github.com/paver/
 .. _scons: http://www.scons.org
 
 .. |Travis| image:: http://img.shields.io/travis/ponty/pyavrutils.svg
