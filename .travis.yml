@@ -19,6 +19,12 @@ script:
  - python --version
  - python2 --version
  - python3 --version
+ - which python
+ - env
+ - head /usr/bin/scons
+ - scons
+ - sed -i -e "s+/usr/bin/python+/usr/bin/python2+" 		/usr/bin/scons
+ - head /usr/bin/scons
  - scons
  - nosetests -v --with-coverage --cover-package=pyavrutils  .
   
