@@ -289,8 +289,6 @@ Output::
   program, data =      138 ,        0
   #-#
 
-Conclusions:
- - both ``gc_sections`` and ``ffunction_sections`` should be used
 
 Test size with delay.h
 ----------------------
@@ -352,10 +350,6 @@ Output::
   _delay_ms(4)                      compiler option: -Os 	program, data =      150 ,        0
   #-#
     
-Conclusions:
- - parameter should be constant
- - optimization should be 1, 2, 3 or s
-   
 
 Test size with program space
 ----------------------------
