@@ -1,25 +1,24 @@
 from nose.tools import eq_, ok_, raises
-from path import path
+from path import Path
 from pyavrutils.arduino import Arduino, ArduinoCompileError, targets
 from pyavrutils.util import tmpdir
 import os
 
 
-# avr-gcc 4.7 compile error with old arduino versions
-ARDUINO_VERSIONS = [
-    # '0022',
-    #                  '0023',
-    # '1.0',
-    '1.0.3',
-]
+# ARDUINO_VERSIONS = [
+#     # '0022',
+#     #                  '0023',
+#     # '1.0',
+#     '1.0.3',
+# ]
 
 def set_arduino_home(version):
-    h = path('~/opt/arduino-{0}'.format(version)).expanduser()
+    h = Path('~/opt/arduino-{0}'.format(version)).expanduser()
     os.environ['ARDUINO_HOME'] = h
     
 def setup():
     "set up test fixtures"
-    set_arduino_home(ARDUINO_VERSIONS[-1])  # latest
+#     set_arduino_home(ARDUINO_VERSIONS[-1])  # latest
     
 def test():
     cc = Arduino()
@@ -35,8 +34,9 @@ def test_targets_list():
 
 def test_targets():
     boards = 'lilypad mega2560 mega'.split()
-    for ver in ARDUINO_VERSIONS:
-        set_arduino_home(ver)
+#     for ver in ARDUINO_VERSIONS:
+#         set_arduino_home(ver)
+    if 1:
         for b in boards:
 
             cc = Arduino(
@@ -45,12 +45,12 @@ def test_targets():
             )
 
             try:
-                cc.build(path(__file__).parent / 'min.pde')
-                print '    program size =', cc.size().program_bytes
+                cc.build(Path(__file__).parent / 'min.pde')
+                print( '    program size = %s' % cc.size().program_bytes )
                 cc.build(cc.minprog)
-                print '    program size =', cc.size().program_bytes
-            except ArduinoCompileError, e:
-                print '    compile error:', cc.error_text.splitlines()
+                print( '    program size = %s' % cc.size().program_bytes )
+            except ArduinoCompileError as e:
+                print( '    compile error: %s' % cc.error_text.splitlines() )
                 raise e
 
 def test_bad_dir():

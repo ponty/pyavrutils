@@ -1,5 +1,5 @@
 from easyprocess import Proc
-from path import path
+from path import Path
 
 
 class AvrSizeError(Exception):
@@ -50,7 +50,7 @@ class AvrSize(object):
 
     def run(self, objfile, mcu):
 
-        objfile = path(objfile).abspath()
+        objfile = Path(objfile).abspath()
         if not objfile.exists():
             raise AvrSizeError('no hex file! ' + objfile)
         cmd = 'avr-size --format=avr --mcu={mcu} {objfile}'.format(

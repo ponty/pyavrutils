@@ -15,6 +15,7 @@ pip-log.txt
 
 *.bak
 */build/*
+*/.build/*
 */_build/*
 */_build/latex/*
 
@@ -24,11 +25,13 @@ pip-log.txt
 nosetests.xml
 
 .*
-!.gitignore
+!.git*
+!.travis*
+!.coveragerc
+
+
 /distribute_setup.py
-
-
 sloccount.sc
 *.prefs
 
-*.csv
+#*.csv

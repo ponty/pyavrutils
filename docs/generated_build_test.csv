@@ -1,0 +1,8 @@
+MCU,min
+atmega8,`OK (P:308 D:9) <generated_buildlog_min_1.txt>`__
+atmega48,`OK (P:376 D:9) <generated_buildlog_min_2.txt>`__
+atmega168,`OK (P:440 D:9) <generated_buildlog_min_3.txt>`__
+atmega328p,`OK (P:440 D:9) <generated_buildlog_min_4.txt>`__
+atmega640,`OK (P:642 D:9) <generated_buildlog_min_5.txt>`__
+atmega1280,`OK (P:642 D:9) <generated_buildlog_min_6.txt>`__
+atmega2560,`OK (P:646 D:9) <generated_buildlog_min_7.txt>`__

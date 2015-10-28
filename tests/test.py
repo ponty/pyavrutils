@@ -29,9 +29,9 @@ class Test(TestCase):
             cc.mcu = mcu
             try:
                 cc.build(cc.minprog)
-                print '    program size =', cc.size().program_bytes
+                print( '    program size = %s' % cc.size().program_bytes )
             except AvrGccCompileError:
-                print '    compile error:', cc.error_text.splitlines()[0]
+                print( '    compile error: %s' % cc.error_text.splitlines()[0] )
 
     def test_headers(self):
         cc = AvrGcc()

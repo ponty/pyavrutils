@@ -1,25 +1,14 @@
-**pyavrutils**
+==========
+pyavrutils
+==========
 
-:Date: |today|
-:PDF: `pyavrutils.pdf <pyavrutils.pdf>`_
 
-Contents:
 
-.. toctree::
-    :maxdepth: 2
+About
+=====
 
-    readme
-    usage
-    examples
-    build
-    api
 
-Indices and tables
-==================
+.. include:: ../README.rst
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. include:: api.rst
 
-.. _Xvfb: http://en.wikipedia.org/wiki/Xvfb
-.. _Xephyr: http://en.wikipedia.org/wiki/Xephyr

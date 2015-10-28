@@ -1,6 +1,6 @@
-from confduino import set_arduino_path, version, mculist, hwpacklist, boardlist
+from confduino import version, mculist
 from easyprocess import Proc
-from path import path
+from path import Path
 from pyavrutils.avrsize import AvrSize
 from pyavrutils.util import tmpdir, separate_sources, tmpfile, rename, \
     CompileError
@@ -56,7 +56,7 @@ class Arduino(object):
             avr_home = os.environ.get('AVR_HOME', None)
         if arduino_home and not avr_home:
             # serach for avr-gcc delivered by arduino
-            avr_home = path(
+            avr_home = Path(
                 arduino_home) / 'hardware' / 'tools' / 'avr' / 'bin'
             if not avr_home.exists():
                 avr_home = None
@@ -206,7 +206,7 @@ class Arduino(object):
         # TODO: remove tempdir
         tempdir = tmpdir(dir=tmpdir())
 
-        SConstruct = path(__file__).parent / 'SConstruct'
+        SConstruct = Path(__file__).parent / 'SConstruct'
         SConstruct.copy(tempdir / 'SConstruct')
 
         allfiles = self.setup_sources(tempdir, sources)

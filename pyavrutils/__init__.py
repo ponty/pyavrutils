@@ -1,6 +1,6 @@
 import logging
+from pyavrutils.about import __version__
 
-__version__ = '0.1.2'
 
 log = logging.getLogger(__name__)
 # log=logging

@@ -3,7 +3,7 @@ from entrypoint2 import entrypoint
 from pyavrutils.avrsize import AvrSize
 from pyavrutils.util import tmpdir, tmpfile, separate_sources, CompileError
 import tempfile
-from path import path
+from path import Path
 
 
 class AvrGccCompileError(CompileError):
@@ -141,7 +141,7 @@ class AvrGcc(object):
     def command_list(self, sources, _opt=False):
         '''command line as list'''
         def abspath(x):
-            x = path(x).abspath()
+            x = Path(x).abspath()
             if not x.exists():
                 raise ValueError('file not found! ' + x)
             return x
@@ -204,7 +204,7 @@ class AvrGcc(object):
 
         if headers:
             for n, s in headers.items():
-                (path(tempdir) / n).write_text(s)
+                (Path(tempdir) / n).write_text(s)
 
         cmd = self.command_list(files + temp_list)
         if tempdir:

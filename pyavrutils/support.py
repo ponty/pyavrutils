@@ -1,5 +1,5 @@
 from confduino import version
-from path import path
+from path import Path
 from pyavrutils import arduino
 from pyavrutils.arduino import Arduino, ArduinoCompileError
 import confduino
@@ -7,7 +7,7 @@ import csv
 
 
 def find_examples(root):
-    root = path(root)
+    root = Path(root)
     examples = []
     for e in version.all_sketch_extensions():
         examples += [x for x in root.walkfiles('*' + e)
@@ -29,13 +29,13 @@ def simple_targets():
 
 
 def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None):
-    csv_path = path(csv_path).abspath()
+    csv_path = Path(csv_path).abspath()
     if not logger:
         logger = (lambda x: x)
 
 #    if not logdir:
 #        logdir = csv_path.parent
-    logdir = path(logdir).abspath()
+    logdir = Path(logdir).abspath()
     if not logdir.exists():
         logdir.makedirs()
 
@@ -63,7 +63,7 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None):
         outs = []
         for ex in sources:
             if extra_lib:
-                cc.extra_lib = path(extra_lib).abspath()
+                cc.extra_lib = Path(extra_lib).abspath()
             ok = False
             try:
                 cc.build(ex)
@@ -95,7 +95,7 @@ def build2csv(sources, csv_path, logdir, extra_lib=None, logger=None):
 
 
 def boards2csv(csv_path, logger=None):
-    csv_path = path(csv_path).abspath()
+    csv_path = Path(csv_path).abspath()
     if not logger:
         logger = (lambda x: x)
 
