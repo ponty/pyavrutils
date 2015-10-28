@@ -13,19 +13,11 @@ install:
  - pip install .
  - pip install coveralls
 
+# scons is Python2 only!
+
 script:  
  - cd tests 
- - ls -la /usr/bin/python*
- - python --version
- - python2 --version
- - python3 --version
- - which python
- - env
- - head /usr/bin/scons
- - scons
  - sudo sed -i -e "s/python/python2/" 		/usr/bin/scons
- - head /usr/bin/scons
- - scons
  - nosetests -v --with-coverage --cover-package=pyavrutils  .
   
 after_success:
