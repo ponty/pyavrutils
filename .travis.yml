@@ -15,6 +15,11 @@ install:
 
 script:  
  - cd tests 
+ - ls -la /usr/bin/python*
+ - python --version
+ - python2 --version
+ - python3 --version
+ - scons
  - nosetests -v --with-coverage --cover-package=pyavrutils  .
   
 after_success:
