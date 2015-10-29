@@ -1,7 +1,6 @@
 
 from entrypoint2 import entrypoint
 from pyavrutils.arduino import Arduino
-from pyavrutils.avrgcc import AvrGcc
 
 
 @entrypoint

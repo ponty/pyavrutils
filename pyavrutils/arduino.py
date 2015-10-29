@@ -140,13 +140,13 @@ class Arduino(object):
     def setup_sources(self, tempdir, sources):
         strings, files = separate_sources(sources)
 
-        log.debug('version: %s' % (version.intversion()))
+        log.debug('version: %s', version.intversion())
         log.debug('''input sources:
   strings:
 %s
   files:
 %s
-''' % ('\n----\n'.join(strings), '\n'.join(files)))
+''' , ('\n----\n'.join(strings), '\n'.join(files)))
 
         allfiles = []
         for x in strings:
@@ -165,7 +165,7 @@ class Arduino(object):
             x.copy(f)
 
             allfiles += [f]
-        log.debug('  converted to:\n%s' % ('\n'.join(allfiles)))
+        log.debug('  converted to:\n%s', '\n'.join(allfiles))
         return allfiles
 
     def guess_projname(self, allfiles):

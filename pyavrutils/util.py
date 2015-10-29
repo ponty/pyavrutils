@@ -1,4 +1,3 @@
-import collections
 from path import Path
 import tempfile
 import types

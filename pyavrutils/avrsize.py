@@ -37,15 +37,15 @@ class AvrSize(object):
         for x in s.splitlines():
             if '%' in x:
                 name = x.split(':')[0].strip().lower()
-                bytes = x.split(':')[1].split('b')[0].strip()
-                bytes = int(bytes)
+                nbytes = x.split(':')[1].split('b')[0].strip()
+                nbytes = int(nbytes)
                 perc = x.split('(')[1].split('%')[0].strip()
                 perc = float(perc)
                 if name == 'program':
-                    self.program_bytes = bytes
+                    self.program_bytes = nbytes
                     self.program_percentage = perc
                 else:
-                    self.data_bytes = bytes
+                    self.data_bytes = nbytes
                     self.data_percentage = perc
 
     def run(self, objfile, mcu):

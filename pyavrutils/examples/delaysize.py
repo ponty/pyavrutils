@@ -25,7 +25,7 @@ def test(snippet, option=''):
         cc.build([templ % snippet])
         size = cc.size()
         print 'program, data =', str(size.program_bytes).rjust(8), ',', str(size.data_bytes).rjust(8)
-    except AvrGccCompileError as e:
+    except AvrGccCompileError:
         print  'compile error'
 
 
