@@ -146,7 +146,7 @@ class Arduino(object):
 %s
   files:
 %s
-''' , ('\n----\n'.join(strings), '\n'.join(files)))
+''' , '\n----\n'.join(strings), '\n'.join(files))
 
         allfiles = []
         for x in strings:
