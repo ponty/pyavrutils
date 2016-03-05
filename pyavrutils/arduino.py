@@ -154,6 +154,7 @@ class Arduino(object):
             allfiles += [f]
 
         for x in files:
+            x = x.abspath()
             f = tempdir / x.namebase + version.sketch_extension()
             if x.parent.name == x.namebase:
                 # copy other files from pde directory
