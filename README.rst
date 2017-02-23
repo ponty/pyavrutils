@@ -5,7 +5,7 @@ Links:
  * documentation: http://pyavrutils.readthedocs.org
  * PYPI: https://pypi.python.org/pypi/pyavrutils
 
-|Travis| |Coveralls| |Latest Version| |Supported Python versions| |License| |Downloads| |Code Health| |Documentation|
+|Travis| |Coveralls| |Latest Version| |Supported Python versions| |License| |Code Health| |Documentation|
 
 Features:
  - python wrapper for avr-gcc, avr-size, arscons_
@@ -775,8 +775,6 @@ Results:
 .. |Supported Python versions| image:: https://img.shields.io/pypi/pyversions/pyavrutils.svg
    :target: https://pypi.python.org/pypi/pyavrutils/
 .. |License| image:: https://img.shields.io/pypi/l/pyavrutils.svg
-   :target: https://pypi.python.org/pypi/pyavrutils/
-.. |Downloads| image:: https://img.shields.io/pypi/dm/pyavrutils.svg
    :target: https://pypi.python.org/pypi/pyavrutils/
 .. |Code Health| image:: https://landscape.io/github/ponty/pyavrutils/master/landscape.svg?style=flat
    :target: https://landscape.io/github/ponty/pyavrutils/master
