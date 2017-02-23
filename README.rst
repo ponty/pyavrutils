@@ -13,7 +13,7 @@ Features:
  - MCU list 
  - get code size using avr-size
  - avr-gcc default is optimized for size
- - supported python versions: 2.6, 2.7, 3.3, 3.4, 3.5
+ - supported python versions: 2.7, 3.3, 3.4, 3.5
 
 Known problems:
  - temp files are not removed
