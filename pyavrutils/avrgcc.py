@@ -160,7 +160,7 @@ class AvrGcc(object):
             self.output = tempfile.NamedTemporaryFile(
                 prefix='pyavrutils_', suffix='.elf', delete=0).name
 
-        defines = self.defines + ['f_cpu=' + str(self.f_cpu)]
+        defines = self.defines + ['F_CPU=' + str(self.f_cpu)]
 
         cmd = [self.cc]
         if not self.use_only_extra_options:
