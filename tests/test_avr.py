@@ -45,3 +45,18 @@ def test_headers():
              {'x.h':
               '#define DEF 3'
               })
+
+
+def test_fcpu():
+    cc = AvrGcc()
+    cc.f_cpu = 1111
+    cc.build('''
+#include <util/delay.h>
+#if( F_CPU != 1111)
+#error F_CPU
+#endif
+int main ()
+{
+    long f = F_CPU;
+}
+    ''')
