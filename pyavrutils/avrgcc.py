@@ -1,5 +1,4 @@
 from easyprocess import Proc, extract_version
-from entrypoint2 import entrypoint
 from pyavrutils.avrsize import AvrSize
 from pyavrutils.util import tmpdir, tmpfile, separate_sources, CompileError
 import tempfile
@@ -221,12 +220,3 @@ class AvrGcc(object):
         s.run(self.output, self.mcu)
         return s
 
-
-@entrypoint
-def _test():
-    cc = AvrGcc()
-    print 'version =', cc.version()
-    code = 'int main(){return 0;}'
-    print code
-    cc.build([code])
-    print 'size =', cc.size()
