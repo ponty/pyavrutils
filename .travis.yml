@@ -7,7 +7,7 @@ python:
  
 install:
  - sudo apt-get install python-dev xvfb x11-utils x11-apps
- - sudo apt-get install binutils-avr gcc-avr scons arduino
+ - sudo apt-get install binutils-avr gcc-avr avr-libc scons arduino
  - pip install -r requirements-test.txt
  - pip install .
  - pip install coveralls

@@ -77,7 +77,7 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y mc python-pip xvfb
 
 # project dependencies
-  sudo apt-get install -y binutils-avr gcc-avr scons arduino
+  sudo apt-get install -y binutils-avr gcc-avr avr-libc scons arduino
   sudo pip install -r /vagrant/requirements.txt
 
 # test dependencies

@@ -63,7 +63,8 @@ Ubuntu 14.04
 ::
 
     sudo apt-get install python-pip
-    sudo apt-get install binutils-avr gcc-avr scons arduino
+    sudo apt-get install binutils-avr gcc-avr avr-libc
+    sudo apt-get scons arduino
     sudo pip install pyavrutils
     # optional for examples:
     sudo pip install entrypoint2
