@@ -10,20 +10,20 @@ Links:
 Features:
  - python wrapper for avr-gcc, avr-size, arscons_
  - build files or strings (strings are saved as temp files)
- - MCU list 
+ - MCU list
  - get code size using avr-size
  - avr-gcc default is optimized for size
- - supported python versions: 2.7, 3.3, 3.4, 3.5
+ - supported python versions: 2.7, 3.4, 3.5, 3.6
 
 Known problems:
  - temp files are not removed
  - arscons_ does not perfectly matches the Arduino build process
- 
+
 Possible usage:
  - experimenting with flags
  - unit tests
  - building arduino_ code without GUI
-  
+
 Basic usage
 ===========
 
@@ -32,7 +32,7 @@ Basic usage
     >>> cc.build('int main(){}')
     >>> cc.size().program_bytes
     66
-    
+
     >>> from pyavrutils import Arduino
     >>> cc = Arduino()
     >>> cc.mcu = 'atmega8'
@@ -46,7 +46,7 @@ Installation
 General
 -------
 
- * arscons_ is already included in the library  
+ * arscons_ is already included in the library
  * install pip_
  * install gcc-avr
  * install scons_ (only for arscons_)
@@ -105,7 +105,7 @@ AVR::
   >>> cc.size().program_bytes
   132
   #-#
-    
+
 
 arduino::
 
@@ -349,7 +349,7 @@ Output::
   _delay_ms(4)                      compiler option: -O3 	program, data =      150 ,        0
   _delay_ms(4)                      compiler option: -Os 	program, data =      150 ,        0
   #-#
-    
+
 
 Test size with program space
 ----------------------------
