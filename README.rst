@@ -767,7 +767,7 @@ Results:
 .. _avr: http://en.wikipedia.org/wiki/Atmel_AVR
 .. _scons: http://www.scons.org
 
-.. |Travis| image:: http://img.shields.io/travis/ponty/pyavrutils.svg
+.. |Travis| image:: https://travis-ci.org/ponty/pyavrutils.svg?branch=master
    :target: https://travis-ci.org/ponty/pyavrutils/
 .. |Coveralls| image:: http://img.shields.io/coveralls/ponty/pyavrutils/master.svg
    :target: https://coveralls.io/r/ponty/pyavrutils/
